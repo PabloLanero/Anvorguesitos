@@ -26,7 +26,7 @@ CREATE TABLE CUSTOMERS(
     lastName VARCHAR2(150),
     emailCustomer VARCHAR2(150),
     phoneCustomer VARCHAR2(10),
-    isRegistered NUMBER(1) CHECK (isAvailable IN (1, 0)));
+    isRegistered NUMBER(1) CHECK (isRegistered IN (1, 0)));
 
 CREATE TABLE PAYMENT_METHODS(
     id_paymentMethod INT PRIMARY KEY,
@@ -48,3 +48,13 @@ CREATE TABLE JOBS(
     jobTitle VARCHAR2(64),
     minSalary DECIMAL(10,2),
     maxSalary DECIMAL(10,2));
+    
+CREATE TABLE INGREDIENTS_PRODUCTS(
+	id_ingredients INT PRIMARY KEY);
+
+CREATE TABLE ORDERS_HEADER(
+	id_orderHeader INT PRIMARY KEY,
+	orderDate DATE,
+	shippingAddress VARCHAR2(128),
+	isTransactionAcepted  NUMBER(1) CHECK (isTransactionAcepted IN (1,0)),
+	orderStatus VARCHAR2(128));
