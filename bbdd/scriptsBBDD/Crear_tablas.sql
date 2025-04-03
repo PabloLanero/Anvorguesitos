@@ -26,6 +26,7 @@ CREATE TABLE CUSTOMERS(
     lastName VARCHAR2(150),
     emailCustomer VARCHAR2(150),
     phoneCustomer VARCHAR2(10),
+    passwordCustomer VARCHAR2(20),
     isRegistered NUMBER(1) CHECK (isRegistered IN (1, 0)));
 
 CREATE TABLE PAYMENT_METHODS(
@@ -39,6 +40,7 @@ CREATE TABLE EMPLOYEES(
     hiringDate DATE,
     emailEmployee VARCHAR2(128),
     phoneEmployee VARCHAR2(16),
+    passwordEmployee VARCHAR2(20),
     salary DECIMAL(10,2),
     id_job INT,
     id_store INT);
@@ -48,9 +50,7 @@ CREATE TABLE JOBS(
     jobTitle VARCHAR2(64),
     minSalary DECIMAL(10,2),
     maxSalary DECIMAL(10,2));
-
---Tablas intermedias
-
+    
 CREATE TABLE INGREDIENTS_PRODUCTS(
 	id_ingredients INT PRIMARY KEY);
 
@@ -60,14 +60,3 @@ CREATE TABLE ORDERS_HEADER(
 	shippingAddress VARCHAR2(128),
 	isTransactionAcepted  NUMBER(1) CHECK (isTransactionAcepted IN (1,0)),
 	orderStatus VARCHAR2(128));
-
-CREATE TABLE ORDERS_LINE(
-    id_orderLine INT PRIMARY KEY,
-    orderQuantity INT,
-    id_product INT,
-    id_orderHeader INT);
-
-CREATE TABLE PRODUCTS_STORE(
-    id_productStore INT PRIMARY KEY,
-    id_product INT,
-    id_store INT);
