@@ -1,19 +1,7 @@
-ALTER TABLE MENUS
-	ADD CONSTRAINT fk_id_store_menu
-	FOREIGN KEY (id_store)
-	REFERENCES STORES(id_store);
-
-
 ALTER TABLE PRODUCTS 
 	ADD CONSTRAINT fk_id_productCategory
 	FOREIGN KEY (id_productCategory)
 	REFERENCES PRODUCT_CATEGORIES(id_productCategory);
-
-
-ALTER TABLE STORES 
-	ADD CONSTRAINT fk_id_menu_stores 
-	FOREIGN KEY (id_menu)
-	REFERENCES MENUS(id_menu);
 
 
 ALTER TABLE EMPLOYEES
@@ -40,17 +28,6 @@ ALTER TABLE INGREDIENTS_PRODUCTS
 	REFERENCES PRODUCTS(id_product);
 
 
-ALTER TABLE MENUS_PRODUCTS
-	ADD CONSTRAINT fk_id_menu_menus_products
-	FOREING KEY (id_menu)	
-	REFERENCES MENUS(id_meu);
-
-
-ALTER TABLE MENUS_PRODUCTS
-	ADD CONSTRAINT fk_id_product_menus_products
-	FOREIGN KEY (id_product)
-	REFERENCES PRODUCTS(id_product);
-
 
 ALTER TABLE ORDERS_HEADER
 	ADD CONSTRAINT fk_id_paymentMethod
@@ -69,12 +46,6 @@ ALTER TABLE ORDERS_HEADER
 	FOREIGN KEY (id_store)
 	REFERENCES STORES(id_store);
 
-
-ALTER TABLE ORDERS_HEADER 
-	ADD CONSTRAINT fk_id_orderStatus
-	FOREIGN KEY (id_orderStatus)
-	REFERENCES ORDER_STATUSES(id_orderStatus);
-
 	
 ALTER TABLE ORDERS_LINE
 	ADD CONSTRAINT fk_id_product_orders_line
@@ -85,4 +56,16 @@ ALTER TABLE ORDERS_LINE
 ALTER TABLE ORDERS_LINE
 	ADD CONSTRAINT fk_id_orderHeader
 	FOREIGN KEY (id_orderHeader)
-	REFERENCES ORDERS_HEADER(id_orderHeader)
+	REFERENCES ORDERS_HEADER(id_orderHeader);
+
+
+ALTER TABLE PRODUCTS_STORE 
+	ADD CONSTRAINT fk_id_product_products_store
+	FOREIGN KEY (id_product)
+	REFERENCES PRODUCTS(id_product);
+
+
+ALTER TABLE PRODUCTS_STRORE
+	ADD CONSTRAINT fk_id_store_products_store
+	FOREIGN KEY (id_store)
+	REFERENCES STORES(id_store);
