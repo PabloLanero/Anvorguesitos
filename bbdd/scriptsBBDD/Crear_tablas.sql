@@ -48,7 +48,9 @@ CREATE TABLE JOBS(
     jobTitle VARCHAR2(64),
     minSalary DECIMAL(10,2),
     maxSalary DECIMAL(10,2));
-    
+
+--Tablas intermedias
+
 CREATE TABLE INGREDIENTS_PRODUCTS(
 	id_ingredients INT PRIMARY KEY);
 
@@ -58,3 +60,14 @@ CREATE TABLE ORDERS_HEADER(
 	shippingAddress VARCHAR2(128),
 	isTransactionAcepted  NUMBER(1) CHECK (isTransactionAcepted IN (1,0)),
 	orderStatus VARCHAR2(128));
+
+CREATE TABLE ORDERS_LINE(
+    id_orderLine INT PRIMARY KEY,
+    orderQuantity INT,
+    id_product INT,
+    id_orderHeader INT);
+
+CREATE TABLE PRODUCTS_STORE(
+    id_productStore INT PRIMARY KEY,
+    id_product INT,
+    id_store INT);
