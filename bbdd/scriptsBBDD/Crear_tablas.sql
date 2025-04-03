@@ -13,5 +13,3 @@ CREATE TABLE PRODUCTS(
   3  description VARCHAR2(250),
   4  price DECIMAL(2),
   5  id_productCategory INT);
-
-  hola pablo
