@@ -3,10 +3,6 @@ CREATE TABLE INGREDIENTS(
     ingredientName VARCHAR2(100),
     allergen VARCHAR2(100));
 	
-CREATE TABLE MENUS(
-    id_menu INT PRIMARY KEY,
-    startDate DATE,
-	id_store INT);
 
 CREATE TABLE PRODUCTS(
     id_product INT PRIMARY KEY,
@@ -22,7 +18,7 @@ CREATE TABLE STORES(
     id_store INT PRIMARY KEY,
     modeStore VARCHAR2(30),
     location VARCHAR2(150),
-    id_menu INT);
+    id_product INT);
 
 CREATE TABLE CUSTOMERS(
     id_customer INT PRIMARY KEY,
@@ -30,4 +26,25 @@ CREATE TABLE CUSTOMERS(
     lastName VARCHAR2(150),
     emailCustomer VARCHAR2(150),
     phoneCustomer VARCHAR2(10),
-    isRegistered BOOLEAN);
+    isRegistered NUMBER(1) CHECK (isAvailable IN (1, 0)));
+
+CREATE TABLE PAYMENT_METHODS(
+    id_paymentMethod INT PRIMARY KEY,
+    paymentMethodName VARCHAR2(32));
+
+CREATE TABLE EMPLOYEES(
+    id_employee INT PRIMARY KEY,
+    employeeFirstName VARCHAR2(64),
+    employeeLastName VARCHAR2(64),
+    hiringDate DATE,
+    emailEmployee VARCHAR2(128),
+    phoneEmployee VARCHAR2(16),
+    salary DECIMAL(10,2),
+    id_job INT,
+    id_store INT);
+
+CREATE TABLE JOBS(
+    id_job INT PRIMARY KEY,
+    jobTitle VARCHAR2(64),
+    minSalary DECIMAL(10,2),
+    maxSalary DECIMAL(10,2));
