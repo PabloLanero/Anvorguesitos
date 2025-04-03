@@ -1,0 +1,88 @@
+ALTER TABLE MENUS
+	ADD CONSTRAINT fk_id_store_menu
+	FOREIGN KEY (id_store)
+	REFERENCES STORES(id_store);
+
+
+ALTER TABLE PRODUCTS 
+	ADD CONSTRAINT fk_id_productCategory
+	FOREIGN KEY (id_productCategory)
+	REFERENCES PRODUCT_CATEGORIES(id_productCategory);
+
+
+ALTER TABLE STORES 
+	ADD CONSTRAINT fk_id_menu_stores 
+	FOREIGN KEY (id_menu)
+	REFERENCES MENUS(id_menu);
+
+
+ALTER TABLE EMPLOYEES
+	ADD CONSTRAINT fk_id_job
+	FOREIGN KEY (id_job)
+	REFERENCES JOBS(id_job);
+
+
+ALTER TABLE EMPLOYEES 
+	ADD CONSTRAINT fk_id_store_employees
+	FOREIGN KEY (id_store) 
+	REFERENCES STORES(id_store);
+
+
+ALTER TABLE INGREDIENTS_PRODUCTS
+	ADD CONSTRAINT fk_id_ingredient
+	FOREIGN KEY (id_ingredient)
+	REFERENCES INGREDIENTS(id_ingredient);
+
+
+ALTER TABLE INGREDIENTS_PRODUCTS
+	ADD CONSTRAINT fk_id_product_ingredients_products
+	FOREIGN KEY (id_product)
+	REFERENCES PRODUCTS(id_product);
+
+
+ALTER TABLE MENUS_PRODUCTS
+	ADD CONSTRAINT fk_id_menu_menus_products
+	FOREING KEY (id_menu)	
+	REFERENCES MENUS(id_meu);
+
+
+ALTER TABLE MENUS_PRODUCTS
+	ADD CONSTRAINT fk_id_product_menus_products
+	FOREIGN KEY (id_product)
+	REFERENCES PRODUCTS(id_product);
+
+
+ALTER TABLE ORDERS_HEADER
+	ADD CONSTRAINT fk_id_paymentMethod
+	FOREING KEY (id_paymentMethod)
+	REFERENCES PAYMENT_METHODS(id_paymentMethod);
+
+
+ALTER TABLE ORDERS_HEADER
+	ADD CONSTRAINT fk_id_customer
+	FOREIGN KEY (id_customer)
+	REFERENCES CUSTOMERS(id_customer);
+
+
+ALTER TABLE ORDERS_HEADER 
+	ADD CONSTRAINT fk_id_store_orders_header
+	FOREIGN KEY (id_store)
+	REFERENCES STORES(id_store);
+
+
+ALTER TABLE ORDERS_HEADER 
+	ADD CONSTRAINT fk_id_orderStatus
+	FOREIGN KEY (id_orderStatus)
+	REFERENCES ORDER_STATUSES(id_orderStatus);
+
+	
+ALTER TABLE ORDERS_LINE
+	ADD CONSTRAINT fk_id_product_orders_line
+	FOREIGN KEY (id_product)
+	REFERENCES PRODUCTS(id_product);
+
+
+ALTER TABLE ORDERS_LINE
+	ADD CONSTRAINT fk_id_orderHeader
+	FOREIGN KEY (id_orderHeader)
+	REFERENCES ORDERS_HEADER(id_orderHeader)
