@@ -17,8 +17,7 @@ CREATE TABLE PRODUCT_CATEGORIES(
 CREATE TABLE STORES(
     id_store INT PRIMARY KEY,
     modeStore VARCHAR2(30),
-    location VARCHAR2(150),
-    id_product INT);
+    location VARCHAR2(150));
 
 CREATE TABLE CUSTOMERS(
     id_customer INT PRIMARY KEY,
@@ -50,18 +49,22 @@ CREATE TABLE JOBS(
     jobTitle VARCHAR2(64),
     minSalary DECIMAL(10,2),
     maxSalary DECIMAL(10,2));
-
---Tablas intermedias
-
+    
 CREATE TABLE INGREDIENTS_PRODUCTS(
-	id_ingredients INT PRIMARY KEY);
+	id_ingredients INT PRIMARY KEY,
+    id_ingredient INT,
+    id_product INT);
+
 
 CREATE TABLE ORDERS_HEADER(
 	id_orderHeader INT PRIMARY KEY,
 	orderDate DATE,
 	shippingAddress VARCHAR2(128),
 	isTransactionAcepted  NUMBER(1) CHECK (isTransactionAcepted IN (1,0)),
-	orderStatus VARCHAR2(128));
+	orderStatus VARCHAR2(128),
+    id_paymentMethod INT,
+    id_customer INT,
+    id_store INT);
 
 CREATE TABLE ORDERS_LINE(
     id_orderLine INT PRIMARY KEY,
@@ -70,6 +73,7 @@ CREATE TABLE ORDERS_LINE(
     id_orderHeader INT);
 
 CREATE TABLE PRODUCTS_STORE(
-  2  id_productStore INT PRIMARY KEY,
-  3  id_product INT,
-  4  id_store INT);
+    id_productStore INT PRIMARY KEY,
+    id_product INT,
+    id_store INT);
+	
