@@ -1,3 +1,5 @@
+--Tablas principales
+
 CREATE TABLE INGREDIENTS(
     id_ingredient INT PRIMARY KEY,
     ingredientName VARCHAR2(100),
