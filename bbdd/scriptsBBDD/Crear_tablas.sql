@@ -94,5 +94,5 @@ CREATE TABLE ORDERS_LINE(
 CREATE TABLE PRODUCTS_STORE(
     id_productStore INT PRIMARY KEY,
     id_product INT,
-    id_store INT);
+    id_store INT);   
 	
