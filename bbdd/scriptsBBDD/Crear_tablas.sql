@@ -1,10 +1,13 @@
 --Tablas principales
 
+--La tabla de ingredientes
+
 CREATE TABLE INGREDIENTS(
     id_ingredient INT PRIMARY KEY,
     ingredientName VARCHAR2(100),
     allergen VARCHAR2(100));
 	
+--La tabla de productos
 
 CREATE TABLE PRODUCTS(
     id_product INT PRIMARY KEY,
@@ -12,14 +15,20 @@ CREATE TABLE PRODUCTS(
     price DECIMAL(9,2),
     id_productCategory INT);
 
+--La tabla de categoria de productos
+
 CREATE TABLE PRODUCT_CATEGORIES(
     id_productCategory INT PRIMARY KEY,
     name VARCHAR2(50));
+
+--La tabla de tienda (Para la online y la fisica)
 
 CREATE TABLE STORES(
     id_store INT PRIMARY KEY,
     modeStore VARCHAR2(30),
     location VARCHAR2(150));
+
+--La tabla de clientes
 
 CREATE TABLE CUSTOMERS(
     id_customer INT PRIMARY KEY,
@@ -30,9 +39,13 @@ CREATE TABLE CUSTOMERS(
     passwordCustomer VARCHAR2(20),
     isRegistered NUMBER(1) CHECK (isRegistered IN (1, 0)));
 
+--La tabla de metodo de pagos
+
 CREATE TABLE PAYMENT_METHODS(
     id_paymentMethod INT PRIMARY KEY,
     paymentMethodName VARCHAR2(32));
+
+--La tabla de empleados
 
 CREATE TABLE EMPLOYEES(
     id_employee INT PRIMARY KEY,
@@ -45,6 +58,8 @@ CREATE TABLE EMPLOYEES(
     salary DECIMAL(10,2),
     id_job INT,
     id_store INT);
+
+-- La tabla de trabajos
 
 CREATE TABLE JOBS(
     id_job INT PRIMARY KEY,
