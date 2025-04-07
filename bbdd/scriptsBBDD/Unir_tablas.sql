@@ -58,14 +58,3 @@ ALTER TABLE ORDERS_LINE
 	FOREIGN KEY (id_orderHeader)
 	REFERENCES ORDERS_HEADER(id_orderHeader);
 
-
-ALTER TABLE PRODUCTS_STORE 
-	ADD CONSTRAINT fk_id_product_products_store
-	FOREIGN KEY (id_product)
-	REFERENCES PRODUCTS(id_product);
-
-
-ALTER TABLE PRODUCTS_STORE
-	ADD CONSTRAINT fk_id_store_products_store
-	FOREIGN KEY (id_store)
-	REFERENCES STORES(id_store);

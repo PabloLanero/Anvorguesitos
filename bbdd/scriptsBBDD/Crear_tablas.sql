@@ -83,16 +83,15 @@ CREATE TABLE ORDERS_HEADER(
 	orderStatus VARCHAR2(128),
     id_paymentMethod INT,
     id_customer INT,
-    id_store INT);
+    id_employee INT);
 
 CREATE TABLE ORDERS_LINE(
     id_orderLine INT PRIMARY KEY,
     orderQuantity INT,
     id_product INT,
     id_orderHeader INT);
-
-CREATE TABLE PRODUCTS_STORE(
-    id_productStore INT PRIMARY KEY,
-    id_product INT,
-    id_store INT);   
-	
+ 
+CREATE VIEW view_salesman AS
+SELECT emp.id_employee, emp.employeeFirstName, emp.employeeLastName
+FROM employees emp INNER JOIN JOBS job ON emp.id_job = job.id_job
+WHERE job.jobTitle = 'salesman';
