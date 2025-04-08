@@ -48,56 +48,55 @@ INSERT INTO INGREDIENTS (id_ingredient, ingredientName, allergen) VALUES
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
---tabla products
-----hamburguesas
-INSERT INTO PRODUCTS (id_product, productTitle, description, Ingredients, price, id_productCategory) VALUES
-(1, 'Queen of the Pyrenees', 'The majesty of the Pyrenees in every bite. Tender and juicy Ternasco de Aragón lamb, accompanied by creamy Tronchón cheese, roasted Tudela asparagus, and a unique truffle sauce that adds a sophisticated touch. All served on rustic handmade bread that enhances the local flavors. A tribute to the heart of the Aragonese Pyrenees.',
- 'Tronchón cheese, Handmade pumpkin bread', 16.50, 1),
-(2, 'Under the Skies of Belchite', 'Inspired by the lands of Belchite, this burger brings together the best of the garden and tradition. Jiloca beef with a hint of Belchite honey and Fraga mustard creates the perfect balance of sweet and tangy. Served with caramelized onions, local Raf tomatoes, and spelt bread. An explosion of flavors that takes you straight to Belchite.',
- 'Spelt bread, Fraga mustard', 14.50, 1),
-(3, 'The Shadow of Moncayo', 'The shadow cast by Moncayo inspires this burger, combining the best of the mountains with the freshness of the garden. Juicy Aragonese chicken breast, accompanied by Moncayo fresh cheese, Tudela asparagus, and a refreshing Aragonese yogurt sauce. All served on seed bread, perfectly balancing the flavors.',
- 'Fresh cheese from Moncayo, Seed bread, Yogurt sauce', 15, 1),
-(4, 'Ebro River', 'A tribute to the majestic Ebro River. Ebro River trout with a smoky touch, accompanied by roasted Piquillo peppers and a drizzle of extra virgin olive oil. The smoothness of Manchego cheese and the freshness of field lettuce make this burger a unique experience, all on rye bread.',
- 'Manchego cheese, Rye bread', 17, 1),
-(5, 'Land of Biescas', 'In honor of the lands of Biescas, this burger combines the intensity of Albarracín lamb with the creamy touch of Manchego cheese and the richness of sun-dried tomatoes. A rosemary sauce and rustic village bread complete this mountain-inspired recipe. The flavor of the highlands in every bite.',
- 'Manchego cheese, Rustic village bread', 18, 1),
-(6, 'The Hoya of Huesca', 'Inspired by the fertile Hoya of Huesca, this burger features Barbastro beef paired with Piquillo peppers and a mild sweet mustard sauce. Combined with Moncayo fresh cheese and a touch of caramelized onions on rustic bread, this is a blend of traditional flavors with a modern twist.',
- 'Fresh cheese from Moncayo, Rustic village bread, Fraga mustard sauce', 14, 1),
-(7, 'Fields of Jiloca', 'Known for its authentic flavors, the fields of Jiloca are reflected in this burger. Jiloca beef accompanied by Tronchón cheese, sun-dried tomatoes, and a fresh mix of spinach leaves, all topped with Belchite honey sauce and served on spelt bread. A tribute to Aragonese land.',
- 'Tronchón cheese, Spelt bread', 13.50, 1),
-(8, 'Dawn of the Maestre', 'A dawn in the Maestre lands is reflected in this burger full of freshness and contrast. Local pork with Moncayo fresh cheese, Piquillo peppers, and a touch of Belchite honey and sweet mustard create a perfectly balanced and delicious flavor. Served on rye bread for a gourmet experience.',
- 'Fresh cheese from Moncayo, Rye bread, Sweet mustard sauce', 16, 1),
-(9, 'The Matarraña Lamb', 'The richness of Matarraña is found in this burger made with Ternasco de Aragón lamb, accompanied by Manchego cheese, caramelized onions, and a hint of Fraga mustard sauce. The seed bread and arugula leaves complement the blend of flavors, creating a unique taste of the land.',
- 'Manchego cheese, Seed bread, Fraga mustard', 17.50, 1),
-(10, 'Wind of Teruel', 'The wind of Teruel brings the strength of tradition. This burger combines wild boar meat from the Sierra de Guara, with Manchego cheese, sun-dried tomatoes, and a touch of sweet mustard sauce. All served on rustic bread, evoking the wild flavors of Teruel in every bite.',
- 'Manchego cheese, Rustic village bread, Sweet mustard sauce', 14.50, 1),
-(11, 'Essence of the Gállego', 'The essence of the Gállego land is found in this burger of Gállego goat meat, paired with Manchego cheese, Raf tomatoes, and a mild rosemary sauce. Served on rustic bread, this is a taste of authenticity from the region.',
- 'Manchego cheese, Rustic village bread', 15, 1),
-(12, 'Under the Shadow of the Muela', 'The Muela inspires this burger made with rabbit meat from La Muela, a touch of apple compote, and sweet mustard sauce. Served with spinach leaves, Raf tomatoes, and a drizzle of extra virgin olive oil, all on rye bread. A delicate and flavorful mix that takes you to the calm of the lands under the shadow of the Muela.',
- 'Rye bread, Sweet mustard sauce', 13, 1),
-(13, 'The Green Alfranca', 'The freshness of the Alfranca fields is reflected in this burger. Beef paired with Moncayo fresh cheese, arugula sprouts, and a touch of extra virgin olive oil on seed bread. A combination of fresh and tasty ingredients for a light yet delicious experience.',
- 'Fresh cheese from Moncayo, Seed bread', 14, 1),
-(14, 'Skies of the Sierra de Guara', 'The majesty of the skies of the Sierra de Guara is reflected in this burger made with wild boar meat, Tronchón cheese, Piquillo peppers, and a mild rosemary sauce. Served on rustic bread, this burger offers robust and authentic mountain flavors.',
- 'Tronchón cheese, Rustic village bread', 18, 1),
-(15, 'Barbastro Estate', 'A journey to the Barbastro Estate with this burger made from local Barbastro beef, Manchego cheese, sun-dried tomatoes, and a hint of Belchite honey. The perfect combination of local flavors on rye bread, ideal for savoring the best of the land.',
- 'Manchego cheese, Rye bread', 15.50, 1),
+
+INSERT INTO PRODUCTS (id_product, productTitle, description, price, id_productCategory) VALUES
+(1, 'Queen of the Pyrenees', 'The majesty of the Pyrenees in every bite. Tender and juicy Ternasco de Aragón lamb, accompanied by creamy Tronchón cheese, roasted Tudela asparagus, and a unique truffle sauce that adds a sophisticated touch. All served on rustic handmade bread that enhances the local flavors. A tribute to the heart of the Aragonese Pyrenees.', 16.50, 1),
+(2, 'Under the Skies of Belchite', 'Inspired by the lands of Belchite, this burger brings together the best of the garden and tradition. Jiloca beef with a hint of Belchite honey and Fraga mustard creates the perfect balance of sweet and tangy. Served with caramelized onions, local Raf tomatoes, and spelt bread. An explosion of flavors that takes you straight to Belchite.', 14.50, 1),
+(3, 'The Shadow of Moncayo', 'The shadow cast by Moncayo inspires this burger, combining the best of the mountains with the freshness of the garden. Juicy Aragonese chicken breast, accompanied by Moncayo fresh cheese, Tudela asparagus, and a refreshing Aragonese yogurt sauce. All served on seed bread, perfectly balancing the flavors.', 15, 1),
+(4, 'Ebro River', 'A tribute to the majestic Ebro River. Ebro River trout with a smoky touch, accompanied by roasted Piquillo peppers and a drizzle of extra virgin olive oil. The smoothness of Manchego cheese and the freshness of field lettuce make this burger a unique experience, all on rye bread.', 17, 1),
+(5, 'Land of Biescas', 'In honor of the lands of Biescas, this burger combines the intensity of Albarracín lamb with the creamy touch of Manchego cheese and the richness of sun-dried tomatoes. A rosemary sauce and rustic village bread complete this mountain-inspired recipe. The flavor of the highlands in every bite.', 18, 1),
+(6, 'The Hoya of Huesca', 'Inspired by the fertile Hoya of Huesca, this burger features Barbastro beef paired with Piquillo peppers and a mild sweet mustard sauce. Combined with Moncayo fresh cheese and a touch of caramelized onions on rustic bread, this is a blend of traditional flavors with a modern twist.', 14, 1),
+(7, 'Fields of Jiloca', 'Known for its authentic flavors, the fields of Jiloca are reflected in this burger. Jiloca beef accompanied by Tronchón cheese, sun-dried tomatoes, and a fresh mix of spinach leaves, all topped with Belchite honey sauce and served on spelt bread. A tribute to Aragonese land.', 13.50, 1),
+(8, 'Dawn of the Maestre', 'A dawn in the Maestre lands is reflected in this burger full of freshness and contrast. Local pork with Moncayo fresh cheese, Piquillo peppers, and a touch of Belchite honey and sweet mustard create a perfectly balanced and delicious flavor. Served on rye bread for a gourmet experience.', 16, 1),
+(9, 'The Matarraña Lamb', 'The richness of Matarraña is found in this burger made with Ternasco de Aragón lamb, accompanied by Manchego cheese, caramelized onions, and a hint of Fraga mustard sauce. The seed bread and arugula leaves complement the blend of flavors, creating a unique taste of the land.', 17.50, 1),
+(10, 'Wind of Teruel', 'The wind of Teruel brings the strength of tradition. This burger combines wild boar meat from the Sierra de Guara, with Manchego cheese, sun-dried tomatoes, and a touch of sweet mustard sauce. All served on rustic bread, evoking the wild flavors of Teruel in every bite.', 14.50, 1),
+(11, 'Essence of the Gállego', 'The essence of the Gállego land is found in this burger of Gállego goat meat, paired with Manchego cheese, Raf tomatoes, and a mild rosemary sauce. Served on rustic bread, this is a taste of authenticity from the region.', 15, 1),
+(12, 'Under the Shadow of the Muela', 'The Muela inspires this burger made with rabbit meat from La Muela, a touch of apple compote, and sweet mustard sauce. Served with spinach leaves, Raf tomatoes, and a drizzle of extra virgin olive oil, all on rye bread. A delicate and flavorful mix that takes you to the calm of the lands under the shadow of the Muela.', 13, 1),
+(13, 'The Green Alfranca', 'The freshness of the Alfranca fields is reflected in this burger. Beef paired with Moncayo fresh cheese, arugula sprouts, and a touch of extra virgin olive oil on seed bread. A combination of fresh and tasty ingredients for a light yet delicious experience.', 14, 1),
+(14, 'Skies of the Sierra de Guara', 'The majesty of the skies of the Sierra de Guara is reflected in this burger made with wild boar meat, Tronchón cheese, Piquillo peppers, and a mild rosemary sauce. Served on rustic bread, this burger offers robust and authentic mountain flavors.', 18, 1),
+(15, 'Barbastro Estate', 'A journey to the Barbastro Estate with this burger made from local Barbastro beef, Manchego cheese, sun-dried tomatoes, and a hint of Belchite honey. The perfect combination of local flavors on rye bread, ideal for savoring the best of the land.', 15.50, 1),
+(16, 'Gourmet French Fries', 'Crispy, golden fries cooked to perfection, drizzled with extra virgin olive oil and fresh rosemary. The ideal side for any burger.', 4, 2),
+(17, 'Crispy Onion Rings', 'Golden, battered onion rings, seasoned with local spices, crispy on the outside and tender on the inside.', 5, 2),
+(18, 'Fresh Salad', 'A fresh mix of lettuce, arugula, Raf tomatoes, and caramelized onions, dressed with extra virgin olive oil and balsamic vinegar.', 5, 2),
+(19, 'Water', 'A refreshing bottle of water to accompany your meal.', 2, 3),
+(20, 'Cocacola', 'A classic Coca-Cola, sweet and refreshing.', 1.50, 3),
+(21, 'Orange Fanta', 'A refreshing orange soda with a sweet and tangy taste.', 1.50, 3),
+(22, 'Fanta de Limón', 'A refreshing lemon soda, perfect for a hot day.', 1.50, 3),
+(23, 'Cariñena Red Wine', 'A smooth red wine from the Cariñena region, perfect for pairing with any meal.', 6, 3),
+(24, 'Somontano White Wine', 'A crisp and aromatic white wine from the Somontano region, ideal for seafood or chicken dishes.', 6, 3),
+(25, 'Ambar Beer', 'A refreshing local beer from the Ambar brewery.', 2, 3);
 
 
-----Side Dish
 
-(16, 'Gourmet French Fries', 'Crispy, golden fries cooked to perfection, drizzled with extra virgin olive oil and fresh rosemary. The ideal side for any burger.', '0', 4, 2),
-(17, 'Crispy Onion Rings', 'Golden, battered onion rings, seasoned with local spices, crispy on the outside and tender on the inside.', 'wheat', 5, 2),
-(18, 'Fresh Salad', 'A fresh mix of lettuce, arugula, Raf tomatoes, and caramelized onions, dressed with extra virgin olive oil and balsamic vinegar.', '0', 5, 2),
 
-----Drink
 
-(19, 'Water', 'A refreshing bottle of water to accompany your meal.', '0', 2, 3),
-(20, 'Cocacola', 'A classic Coca-Cola, sweet and refreshing.', '0', 1.50, 3),
-(21, 'Orange Fanta', 'A refreshing orange soda with a sweet and tangy taste.', '0', 1.50, 3),
-(22, 'Fanta de Limón', 'A refreshing lemon soda, perfect for a hot day.', '0', 1.50, 3),
-(23, 'Cariñena Red Wine', 'A smooth red wine from the Cariñena region, perfect for pairing with any meal.', '0', 6, 3),
-(24, 'Somontano White Wine', 'A crisp and aromatic white wine from the Somontano region, ideal for seafood or chicken dishes.', '0', 6, 3),
-(25, 'Ambar Beer', 'A refreshing local beer from the Ambar brewery.', '0', 2, 3);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

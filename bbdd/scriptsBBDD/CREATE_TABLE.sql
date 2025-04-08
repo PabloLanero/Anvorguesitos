@@ -12,7 +12,7 @@ CREATE TABLE INGREDIENTS(
 CREATE TABLE PRODUCTS(
     id_product INT PRIMARY KEY,
     productTitle  VARCHAR2(100),
-    description VARCHAR2(250),
+    description VARCHAR2(350),
     price DECIMAL(9,2),
     id_productCategory INT);
 
