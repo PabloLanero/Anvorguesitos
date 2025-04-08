@@ -138,10 +138,11 @@ INSERT INTO PRODUCT_CATEGORIES (id_productCategory, name) VALUES
 
 
 
+
 --tabla stores
 INSERT INTO STORES (id_store, modeStore, location) VALUES
-(1,"Online", "Online"),
-(2, "Physical", "San Ignacio de Loyola, n20");
+(1,'Online', 'Online'),
+(2, 'Physical', 'San Ignacio de Loyola, n20');
 
 
 
