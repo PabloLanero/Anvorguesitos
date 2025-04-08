@@ -50,7 +50,7 @@ INSERT INTO INGREDIENTS (id_ingredient, ingredientName, allergen) VALUES
 
 --tabla products
 ----hamburguesas
-INSERT INTO PRODUCTS (id_product, productTitle, description, Ingredients, precio, id_productCategory) VALUES
+INSERT INTO PRODUCTS (id_product, productTitle, description, Ingredients, price, id_productCategory) VALUES
 (1, 'Queen of the Pyrenees', 'The majesty of the Pyrenees in every bite. Tender and juicy Ternasco de Aragón lamb, accompanied by creamy Tronchón cheese, roasted Tudela asparagus, and a unique truffle sauce that adds a sophisticated touch. All served on rustic handmade bread that enhances the local flavors. A tribute to the heart of the Aragonese Pyrenees.',
  'Tronchón cheese, Handmade pumpkin bread', 16.50, 1),
 (2, 'Under the Skies of Belchite', 'Inspired by the lands of Belchite, this burger brings together the best of the garden and tradition. Jiloca beef with a hint of Belchite honey and Fraga mustard creates the perfect balance of sweet and tangy. Served with caramelized onions, local Raf tomatoes, and spelt bread. An explosion of flavors that takes you straight to Belchite.',
