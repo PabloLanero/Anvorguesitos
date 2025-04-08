@@ -12,9 +12,7 @@ body {
     display: flex;
     flex-direction: row-reverse;
     /*Lo pone a la derecha*/
-    position: absolute;
-    /*Se superpone a la imagen*/
-
+    position: absolute; /*Se superpone a la imagen*/
 }
 
 .navright {
@@ -77,7 +75,7 @@ button:active {
 }
 
 
-/* Estilo para el botón con icono de carrito     */
+/* Estilo para el botón con icono de carrito*/
 .add-to-cart {
     display: flex;
     align-items: center;
@@ -115,4 +113,17 @@ button:active {
 /*CARDS*/
 .menu-cards {
     display: grid;
+}
+
+
+/*FOOTER*/
+.footer-textbox {
+    background: black;
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    /*Lo pone a la derecha*/
+    position: absolute;
+    /*Se superpone a la imagen*/
 }
