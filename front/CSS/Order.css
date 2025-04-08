@@ -1,5 +1,51 @@
-.container{
+.Container{
+    
+    width: 99vw;
+    margin-top:3vh;
+}
+
+.Product{
     display: flex;
-    flex-direction: column;
-    width: 100vw;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Product-image img{
+    width: 20vh;
+}
+
+.Product-name{
+    color:white;
+    font-size: 3vh;
+}
+
+.Product-cuantity{
+    color:white;
+    font-size: 2.5vh;
+}
+
+.Product-price{
+    color:white;
+    font-size: 2.5vh;
+}
+
+.Final{
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.Boton-compra{
+    width: 33vw;
+    display: flex;
+    justify-content: center;
+}
+
+.Precio-total{
+    width: 33vw;
+    color:white;
+    display: flex;
+    justify-content: center;
 }
