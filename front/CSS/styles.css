@@ -4,9 +4,11 @@ body {
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
-    background-color: rgb(56, 40, 20);
+    background-color:#1A1A1A;
 }
 
+
+  
 /*Navigation Bar*/
 .navigationbar {
     background: transparent;
@@ -18,6 +20,7 @@ body {
     /*Lo pone a la derecha*/
     position: absolute;
     /*Se superpone a la imagen*/
+   
 }
 
 .navright {
@@ -44,8 +47,8 @@ body {
     top: 37%;
     left: 25%;
     font-size: 130px;
-    margin: 0;
-    /* Elimina márgenes por defecto */
+    margin: 0; /* Elimina márgenes por defecto */
+
 }
 
 
@@ -95,40 +98,33 @@ button:active {
 
 /*Text Box*/
 .main-textbox {
-    flex: 1;
-    /* Ocupa todo el espacio disponible */
-    background-color: rgb(24, 22, 20);
+    flex: 1;/* Ocupa todo el espacio disponible */
+    background-color: #1A1A1A;
     color: white;
     text-align: center;
     padding: 10px;
-    max-width: 100%;
-    /* Ancho del cuadro */
+    max-width: 100%; /* Ancho del cuadro */
 }
 
 .main-textbox h2 {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 40px;
     margin-bottom: 10px;
-    color: #ffcc00;
+    color: #F5A623;
 }
 
 .main-textbox p {
-    font-family: Arial, sans-serif;
     font-size: 25px;
 }
 
-/*CARDS*/
-.menu-cards {
-    display: grid;
-}
+
 
 
 /*FOOTER*/
 .footer {
     width: 100%;
     padding: 20px 0;
-    margin-top: auto;
-    /* Empuja el footer hacia abajo */
+    margin-top: auto; /* Empuja el footer hacia abajo */
+   
 }
 
 .footer-content {
@@ -136,21 +132,30 @@ button:active {
 }
 
 .footer-textbox {
-    background-color: black;
+    background-color: #121212 ;
     height: auto;
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     /*Lo pone a la derecha =)*/
 }
 
 .footer-schedule {
-    color: azure;
+    color: white;
     padding-right: 15px;  /*Agregamos espacio a la derecha del texto*/
 }
 
 .footer-info {
-    padding-left: 15px;
-    color: azure;
+    padding-left: 50px;
+    color: white;
     padding-right: 20px; /*Agregamos espacio a la derecha del texto*/
+}
+
+.footer-privacy{
+    text-align: center;
+    color: white;
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
