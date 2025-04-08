@@ -68,12 +68,12 @@ INSERT INTO PRODUCTS (id_product, productTitle, description, price, id_productCa
 (17, 'Crispy Onion Rings', 'Golden, battered onion rings, seasoned with local spices, crispy on the outside and tender on the inside.', 5, 2),
 (18, 'Fresh Salad', 'A fresh mix of lettuce, arugula, Raf tomatoes, and caramelized onions, dressed with extra virgin olive oil and balsamic vinegar.', 5, 2),
 (19, 'Water', 'A refreshing bottle of water to accompany your meal.', 2, 3),
-(20, 'Cocacola', 'A classic Coca-Cola, sweet and refreshing.', 1.50, 3),
-(21, 'Orange Fanta', 'A refreshing orange soda with a sweet and tangy taste.', 1.50, 3),
-(22, 'Lemon Fanta', 'A refreshing lemon soda, perfect for a hot day.', 1.50, 3),
+(20, 'Cola Soda', 'A classic Coca-Cola, sweet and refreshing.', 1.50, 3),
+(21, 'Lemon Soda', 'A refreshing orange soda with a sweet and tangy taste.', 1.50, 3),
+(22, 'Orange Soda', 'A refreshing lemon soda, perfect for a hot day.', 1.50, 3),
 (23, 'Cariñena Red Wine', 'A smooth red wine from the Cariñena region, perfect for pairing with any meal.', 6, 3),
 (24, 'Somontano White Wine', 'A crisp and aromatic white wine from the Somontano region, ideal for seafood or chicken dishes.', 6, 3),
-(25, 'Ambar Beer', 'A refreshing local beer from the Ambar brewery.', 2, 3);
+(25, 'Beer', 'A refreshing local beer from the Ambar brewery.', 2, 3);
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -274,7 +274,7 @@ INSERT INTO INGREDIENTS_PRODUCTS (id_ingredients, id_ingredient, id_product) VAL
 
 
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------PEDIDOS DE MUESTRA----------------------------------------------------------------------------------------------------------------------
 
 
 
