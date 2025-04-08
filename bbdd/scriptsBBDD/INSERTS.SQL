@@ -71,7 +71,7 @@ INSERT INTO PRODUCTS (id_product, productTitle, description, price, id_productCa
 (19, 'Water', 'A refreshing bottle of water to accompany your meal.', 2, 3),
 (20, 'Cocacola', 'A classic Coca-Cola, sweet and refreshing.', 1.50, 3),
 (21, 'Orange Fanta', 'A refreshing orange soda with a sweet and tangy taste.', 1.50, 3),
-(22, 'Fanta de Limón', 'A refreshing lemon soda, perfect for a hot day.', 1.50, 3),
+(22, 'Lemon Fanta', 'A refreshing lemon soda, perfect for a hot day.', 1.50, 3),
 (23, 'Cariñena Red Wine', 'A smooth red wine from the Cariñena region, perfect for pairing with any meal.', 6, 3),
 (24, 'Somontano White Wine', 'A crisp and aromatic white wine from the Somontano region, ideal for seafood or chicken dishes.', 6, 3),
 (25, 'Ambar Beer', 'A refreshing local beer from the Ambar brewery.', 2, 3);
@@ -250,13 +250,179 @@ VALUES
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------TABLAS INTERMEDIAS------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+---------INGREDIENTS_PRODUCTS,ORDERS_HEADER, ORDERS_LINE -------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+INSERT INTO INGREDIENTS_PRODUCTS (id_ingredients, id_ingredient, id_product) VALUES
+-- Queen of the Pyrenees
+(1, 1, 1),  -- Ternasco de Aragón (lamb or veal)
+(2, 2, 1),  -- Tronchón cheese
+(3, 3, 1),  -- Tudela asparagus
+(4, 4, 1),  -- Truffle sauce
+(5, 5, 1),  -- Handmade pumpkin bread
+
+-- Under the Skies of Belchite
+(6, 6, 2),  -- Jiloca beef
+(7, 7, 2),  -- Belchite honey
+(8, 8, 2),  -- Fraga mustard
+(9, 9, 2),  -- Caramelized onion
+(10, 22, 2), -- Raf tomatoes (local)
+(11, 17, 2), -- Spelt bread
+
+-- The Shadow of Moncayo
+(12, 10, 3), -- Aragonese chicken breast
+(13, 11, 3), -- Fresh cheese from Moncayo
+(14, 3, 3),  -- Tudela asparagus
+(15, 16, 3), -- Aragonese yogurt sauce
+(16, 17, 3), -- Seed bread
+
+-- Ebro River
+(17, 14, 4), -- Ebro River trout
+(18, 6, 4),  -- Piquillo peppers
+(19, 20, 4), -- Extra virgin olive oil
+(20, 28, 4), -- Manchego cheese
+(21, 18, 4), -- Field lettuce
+(22, 34, 4), -- Rye bread
+
+-- Land of Biescas
+(23, 23, 5), -- Albarracín lamb meat
+(24, 28, 5), -- Manchego cheese
+(25, 24, 5), -- Sun-dried tomatoes
+(26, 25, 5), -- Rosemary sauce
+(27, 26, 5), -- Rustic village bread
+
+-- The Hoya of Huesca
+(28, 32, 6), -- Barbastro beef
+(29, 6, 6),  -- Piquillo peppers
+(30, 11, 6), -- Moncayo fresh cheese
+(31, 19, 6), -- Caramelized onions
+(32, 9, 6),  -- Rustic bread
+
+-- Fields of Jiloca
+(33, 23, 7), -- Jiloca beef
+(34, 2, 7),  -- Tronchón cheese
+(35, 24, 7), -- Sun-dried tomatoes
+(36, 38, 7), -- Spinach leaves
+(37, 7, 7),  -- Belchite honey
+(38, 9, 7),  -- Spelt bread
+
+-- Dawn of the Maestre
+(39, 10, 8), -- Local pork
+(40, 11, 8), -- Moncayo fresh cheese
+(41, 6, 8),  -- Piquillo peppers
+(42, 7, 8),  -- Belchite honey
+(43, 33, 8), -- Sweet mustard sauce
+(44, 34, 8), -- Rye bread
+
+-- The Matarraña Lamb
+(45, 1, 9),  -- Ternasco de Aragón (lamb or veal)
+(46, 28, 9), -- Manchego cheese
+(47, 19, 9), -- Caramelized onions
+(48, 13, 9), -- Fraga mustard sauce
+(49, 17, 9), -- Seed bread
+(50, 27, 9), -- Arugula sprouts
+
+-- Wind of Teruel
+(51, 37, 10), -- Wild boar meat from Sierra de Guara
+(52, 28, 10), -- Manchego cheese
+(53, 24, 10), -- Sun-dried tomatoes
+(54, 33, 10), -- Sweet mustard sauce
+(55, 26, 10), -- Rustic village bread
+
+-- Essence of the Gállego
+(56, 32, 11), -- Gállego goat meat
+(57, 28, 11), -- Manchego cheese
+(58, 22, 11), -- Raf tomatoes
+(59, 25, 11), -- Rosemary sauce
+(60, 26, 11), -- Rustic village bread
+
+-- Under the Shadow of the Muela
+(61, 35, 12), -- Rabbit meat from La Muela
+(62, 36, 12), -- Apple compote
+(63, 33, 12), -- Sweet mustard sauce
+(64, 38, 12), -- Spinach leaves
+(65, 22, 12), -- Raf tomatoes
+(66, 20, 12), -- Extra virgin olive oil
+(67, 34, 12), -- Rye bread
+
+-- The Green Alfranca
+(68, 32, 13), -- Beef
+(69, 11, 13), -- Moncayo fresh cheese
+(70, 27, 13), -- Arugula sprouts
+(71, 20, 13), -- Extra virgin olive oil
+(72, 17, 13), -- Seed bread
+
+-- Skies of the Sierra de Guara
+(73, 37, 14), -- Wild boar meat
+(74, 2, 14),  -- Tronchón cheese
+(75, 6, 14),  -- Piquillo peppers
+(76, 25, 14), -- Rosemary sauce
+(77, 26, 14), -- Rustic village bread
+
+-- Barbastro Estate
+(78, 32, 15), -- Barbastro beef
+(79, 28, 15), -- Manchego cheese
+(80, 24, 15), -- Sun-dried tomatoes
+(81, 7, 15),  -- Belchite honey
+(82, 34, 15), -- Rye bread
+
+-- Bebidas (sin ingredientes asignados)
+(83, NULL, 16), -- Gourmet French Fries (sin ingredientes relacionados)
+(84, 5, 17),  -- Crispy Onion Rings (wheat)
+(85, NULL, 18), -- Fresh Salad (sin ingredientes relacionados)
+(86, NULL, 19), -- Water (sin ingredientes)
+(87, NULL, 20), -- Cocacola (sin ingredientes)
+(88, NULL, 21), -- Orange Fanta (sin ingredientes)
+(89, NULL, 22), -- Lemon Fanta (sin ingredientes)
+(90, NULL, 23), -- Cariñena Red Wine (sin ingredientes)
+(91, NULL, 24), -- Somontano White Wine (sin ingredientes)
+(92, NULL, 25); -- Ambar Beer (sin ingredientes)
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+INSERT INTO ORDERS_HEADER (id_orderHeader, orderDate, shippingAddress, isTransactionAcepted, orderStatus, id_paymentMethod, id_customer, id_employee) VALUES
+(1, TO_DATE('2025-04-01', 'YYYY-MM-DD'), 'Calle Mayor 123, Zaragoza', 1, 'Delivered', 1, 1, 2),
+(2, TO_DATE('2025-04-02', 'YYYY-MM-DD'), 'Av. Goya 45, Zaragoza', 1, 'Shipped', 2, 3, 3),
+(3, TO_DATE('2025-04-03', 'YYYY-MM-DD'), 'Calle del Sol 78, Huesca', 0, 'Cancelled', 1, 5, 1),
+(4, TO_DATE('2025-04-04', 'YYYY-MM-DD'), 'Paseo Independencia 89, Zaragoza', 1, 'Processing', 1, 7, 4),
+(5, TO_DATE('2025-04-05', 'YYYY-MM-DD'), 'Calle Luna 22, Teruel', 1, 'Delivered', 2, 9, 2);
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO ORDERS_LINE (id_orderLine, orderQuantity, id_product, id_orderHeader) VALUES
+(1, 2, 1, 1),   -- 2x Queen of the Pyrenees
+(2, 1, 16, 1),  -- 1x Gourmet French Fries
 
+(3, 1, 3, 2),   -- 1x The Shadow of Moncayo
+(4, 2, 19, 2),  -- 2x Water
 
+(5, 1, 6, 3),   -- 1x The Hoya of Huesca
 
+(6, 1, 11, 4),  -- 1x Essence of the Gállego
+(7, 1, 23, 4),  -- 1x Cariñena Red Wine
 
+(8, 2, 2, 5),   -- 2x Under the Skies of Belchite
+(9, 1, 17, 5);  -- 1x Crispy Onion Rings
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------

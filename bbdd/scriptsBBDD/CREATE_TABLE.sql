@@ -68,7 +68,7 @@ CREATE TABLE JOBS(
     minSalary DECIMAL(10,2),
     maxSalary DECIMAL(10,2));
 
---Tablas intermedias
+--Tablas intermedias-------------------------------------------------------------------------------------------------------------
     
 CREATE TABLE INGREDIENTS_PRODUCTS(
 	id_ingredients INT PRIMARY KEY,
