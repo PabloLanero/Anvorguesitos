@@ -23,7 +23,6 @@ body {
     margin-right: 15px;
     font-family: Arial;
     display: flex;
-    /*Elements appear sequentially*/
     gap: 20px;
 }
 
