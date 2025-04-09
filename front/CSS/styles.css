@@ -56,7 +56,6 @@ body {
     position: absolute;
     justify-content:space-around;
     align-items: center;
-    border: 2px solid red;
    padding: 1%;
     gap:10%;
 
@@ -64,24 +63,23 @@ body {
 
 .nav-left{
     display:flex;
-    border: 2px solid blue;
 }
 
 .logo-little{
     display:flex;
     height:40px;
     width: auto;
+    border-radius: 15%;
 }
 .nav-right {
     color: white;
     font-family: Arial;
     display: flex;
     justify-content: space-around;
-    border: 2px solid green;
 }
 
 
-.title-banner {
+.title-banner {      /*background image of landing*/
     width: 100%;
     height: 220px;
     background-image: url(../Images/TITLE.png);
