@@ -1,3 +1,42 @@
+/* Reset de estilos genérico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button, input, textarea, select {
+    font-family: inherit;
+    outline: none;
+    border: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+
+
+
 /*Background*/
 body {
     display: flex;
@@ -10,20 +49,35 @@ body {
 /*Navigation Bar*/
 .navigation-bar {
     background: rgba(40, 38, 38, 0.5);
-    padding: 15px;
     text-align: right;
     width: 98%;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction:row;
     position: absolute;
+    justify-content:space-around;
+    align-items: center;
+    border: 2px solid red;
+   padding: 1%;
+    gap:10%;
+
 }
 
+.nav-left{
+    display:flex;
+    border: 2px solid blue;
+}
+
+.logo-little{
+    display:flex;
+    height:40px;
+    width: auto;
+}
 .nav-right {
     color: white;
-    margin-right: 15px;
     font-family: Arial;
     display: flex;
-    gap: 20px;
+    justify-content: space-around;
+    border: 2px solid green;
 }
 
 
