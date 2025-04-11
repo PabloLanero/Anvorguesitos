@@ -150,12 +150,12 @@ button:active {
 
 .main-text-container h2 {
     font-size: 25px;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
     color: #F5A623;
 }
 
 .main-text-container p {
-    font-size: 15px;
+    font-size: 25px;
 }
 
 /*FOOTER*/
