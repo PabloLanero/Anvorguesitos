@@ -95,3 +95,7 @@ button:active {
 main{
     flex: 1;
 }
+
+.title{
+    margin-top: 200vh;
+}
