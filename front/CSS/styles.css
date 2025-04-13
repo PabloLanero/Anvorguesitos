@@ -1,161 +1,99 @@
+/*Reset*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+  }
+  
+  ul, ol {
+    list-style: none;
+  }
+
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
 /*Background*/
 body {
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
     margin: 0;
-    background-color:#1A1A1A;
-}
-
-
-  
-/*Navigation Bar*/
-.navigationbar {
-    background: transparent;
-    padding: 10px;
-    text-align: right;
-    width: 95%;
-    display: flex;
-    flex-direction: row-reverse;
-    /*Lo pone a la derecha*/
-    position: absolute;
-    /*Se superpone a la imagen*/
-   
-}
-
-.navright {
-    color: white;
-    margin-right: 15px;
-    font-family: Arial;
-    display: flex;
-    /*Elementos aparecen seguidos*/
-    gap: 20px;
-}
-
-/*Background*/
-.titlefoto {
-    width: 100%;
-    height: 700px;
-    background-image: url(../Images/TITLE.png);
-    background-size: 100%;
-    background-position: 100%;
-}
-
-.titlefoto h1 {
-    position: absolute;
-    color: white;
-    top: 37%;
-    left: 25%;
-    font-size: 130px;
-    margin: 0; /* Elimina márgenes por defecto */
-
-}
-
-
-/*Buttons*/
-.navbutton {
-    display: flex;
-    gap: 20px;
-    /* Espacio entre botones */
-}
-
-button {
-    padding: 15px 30px;
-    border: 0;
-    border-radius: 100px;
-    background-color: black;
-    color: whitesmoke;
-    font-weight: Bold;
-    transition: all 0.5s;
-    font-size: 15px;
-}
-
-button:hover {
-    background-color: black;
-    transform: scale(1.1);
-}
-
-button:active {
-    background-color: black;
-    transition: all 0.25s;
-    -webkit-transition: all 0.25s;
-    transform: scale(0.98);
-}
-
-
-/* Estilo para el botón con icono de carrito*/
-.add-to-cart {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cart-icon {
-    width: 25px;
-    height: 25 px;
-}
-
-
-/*Text Box*/
-.main-textbox {
-    flex: 1;/* Ocupa todo el espacio disponible */
     background-color: #1A1A1A;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    max-width: 100%; /* Ancho del cuadro */
 }
 
-.main-textbox h2 {
-    font-size: 40px;
+
+
+/*Header*/
+header {
+    width: 100%;
+    height: 80px;
+    background: black;
+    display: flex;
+    padding: 0 20px;
+    position: fixed;
+
+}
+
+/*Main*/
+.meet_us {
+    position:absolute;
+    margin-top: 200px;
+    font-size: 35px;
+    text-align: center;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.image_about_us {
+    margin-top: 80px;
+    width: 100%;
+}
+
+/*Main - Introduction*/
+.introduction h3{
+    font-size: 17px;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 15px;
     margin-bottom: 10px;
-    color: #F5A623;
 }
 
-.main-textbox p {
-    font-size: 25px;
+/*Main - Our History*/
+.our_history h2{
+    margin-top: 30px;
+    font-size: 50px;
+    color: white;
+   text-align: center;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
 }
 
-
-
-
-/*FOOTER*/
-.footer {
-    width: 100%;
-    padding: 20px 0;
-    margin-top: auto; /* Empuja el footer hacia abajo */
-   
-}
-
-.footer-content {
-    display: flex;
-}
-
-.footer-textbox {
-    background-color: #121212 ;
-    height: auto;
-    width: 100%;
-    display: flex;
+.our_history h3{
+    font-size: 17px;
+    color: white;
     justify-content: center;
-    /*Lo pone a la derecha =)*/
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.footer-schedule {
-    color: white;
-    padding-right: 15px;  /*Agregamos espacio a la derecha del texto*/
+.image_our_history{
+    margin-top: 20px;
+    width: 100%;
 }
 
-.footer-info {
-    padding-left: 50px;
-    color: white;
-    padding-right: 20px; /*Agregamos espacio a la derecha del texto*/
+
+.image_our_history_2{
+    margin-top: 20px;
+    width: 100%;
 }
 
-.footer-privacy{
-    text-align: center;
-    color: white;
-    background-color: #121212;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
+
+/*Footer*/
