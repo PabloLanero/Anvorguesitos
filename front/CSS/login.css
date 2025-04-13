@@ -12,37 +12,42 @@
     align-items: center;
     justify-content: space-around;
     margin-top: 5%;
+    width: 50vw;
 }
 
 .input{
     margin: 2%;
     display: flex;
     justify-content: center;
-
+    width:50%;
+    
 }
 
 .input input{
     text-align: left;
-    padding-left: 5px;
+    padding-left: 7px;
     border-radius: 10px;
-    height: 25px;
-    
+    height: 35px;
+    width: 100%;
     color: white;
     background-color: rgb(41, 41, 41);
     
 }
 
 .input input::placeholder{
-    color: rgb(233, 233, 233);
+    color: rgba(233, 233, 233, 0.384);
 }
 
-.number-region{
-    width: 13%;
+
+
+.number-region {
+    width: 20%;
     margin-right: 15px;
+    
 }
 
 .number-phone{
-    width: 33%;
+    width: 60%;
     
 }
 
@@ -50,5 +55,5 @@
     width: 30%;
     display: flex;
     justify-content: center;
-    height:5%;
+    height:7%;
 }
