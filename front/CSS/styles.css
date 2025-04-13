@@ -33,7 +33,7 @@ a {
 }
 
 
-/*Background*/
+/*body*/
 body {
     display: flex;
     flex-direction: column;
@@ -42,18 +42,44 @@ body {
     background-color: #1A1A1A;
 }
 
+
+
+
+
+/*principal structure of intro page*/
+.intro-page {      
+   
+    height: 100vh; 
+    
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start; 
+    align-items:center; 
+
+    width: 100%;
+  
+    background-image: url(../Images/TITLE_Phone.png);
+    background-size: cover;
+    
+    border: 2px solid green;
+
+}
+
+
+
+
 /*Navigation Bar*/
 .navigation-bar {
     background: rgba(40, 38, 38, 0.5);
-    text-align: right;
-    width: 98%;
+    width:100%;
+    height: 10%;
     display: flex;
     flex-direction:row;
     position: absolute;
-    justify-content:space-around;
+    justify-content:space-between;
     align-items: center;
    padding: 1%;
-    gap:10%;
+    border: 2px solid red;
 
 }
 
@@ -75,13 +101,7 @@ body {
 }
 
 
-.title-banner {      /*background image of landing*/
-    width: 100%;
-    height: 200%;
-    background-image: url(../Images/TITLE_Phone.png);
-    background-size: 100%;
-    background-position: 10%;
-}
+
 
 .title{
     width: 100%;
