@@ -1,0 +1,145 @@
+body{
+    background-color: #B1C29E;
+}
+
+/*Here starts the CSS for the products*/
+.container{
+    
+    width: 99vw;
+    margin-top:3vh;
+}
+
+/*CSS to control how they are shown*/
+.products{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/*CSS for the image*/
+.product-image img{
+    width: 20vh;
+    margin-right: 20vw;
+    border-radius: 8px;
+}
+/*for the name*/
+.product-name{
+    color:white;
+    font-size: 3vh;
+}
+/*CSS for every div inside the details*/
+.product-details *{
+    margin:5px;
+}
+
+
+
+.product-details{
+    background-color: rgba(0,0,0, 0.3);
+    border-radius: 8px;
+    box-shadow: 4px 4px 12px rgba(255, 255, 255, 0.2);
+    padding:2%;
+    
+}
+
+/*CSS for the amount of hamburguers*/
+.product-cuantity{
+    color:white;
+    font-size: 2.5vh;
+}
+
+/*CSS for the price in total for the product*/
+.product-price{
+    color:white;
+    font-size: 2.5vh;
+}
+/*CSS to control the place where the cuantity and price are*/
+.product-numbers{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/*CSS to control how it is controlled*/
+.product{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 4vh;
+}
+
+/*CSS to controll the final row*/
+.final{
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 3vh;
+}
+
+
+/*CSS for the button*/
+.boton-compra button{
+    background-color: #BF3131;
+    color:white;
+    padding: 1vw;
+    border-radius: 20px;
+    transition: 1s;
+    min-width: 150px;
+}
+
+.boton-compra button:hover{
+    scale: 1.1;
+    transition: 1s;
+}
+
+
+/*CSS to adjust the button to buy the product*/
+.boton-compra{
+    width: 33vw;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+/*CSS for the total price*/
+.precio-total{
+    width: 33vw;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    text-decoration-line: underline;
+    color:#7D0A0A;
+}
+
+
+
+
+hr{
+    justify-content: center;
+    width: 90%;
+}
+
+@media (max-width:720px){
+    .product-name{
+        font-size: 4vw;
+    }
+
+    .product-image img{
+        scale:1.2;
+    }
+
+    
+
+    .product-details{
+        scale:0.7;
+    }
+
+    hr{
+        width: 80%;
+    }
+}

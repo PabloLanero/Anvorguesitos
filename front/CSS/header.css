@@ -1,0 +1,155 @@
+/*header*/
+
+header {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.header-logo img {
+    max-height: 50px;
+    border-radius: 12px;
+}
+
+
+
+.shopping-cart img {
+    background-color: #F0A04B;
+    max-height: 50px;
+    border-radius: 20%;
+    padding: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.shopping-cart img:hover {
+    transform: scale(1.1);
+    background-color: #BF3131;
+    cursor: pointer;
+}
+
+
+/*nav - burger*/
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.left-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.right-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+
+.nav-links li {
+    list-style: none;
+    display: flex;
+
+
+}
+
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    padding: 5px 10px;
+    /* More area to click */
+}
+
+.nav-links a:hover {
+    color: orange;
+}
+
+.burger-button {
+    display: none;
+    /*in order to get a good alineation. dont reserve space for this*/
+    flex-direction: column;
+    /*each span under other*/
+    cursor: pointer;
+
+}
+
+
+.bar {
+    /*each line in the menu burguer*/
+    width: 40px;
+    height: 4px;
+    background-color: white;
+    transition: 0.3s;
+    margin: 4px 0px;
+}
+
+
+@media screen and (max-width: 768px) {
+    nav {
+        justify-content: space-between;
+        padding: 0px 15px;
+        
+    }
+
+    .nav-links {
+        /*dissapear links when small size*/
+        display: none;
+        position: absolute;
+        top: 100%;
+        /*it adjust to the size of header*/
+        left: 0px;
+        background-color: #333;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        z-index: 1000;
+
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+    }
+
+    .burger-button {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-links.show {
+        /*this class is going to be added or deleted with javascript*/
+        display: flex;
+        background-color: #232323;
+    }
+}

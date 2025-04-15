@@ -1,0 +1,116 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #B1C29E;
+    color:#121212;
+
+}
+
+
+main{
+    flex: 1;
+    margin-top:5%;
+}
+
+.contenedor{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+   
+}
+
+.contenedor-imagen img{
+     max-width: 50vw;
+     max-height: 50vh;
+     border: 2px solid #FADA7A;
+     box-shadow: 4px 4px 12px rgba(255, 255, 255, 0.2); 
+     border-radius: 8px;
+}
+
+.contenedor-texto{
+    max-width: 50vw;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid  #FADA7A;
+    box-shadow: 4px 4px 12px rgba(255, 255, 255, 0.2); 
+    border-radius: 8px;
+    background-color:rgba(255, 183, 82, 0.2);
+    gap: 20px;
+    padding:5%;
+}
+
+.contenedor-texto p{
+   
+    font-size: 25px;
+    text-align: center;
+    
+}
+.contenedor-texto h1{
+    color: #000000;
+    text-shadow: 4px 4px 10px rgba(255, 255, 255, 0.5);
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cantidad{
+    border-radius: 5px;
+    width:4vw;
+    height: 5vh;
+    text-align: center;
+    font-size: 20px;
+    color:white;
+    background-color: black;
+}
+
+
+
+
+.button-add-cart {
+    display:flex;
+    align-items: center;
+    background-color: #F0A04B;
+    max-height: 50px;
+    border-radius: 100%;
+    padding: 20px;
+    transition: all 0.3s ease;
+    border:1px solid  #f27d00;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    font-size: 3em;
+    font-weight: bold;
+    color: white;
+}
+
+.button-add-cart:hover {
+    transform: scale(1.1);
+    background-color: #BF3131;
+    cursor: pointer;
+}
+
+
+@media (max-width:720px) {
+    .contenedor{
+        display:flex;
+        flex-direction: column;
+        gap: 20px;
+  
+    }
+    .contenedor-texto{
+        max-width: 90%;
+    }
+    .inputs{
+        margin-bottom: 20px;
+    }
+}

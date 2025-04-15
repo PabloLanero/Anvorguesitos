@@ -1,0 +1,109 @@
+body{
+    background-color: #B1C29E;
+}
+
+main{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    gap:5%;
+    align-items: center;
+}
+
+
+.title-join-us{
+    display:flex;
+    align-self: center;
+    font-weight: bold;
+}
+
+.title-join-us{
+    padding-top:2%;
+}
+
+.form-container{
+    margin:0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70vh;
+    width: 40%;
+    margin-top: 6vh;
+    margin-bottom: 5%;
+    border: 1px solid #FCE7C8;
+    box-shadow: 0 2px 8px rgba(86, 82, 74, 0.1);
+    background-color: #919f82;
+    min-width: 360px;
+    border-radius: 8px;
+}
+
+.form-elements{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 5%;
+    width: 50vw;
+    margin-bottom: 1%;
+}
+
+.input{
+    display: flex;
+    justify-content: center;
+    width:50%;
+    min-width: 320px;
+    margin: 2vh;
+}
+
+.input input{
+    text-align: left;
+    padding-left: 7px;
+    border-radius: 10px;
+    height: 35px;
+    width: 100%;
+    color: white;
+    background-color: rgb(41, 41, 41);
+    
+}
+
+.input input::placeholder{
+    color: rgba(233, 233, 233, 0.5);
+}
+
+
+
+
+.number-region {
+    width: 20%;
+    margin-right: 15px;
+    
+}
+
+.number-phone{
+    width: 60%;
+    
+}
+
+.confirm {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    height:7%;
+}
+
+.confirm button{
+    width: 40vw;
+    height: 6vh;
+    max-width: 200px;
+    font-size: 15px;
+    background-color: #BF3131;
+    color:white;
+    border-radius: 8px;
+    transition: 1s;
+}
+
+.confirm button:hover{
+    scale:1.1;
+    transition: 1s;
+}
+

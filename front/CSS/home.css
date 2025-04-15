@@ -1,0 +1,131 @@
+/*Background*/
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #121212;
+    color: #f5f5f5;
+}
+
+
+/*intro page*/
+.intro-page {
+    background-image: url('../Images/INTRO-PAGE/INTRO-IMAGE-LITTLE.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.logo-title-slogan {
+    background-color: rgba(252, 248, 223, 0.5);
+    padding:15px;
+
+}
+
+
+
+
+@media screen and (min-width: 768px) {
+
+    .intro-page {
+        background-image: url('../Images/INTRO-PAGE/INTRO-IMAGE-BIG.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0;
+        min-height: 100vh;
+    }
+
+    .logo-title-slogan {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(252, 248, 223, 0.5);
+        
+    }
+
+}
+
+
+/*page2- menu*/
+
+.titleMenu{
+    margin-top:4%;
+}
+
+
+.page2-menu {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+}
+.menu-burgers h1 {
+    padding-top: 25px;   
+    padding-bottom: 10px; 
+    
+}
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 10px;
+}
+
+/*mobile cards (2 per row)*/
+.card {
+    width: 47%; 
+    height: 230px;
+    background-color: #f6dc9e;
+    border: 1px solid #ad9a6f;
+    border-radius: 10%;
+    box-shadow: 0 2px 8px rgba(86, 82, 74, 0.1);
+    padding: 10px;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-around 
+}
+
+
+.card:hover {
+    background: linear-gradient(45deg, #FADA7A, rgb(255, 136, 0)); 
+    cursor: pointer;
+}
+.card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+
+.product-name {
+    color:#0b0b0b;
+    padding:10px;
+}
+
+
+
+
+
+
+@media screen and (min-width: 768px) {
+    
+
+    .cards-container {
+        justify-content: space-between;
+    }
+
+   
+    .card {
+        width: 200px;
+    }
+}
+
+
+
