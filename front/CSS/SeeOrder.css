@@ -1,3 +1,7 @@
+body{
+    background-color: #B1C29E;
+}
+
 /*Here starts the CSS for the products*/
 .container{
     
@@ -61,7 +65,24 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    margin-bottom: 3vh;
 }
+
+
+/*CSS for the button*/
+.boton-compra button{
+    background-color: #F0A04B;
+    color:white;
+    padding: 1vw;
+    border-radius: 20px;
+    transition: 1s;
+}
+
+.boton-compra button:hover{
+    scale: 1.1;
+    transition: 1s;
+}
+
 
 /*CSS to adjust the button to buy the product*/
 .boton-compra{
@@ -69,6 +90,8 @@
     display: flex;
     justify-content: center;
 }
+
+
 
 /*CSS for the total price*/
 .precio-total{

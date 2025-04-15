@@ -1,0 +1,120 @@
+/*footer/////////////////////////////////////////////////////////////////////////////////////////*/
+
+.wrap-footer {
+    background-color: #E3DAC9;
+    color: #333333;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 40px 20px;
+    text-align: center;
+    grid-template-areas: 
+        "opening-hours find-us follow-us"
+        "opening-hours legal more";
+}
+
+
+
+.opening-hours { grid-area: opening-hours;}
+.find-us { grid-area: find-us;}
+.more { grid-area: more;}
+.follow-us { grid-area: follow-us;}
+.legal { grid-area: legal;}
+
+
+
+
+
+.footer li{
+    font-size: 12px ;
+}
+
+
+
+
+
+
+.schedule{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.hours{
+    padding:5px;
+}
+.social-media-element-footer{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+}
+
+
+
+
+.footer-title{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    text-align:left;
+}
+
+
+.footer-title h3{
+    text-align: center;
+    font-weight: bold;
+}
+
+.underh3 {
+    text-align:center;
+}
+
+.ul-more {
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:flex-start;
+    justify-content: space-around;
+    gap:15px;
+}
+
+
+.social-media-icons {
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+.social-media-icon{
+    width: 35px; 
+    height: 35px;
+    background-color: #F0A04B;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+
+.social-media-icon:hover {
+    transform: scale(1.2);
+    background-color: #BF3131;
+    cursor: pointer;
+ 
+   
+
+}
+
+.legal-links li a {
+    color: #333333;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+}
+
+.legal-links li a:hover {
+    color: #BF3131;
+    text-decoration: underline;
+}
