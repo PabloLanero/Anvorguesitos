@@ -11,6 +11,7 @@
     grid-template-areas: 
         "opening-hours find-us follow-us"
         "opening-hours legal more";
+    margin-top:10%;
 }
 
 

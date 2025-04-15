@@ -5,8 +5,20 @@ body{
 main{
     flex:1;
     display: flex;
-    justify-content: center;
-    
+    flex-direction: column;
+    gap:5%;
+    align-items: center;
+}
+
+
+.title-join-us{
+    display:flex;
+    align-self: center;
+    font-weight: bold;
+}
+
+.title-join-us{
+    padding-top:2%;
 }
 
 .form-container{
@@ -15,13 +27,14 @@ main{
     flex-direction: column;
     align-items: center;
     height: 70vh;
-    width: 50%;
+    width: 40%;
     margin-top: 6vh;
     margin-bottom: 5%;
     border: 1px solid #FCE7C8;
     box-shadow: 0 2px 8px rgba(86, 82, 74, 0.1);
-    background-color: #a5b493;
+    background-color: #919f82;
     min-width: 360px;
+    border-radius: 8px;
 }
 
 .form-elements{
@@ -54,7 +67,7 @@ main{
 }
 
 .input input::placeholder{
-    color: rgba(233, 233, 233, 0.384);
+    color: rgba(233, 233, 233, 0.5);
 }
 
 

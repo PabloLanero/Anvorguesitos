@@ -1,0 +1,138 @@
+
+/*Background//////////////////////////////////////////////////////////////////////////////////////////////*/
+body {
+
+    margin: 0;
+    background-color: #1A1A1A;
+}
+
+
+
+
+/*Main///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.video_hamburguer {
+    position: relative;
+    width: 100%;
+    height: 50vh; 
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video_about_us {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.video_overlay {
+    display:flex;
+z-index:500;
+    color: white;
+ justify-content: center;
+ align-items: center;
+ height: 100%;
+   
+   
+}
+
+.video_overlay h1 {
+    color:white;
+    align-self:center;
+    
+}
+
+
+
+.image_about_us {
+    width: 100%;
+}
+
+/*Main - Introduction//////////////////////////////////////*/
+.introduction {
+    margin-top: 50px;
+    
+    
+}
+
+.introduction h3 {
+    font-size: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+    color: #ff9537;
+    
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+/*Main - Our History///////////////////////////////////////////*/
+
+
+.our_history h2 {
+    margin-top: 50px;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+   
+
+}
+
+.our_history h3 {
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: white;
+    justify-content: center;
+    
+    margin-top: 20px;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.image_our_history {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.collage h2 {
+    margin-top: 30px;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    
+}
+
+.collage {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.textUnderVideo {
+    padding: 0% 5%;
+}
+
+.article {
+    margin-bottom:5%;
+}
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 768px) {
+    
+    .video_hamburguer {
+       
+        height: 70vh; 
+       
+    }
+}
+

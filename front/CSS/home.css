@@ -21,6 +21,7 @@ body {
 
 .logo-title-slogan {
     background-color: rgba(252, 248, 223, 0.5);
+    padding:15px;
 
 }
 
@@ -50,6 +51,12 @@ body {
 
 
 /*page2- menu*/
+
+.titleMenu{
+    margin-top:4%;
+}
+
+
 .page2-menu {
     display:flex;
     flex-direction: column;
@@ -60,6 +67,7 @@ body {
 .menu-burgers h1 {
     padding-top: 25px;   
     padding-bottom: 10px; 
+    
 }
 .cards-container {
     display: flex;
