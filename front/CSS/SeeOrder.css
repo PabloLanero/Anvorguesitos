@@ -20,6 +20,7 @@ body{
 .product-image img{
     width: 20vh;
     margin-right: 20vw;
+    border-radius: 8px;
 }
 /*for the name*/
 .product-name{
@@ -29,6 +30,15 @@ body{
 /*CSS for every div inside the details*/
 .product-details *{
     margin:5px;
+}
+
+
+
+.product-details{
+    background-color: rgba(0,0,0, 0.3);
+    border-radius: 8px;
+    box-shadow: 4px 4px 12px rgba(255, 255, 255, 0.2);
+    
 }
 
 /*CSS for the amount of hamburguers*/
@@ -71,11 +81,12 @@ body{
 
 /*CSS for the button*/
 .boton-compra button{
-    background-color: #F0A04B;
+    background-color: #BF3131;
     color:white;
     padding: 1vw;
     border-radius: 20px;
     transition: 1s;
+    min-width: 150px;
 }
 
 .boton-compra button:hover{
@@ -93,13 +104,19 @@ body{
 
 
 
+
 /*CSS for the total price*/
 .precio-total{
     width: 33vw;
-    color:white;
+    font-size: 20px;
     display: flex;
     justify-content: center;
+    text-decoration-line: underline;
+    color:#7D0A0A;
 }
+
+
+
 
 hr{
     justify-content: center;
@@ -112,8 +129,15 @@ hr{
     }
 
     .product-image img{
-        width: 30vw;
+        scale:1.2;
     }
+
+    
+
+    .product-details{
+        scale:0.7;
+    }
+
     hr{
         width: 80%;
     }
