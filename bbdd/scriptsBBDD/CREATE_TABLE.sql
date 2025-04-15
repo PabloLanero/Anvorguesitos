@@ -11,7 +11,8 @@ CREATE TABLE INGREDIENTS(
 
 CREATE TABLE PRODUCTS(
     id_product INT PRIMARY KEY,
-    description VARCHAR2(250),
+    productTitle  VARCHAR2(100),
+    description VARCHAR2(350),
     price DECIMAL(9,2),
     id_productCategory INT);
 
@@ -67,7 +68,7 @@ CREATE TABLE JOBS(
     minSalary DECIMAL(10,2),
     maxSalary DECIMAL(10,2));
 
---Tablas intermedias
+--Tablas intermedias-------------------------------------------------------------------------------------------------------------
     
 CREATE TABLE INGREDIENTS_PRODUCTS(
 	id_ingredients INT PRIMARY KEY,
@@ -94,4 +95,4 @@ CREATE TABLE ORDERS_LINE(
 CREATE VIEW view_salesman AS
 SELECT emp.id_employee, emp.employeeFirstName, emp.employeeLastName
 FROM employees emp INNER JOIN JOBS job ON emp.id_job = job.id_job
-WHERE job.jobTitle = 'salesman';
+WHERE job.jobTitle = 'Salesperson';
