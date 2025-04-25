@@ -232,7 +232,7 @@ function createProductCard (product, container) {
 
     card.innerHTML = `
     <div id="product-id-${product.id_product}">
-        <img src="${product.image }" alt="${product.productTitle}">
+        <img src="${product.image }" alt="${product.productTitle}" onclick ="window.location.href='burger-detail.html?idProduct=${product.id_product}'">
         <div class="card-details">
             <h4 class="product-name">${product.productTitle}</h4>
             <div class="inputs">
