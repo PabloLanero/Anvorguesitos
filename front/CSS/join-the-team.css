@@ -1,0 +1,251 @@
+/* Reset de estilos genérico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+    outline: none;
+    border: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*Background*/
+body {
+
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #121212;
+    color: #f5f5f5;
+}
+
+.title {
+    font-size: 47px;
+    color: white;
+    position: absolute;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20%;
+}
+
+
+
+/*OFFERS--------------------------------------------------------------------------------------*/
+.title-offers {
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    margin: 5%;
+    padding: 5%;
+}
+
+
+.job {
+    margin-bottom: 3%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin:2%
+}
+
+
+.job-title {
+    background-color: #BF3131;
+    padding: 5%;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+.job-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #BF3131;
+    padding: 0 15px;
+
+}
+
+.job-details h4 {
+    text-align: left;
+    margin-bottom: 3%;
+    margin-top: 5%;
+    font-size: 20px;
+}
+
+.job-details p {
+    text-align: justify;
+    display: flex;
+    margin: 3%
+}
+
+
+.job-details.active {
+    max-height: max-content;
+    padding: 15px;
+
+}
+
+.title-details {
+    margin: 1%;
+    text-align: left;
+}
+
+
+.requirements li {
+    list-style-type: disc;
+    margin-left: 10%; /* Espacio entre el borde izquierdo y los puntos */
+    margin: 10px 0;
+    color: white;
+}
+
+
+/*FORM CV------------------------------------------------------------------*/
+.upload-form {
+    margin: 5%;
+    padding-top: 15px;
+    border-top: 1px dashed #ccc;
+}
+
+.upload-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.upload-form input[type="file"] {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.upload-form button {
+    background-color: #ff5722;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+}
+
+.upload-form button:hover {
+    background-color: #e64a19;
+}
+
+/*BENEFITS-----------------------------------------------------------------------------------------*/
+
+.benefits-title {
+    text-align: center;
+    justify-content: center;
+    padding: 10%;
+    margin-bottom: 5%;
+    margin-top: 10%;
+}
+
+
+.benefits {
+    background-color: #BF3131;
+    color: white;
+    padding:1%;
+    border-radius: 15px;
+    margin:4%
+}
+
+
+.container-benefits {
+    display: flex;
+    justify-content: center;
+}
+
+
+.benefit-item {
+    display: flex;
+    padding: 5%;
+    border-radius: 8px;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.benefit-item h3 {
+    font-size: 18px;
+    padding: 1%;
+    margin-bottom: 10%;
+    color: #EAD196;
+}
+
+
+.benefit-item li {
+    margin-bottom: 10%;
+    position: relative;
+    padding-left: 15%;
+}
+
+.benefit-item li:before {
+    content: "✓";
+    color: #EAD196;
+    position: absolute;
+    left: 0;
+}
+
+
+/*Testimonies-----------------------------------------------------------*/
+.testimonies-introduction {
+    text-align: center;
+    margin: 5%;
+    padding: 5%;
+    margin-top: 10%;
+}
+
+.testimonies {
+    background-color: #BF3131;
+    color: white;
+    margin: 5%;
+    border-radius: 15px;
+    padding: 5%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.review {
+    font-size: 13px;
+    margin: 15px;
+}
+
+.review h3 {
+    display: flex;
+    text-align: center;
+}
+
+.review h2 {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 13px;
+    margin-top: 15px;
+}
