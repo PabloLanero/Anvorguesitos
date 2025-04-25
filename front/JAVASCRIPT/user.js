@@ -91,13 +91,15 @@ function showOption(optionContent){
                             <th>Transsaction</th>
                             <th>Order Status</th>
                         </tr>
-                        <tr>
-                            <td><a href="#">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
+                        
+                            <tr href="./see-order.html" >
+                                <td>1</td>
+                                <td>20/01/2004</td>
+                                <td>Calle Falsa 123</td>
+                                <td>Pending</td>
+                                <td>On going</td>
+                            </tr>
+                        
                         <tr>
                             <td><a href="#">1</a></td>
                             <td>20/01/2004</td>

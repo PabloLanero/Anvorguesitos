@@ -2,13 +2,14 @@ body{
     background-color: #B1C29E;
 }
 
+/*The div that contains everything*/
 .container{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-
+/*CSS to show the name*/
 .userIntroduction{
     display: flex;
     align-items: center;
@@ -16,6 +17,7 @@ body{
     margin-top: 5vh;
 }
 
+/*CSS to show the options for the user*/
 .options{
     display:flex;
     flex-direction: row;
@@ -44,6 +46,7 @@ body{
     padding:2vh;
 }
 
+/*To see the user data*/
 .user-data-container{
     width: 90vw;
     display: flex;
@@ -53,6 +56,9 @@ body{
     height: 30vh;
 }
 
+
+/*To see the orders*/
+
 .orders-data-container{
     width: 90vw;
     display: flex;
@@ -60,18 +66,15 @@ body{
     justify-content: center;
 }
 
-tr{
-    border: 1px solid rgb(255, 255, 255);
-}
 
-th, td{
-    
+
+table, th, td{
+    border-top: 1px solid rgb(255, 255, 255);
+    border-collapse: collapse;
     text-align: center;    
     padding: 5px;
 }
 
 .orders-data-container table{
     width: 90%;
-    
-    
 }
