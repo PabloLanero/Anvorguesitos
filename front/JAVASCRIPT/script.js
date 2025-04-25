@@ -21,7 +21,8 @@ function mockData() {
                 description: "The majesty of the Pyrenees in every bite. Tender and juicy Ternasco de Aragón lamb, accompanied by creamy Tronchón cheese, roasted Tudela asparagus, and a unique truffle sauce that adds a sophisticated touch. All served on rustic handmade bread that enhances the local flavors. A tribute to the heart of the Aragonese Pyrenees.",
                 price: 16.50,
                 id_productCategory: 1,
-                image: "https://cdn-icons-png.flaticon.com/512/73/73775.png",
+                image: '../Images/products/burgers/1_hamburguesa---queen-of-the-pyrenees----the-majesty.png',
+
             },
             {
                 id_product: 2,
@@ -29,7 +30,7 @@ function mockData() {
                 description: "Inspired by the lands of Belchite, this burger brings together the best of the garden and tradition. Jiloca beef with a hint of Belchite honey and Fraga mustard creates the perfect balance of sweet and tangy. Served with caramelized onions, local Raf tomatoes, and spelt bread. An explosion of flavors that takes you straight to Belchite.",
                 price: 14.50,
                 id_productCategory: 1,
-                image: "https://cdn-icons-png.flaticon.com/512/73/73775.png",
+                image: '../Images/products/burgers/2_hamburguesa----under-the-shadow-of-the-muela----th.png',
             },
             {
                 id_product: 3,
@@ -37,7 +38,7 @@ function mockData() {
                 description: "The shadow cast by Moncayo inspires this burger, combining the best of the mountains with the freshness of the garden. Juicy Aragonese chicken breast, accompanied by Moncayo fresh cheese, Tudela asparagus, and a refreshing Aragonese yogurt sauce. All served on seed bread, perfectly balancing the flavors.",
                 price: 15.00,
                 id_productCategory: 1,
-                image: "https://cdn-icons-png.flaticon.com/512/73/73775.png",
+                image: '../Images/products/burgers/3_hamburguesa----the-shadow-of-moncayo----the-shadow.png',
             },
             {
                 id_product: 4,
