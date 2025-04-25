@@ -231,8 +231,8 @@ function createProductCard (product, container) {
 
     card.innerHTML = `
     <div id="product-id-${product.id_product}">
-        <img >
-        <div class="card-details">src="${product.image }" alt="${product.productTitle}"/
+        <img src="${product.image }" alt="${product.productTitle}">
+        <div class="card-details">
             <h4 class="product-name">${product.productTitle}</h4>
             <div class="inputs">
                 <div class="price-quantity">
@@ -331,7 +331,7 @@ function increment(id) {
     if (search === undefined) {
 
         //we find the object from api and we save it in a variable
-        const  productData = mockData().results.find((product) => product.id_product = selectedItem);
+        const  productData = mockData().results.find((product) => product.id_product === selectedItem);
 
         //add to the basket
         basket.push({

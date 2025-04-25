@@ -252,10 +252,10 @@ function cardCreator(basket){
                         </div>
                         <div class="product-numbers">
                             <div class="product-cuantity">
-                                <p>Cantidad: </p>
+                                <p>Cantidad: ${product.item}</p>
                             </div>
                             <div class="product-price">
-                                <p>${product.price}*</p>
+                                <p>${product.price*product.item} €</p>
                             </div>
                         </div>
                     </div>
@@ -271,11 +271,44 @@ function cardCreator(basket){
 
 }
 
+//BASKET TOTAL PRICE///////////////////////
+
+let calculatorTotalPrice = () => {
+    
+    const totalAmount = document.getElementById("totalAmount");
+
+    let basketData = JSON.parse(localStorage.getItem("data")) || [];
+
+    let totalPrice = basketData.reduce((sumatory, product) => {
+        return sumatory + (product.price * product.item);
+    }, 0);
+
+
+    totalAmount.innerText = `${totalPrice} €`;
+}
+
+
 
 
 //charge  cart and products
 window.addEventListener('load', () => {
     cardCreator(basket);
     calculation();
+    calculatorTotalPrice();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
