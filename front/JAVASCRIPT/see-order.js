@@ -1,15 +1,3 @@
-//toggle menu (hamburguer-menu)////////////////////////////////////////////////////////////////
-
-const burgerButton = document.getElementById("burger-button");
-const links = document.getElementById("nav-links")
-
-
-burgerButton.addEventListener('click', () => {
-    links.classList.toggle('show')      //each time we click in burger put and delete the class show, in order to display flex or none the burger menu
-}
-);
-
-
 
 //mockData////////////////////////////////////////////////////
 function mockData() {
@@ -223,162 +211,10 @@ function mockData() {
 
 
 
-//CARD CREATOR//////////////////////////////////////////////////////////////
-
-function createProductCard (product, container) {
-    const card = document.createElement('div');
-    card.classList.add('card');
-
-    card.innerHTML = `
-    <div id="product-id-${product.id_product}">
-        <img src="${product.image }" alt="${product.productTitle}">
-        <div class="card-details">
-            <h4 class="product-name">${product.productTitle}</h4>
-            <div class="inputs">
-                <div class="price-quantity">
-                    <p class="price">${product.price}€</p>  
-                </div>
-                <div class="quantity-controllers">
-                    <button onclick="increment(${product.id_product})" class="button-add-cart button-increase">+</button>
-                    <button onclick="decrement(${product.id_product})" class="button-add-cart button-decrease">-</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    `;
-    container.appendChild(card);
-}
 
 
-
-
-
-/////////product by categories////////////////////
-
- function getProducts(category, container){          //it must be async when we call api
-    try {
-        const data = mockData(); // Simulating API call
-
-        //group by category in a new array 
-        const arrayProductsByCategory = data.results.filter(product => product.id_productCategory === category);
-
-        //create card
-        arrayProductsByCategory.forEach(product => createProductCard(product, container));
-
-
-    }catch (error) {
-        console.error(`Error in getting product`, error);
-    }
-}
-
-
-
-
-
-
-/////////////////////load products
-
-window.addEventListener('load', () => {
-
-const burgersContainer = document.getElementById("burgers-container");
-getProducts(1, burgersContainer);
-
-const sidesContainer = document.getElementById("sides-container");
-getProducts(2, sidesContainer);
-
-const drinksContainer = document.getElementById("drinks-container");
-getProducts(3, drinksContainer);
-
-calculation();
-
-
-}
-);
-
-
-
-
-
-//basket//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//basket//////////////////////////////////////////////////////
 let basket = JSON.parse(localStorage.getItem("data")) || [];
-//before, basket was [] but we want to take the infomration from localStorge. an object with "data" key is added when we click on controllers.
-//  if nothing exist, return an empty array  --> in order not to get an error
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Functions to change  quantity  
-function increment(id) {
-    let selectedItem = id;
-
-    let search = basket.find((x) => x.id_product === selectedItem);
-    //it is searching for the object wich we have selected. i t returns  wether if it exist in the basket yet
-
-    if (search === undefined) {
-
-        //we find the object from api and we save it in a variable
-        const  productData = mockData().results.find((product) => product.id_product === selectedItem);
-
-        //add to the basket
-        basket.push({
-            ...productData,   //Appends new elements to the end of an array, and returns the new length of the array.
-            item: 1,    //amount bought
-
-        });
-    } else {
-        search.item++;
-    }
-
-
-    localStorage.setItem("data", JSON.stringify(basket));
-    //keyvalue: data is the key, basket is the value that we keep
-    //basket is an object. if we want to safe data (not only "object") we have to transform it into a json by json.stringify "into a string"
-    calculation();
-}
-
-function decrement(id) {
-    let selectedItem = id;
-
-    let search = basket.find((x) => x.id_product === selectedItem);
-    //it is searching for the object wich we have selected. i t returns  wether if it exist in the basket yet
-
-    //if object doesn´t exist
-    if (!search) {
-        return;
-    }
- //if quantity is more than 0 quit one
-    if (search.item > 0) {
-        search.item--;
-    }
-
-
-// if is 0 remove item from basket
-    if (search.item === 0) {
-        basket = basket.filter(x => x.id_product !== selectedItem); //filter return a new array with products wich quantity is not zero. it filters when id is different than selected item to include it in array
-
-    }
-
-    localStorage.setItem("data", JSON.stringify(basket));
-    //keyvalue: data is the key, basket is the value that we keep
-    //basket is an object. if we want to safe data (not only "object") we have to transform it into a json by json.stringify "into a string"
-    //console.log(basket);
-    // update(selectedItem.id);
-    calculation();
-}
 
 
 
@@ -389,10 +225,90 @@ let calculation = () => {
      let basketData = JSON.parse(localStorage.getItem("data")) || [];
     
     cartIcon.innerHTML = basketData.reduce((total, x) => total + x.item, 0);
-    /*The reduce() function in JavaScript accumulates values from an array into a single result.
-         total starts at 0 (the second argument in reduce()).
-        Each x represents an object in the basket array.
-        In every iteration, total adds x.item, accumulating the total quantity.
-        the first argument(total is always de accumulator. it is "implicitaly defined as 0)
-    */
+    
 };
+
+
+
+
+//CARD CREATOR//////////////////////////////////////////////////////////////
+function cardCreator(basket){
+
+    const container = document.getElementById("container-for-cards");
+
+    basket.forEach(product => {
+
+     const card = document.createElement("div");
+    card.classList.add("card");
+
+    card.innerHTML = `
+    <div class="product general">
+     <div class="product-image">
+                        <img src="${product.image }" alt="${product.productTitle}"/>
+                    </div>
+                    <div class="product-details">
+                        <div class="product-name">
+                            <h3>${product.productTitle}</h3>
+                        </div>
+                        <div class="product-numbers">
+                            <div class="product-cuantity">
+                                <p>Cantidad: ${product.item}</p>
+                            </div>
+                            <div class="product-price">
+                                <p>${product.price*product.item} €</p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <hr>
+
+    `;    
+    container.appendChild(card)
+    })
+
+   
+ ;
+
+}
+
+//BASKET TOTAL PRICE///////////////////////
+
+let calculatorTotalPrice = () => {
+    
+    const totalAmount = document.getElementById("totalAmount");
+
+    let basketData = JSON.parse(localStorage.getItem("data")) || [];
+
+    let totalPrice = basketData.reduce((sumatory, product) => {
+        return sumatory + (product.price * product.item);
+    }, 0);
+
+
+    totalAmount.innerText = `${totalPrice} €`;
+}
+
+
+
+
+//charge  cart and products
+window.addEventListener('load', () => {
+    cardCreator(basket);
+    calculation();
+    calculatorTotalPrice();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
