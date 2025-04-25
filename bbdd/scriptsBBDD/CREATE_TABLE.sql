@@ -15,7 +15,7 @@ CREATE TABLE PRODUCTS(
     description VARCHAR2(350),
     price DECIMAL(9,2),
     id_productCategory INT),
-    image VARCHAR2(250);
+    imagePath VARCHAR2(250);
 
 --La tabla de categoria de productos
 
