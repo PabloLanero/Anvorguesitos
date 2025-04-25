@@ -1,11 +1,22 @@
 //To show the user name on the website
+
 let userIntroduction = document.getElementById("user-introduction")
+let userDatas = {
+    "id": "1",
+    "name": "Pablo",
+    "lastName": "Lanero",
+    "email": "a28841@svalero.com",
+    "phoneNumber": "123456789",
+    "salary" : 1000.00,
+    "admin": false
+}
+
 
 
 function showUser(div){
     //Aqui iria la logica para recoger el nombre del usuario
     div.innerHTML=`
-<h1>Welcome, user!</h1>
+<h1>Welcome, ${userDatas.name} ${userDatas.lastName}!</h1>
 `    
 }
 
@@ -17,24 +28,38 @@ let optionsUser = document.getElementById("optionsUser")
 
 function seeOptions(div){
     //Aqui ira la logica para sacar las opciones que tenga el usuario
-    //Lo dejo hardcodeado para que se vea como se aplica
-    div.innerHTML = `
-    <div class="option selected" onClick="beSelected(seeData), showOption(seeData)" id="seeData">
-        <p>See your data</p>
-    </div>
-    <div class="option" onClick="beSelected(orders), showOption(orders)" id="orders">
-        <p>Orders realized</p>
-    </div>
+    let administrator = userDatas.admin
 
-    <div class="option" onClick="beSelected(employees), showOption(employees)" id="employees">
-        <p>Employees</p>
-    </div>
+    if(administrator){
+        //Lo dejo hardcodeado para que se vea como se aplica
+        div.innerHTML = `
+        <div class="option selected" onClick="beSelected(seeData), showOption(seeData)" id="seeData">
+            <p>See your data</p>
+        </div>
+        <div class="option" onClick="beSelected(orders), showOption(orders)" id="orders">
+            <p>Orders realized</p>
+        </div>
 
-    <div class="option" onClick="beSelected(cvs), showOption(cvs)" id="cvs">
-        <p>CVs</p>
-    </div>
+        <div class="option" onClick="beSelected(employees), showOption(employees)" id="employees">
+            <p>Employees</p>
+        </div>
 
-    `
+        <div class="option" onClick="beSelected(cvs), showOption(cvs)" id="cvs">
+            <p>CVs</p>
+        </div>
+
+        `
+    }else{
+        div.innerHTML = `
+        <div class="option selected" onClick="beSelected(seeData), showOption(seeData)" id="seeData">
+            <p>See your data</p>
+        </div>
+        <div class="option" onClick="beSelected(orders), showOption(orders)" id="orders">
+            <p>My Orders</p>
+        </div>   
+
+        `
+    }
 }
 
 seeOptions(optionsUser)
@@ -62,7 +87,7 @@ function showOption(optionContent){
             contentDiv.innerHTML=`
             <div class="user-data-container" >
                 <div class="name">
-                    <p><b>Nombre:</b> Pablo</p>
+                    <p><b>Nombre:</b> ${userDatas.name}</p>
                 </div>
                 <div class="lastName">
                     <p><b>Apellido:</b> Lanero Pérez</p>
@@ -79,7 +104,6 @@ function showOption(optionContent){
             `
             
             break;
-            
         case "orders":
             contentDiv.innerHTML=`
                 <div class="orders-data-container">
@@ -234,14 +258,110 @@ function showOption(optionContent){
             break;
         case "employees":
             contentDiv.innerHTML=`
-                employees
+                <div class="orders-data-container">
+                    <table>
+                        <tr>
+                            <th>Id Employee</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Salary</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Pablo</td>
+                            <td>Lanero Perez</td>
+                            <td>example@gmail.com</td>
+                            <td>123456789</td>
+                            <td>1000,00€</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Pablo</td>
+                            <td>Lanero Perez</td>
+                            <td>example@gmail.com</td>
+                            <td>123456789</td>
+                            <td>1000,00€</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Pablo</td>
+                            <td>Lanero Perez</td>
+                            <td>example@gmail.com</td>
+                            <td>123456789</td>
+                            <td>1000,00€</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Pablo</td>
+                            <td>Lanero Perez</td>
+                            <td>example@gmail.com</td>
+                            <td>123456789</td>
+                            <td>1000,00€</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Pablo</td>
+                            <td>Lanero Perez</td>
+                            <td>example@gmail.com</td>
+                            <td>123456789</td>
+                            <td>1000,00€</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Pajas</td>
+                            <td>3000</td>
+                            <td>example@gmail.com</td>
+                            <td>123456789</td>
+                            <td>6969,00€</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Pablo</td>
+                            <td>Lanero Perez</td>
+                            <td>example@gmail.com</td>
+                            <td>123456789</td>
+                            <td>1000,00€</td>
+                        </tr>
+                    </table>
+                </div>
             `
                 
             break;
 
         case "cvs":
             contentDiv.innerHTML=`
-                 cvs   
+                <table>
+                    <tr>
+                        <th>Vacancy</th>
+                        <th>CV</th>
+                    </tr>
+                    <tr>
+                        <td>Web Developer</td>
+                        <td><a href="../PDFolder/Tech.pdf" target="_blank">See CV</a></td>
+                    </tr>
+                    <tr>
+                        <td>Web Developer</td>
+                        <td><a href="../PDFolder/Tech.pdf" target="_blank">See CV</a></td>
+                    </tr>
+                    <tr>
+                        <td>Web Developer</td>
+                        <td><a href="../PDFolder/Tech.pdf" target="_blank">See CV</a></td>
+                    </tr>
+                    <tr>
+                        <td>Web Developer</td>
+                        <td><a href="../PDFolder/Tech.pdf" target="_blank">See CV</a></td>
+                    </tr>
+                    <tr>
+                        <td>Web Developer</td>
+                        <td><a href="../PDFolder/Tech.pdf" target="_blank">See CV</a></td>
+                    </tr>
+                    <tr>
+                        <td>Cocinero</td>
+                        <td><a href="../PDFolder/Tech.pdf" target="_blank">See CV</a></td>
+                    </tr>
+                </table>
             `
                     
             break;
@@ -252,5 +372,5 @@ function showOption(optionContent){
 
 }
 
-let objectInitial = {"id": "orders"}
+let objectInitial = {"id": "seeData"}
 showOption(objectInitial)
