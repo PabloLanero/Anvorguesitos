@@ -92,8 +92,8 @@ function showOption(optionContent){
                             <th>Order Status</th>
                         </tr>
                         
-                            <tr href="./see-order.html" >
-                                <td>1</td>
+                            <tr>
+                                <td><a href="./see-order.html">1</a></td>
                                 <td>20/01/2004</td>
                                 <td>Calle Falsa 123</td>
                                 <td>Pending</td>
@@ -101,14 +101,126 @@ function showOption(optionContent){
                             </tr>
                         
                         <tr>
-                            <td><a href="#">1</a></td>
+                            <td><a href="./see-order.html">1</a></td>
                             <td>20/01/2004</td>
                             <td>Calle Falsa 123</td>
                             <td>Pending</td>
                             <td>On going</td>
                         </tr>
                         <tr>
-                            <td><a href="#">1</a></td>
+                            <td><a href="./see-order.html">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./see-order.html">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./see-order.html">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./see-order.html">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./see-order.html">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./see-order.html">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./see-order.html">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./see-order.html">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./see-order.html">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./see-order.html">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./see-order.html">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./see-order.html">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./see-order.html">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./see-order.html">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./see-order.html">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./see-order.html">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./see-order.html">1</a></td>
                             <td>20/01/2004</td>
                             <td>Calle Falsa 123</td>
                             <td>Pending</td>
