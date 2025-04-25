@@ -9,7 +9,7 @@ body{
     justify-content: center;
 }
 
-.user-introduction{
+.userIntroduction{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,3 +40,38 @@ body{
 }
 
 
+.content{
+    padding:2vh;
+}
+
+.user-data-container{
+    width: 90vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 30vh;
+}
+
+.orders-data-container{
+    width: 90vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+tr{
+    border: 1px solid rgb(255, 255, 255);
+}
+
+th, td{
+    
+    text-align: center;    
+    padding: 5px;
+}
+
+.orders-data-container table{
+    width: 90%;
+    
+    
+}

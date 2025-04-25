@@ -60,14 +60,61 @@ function showOption(optionContent){
     switch (id) {
         case "seeData":
             contentDiv.innerHTML=`
-            seeData
+            <div class="user-data-container" >
+                <div class="name">
+                    <p><b>Nombre:</b> Pablo</p>
+                </div>
+                <div class="lastName">
+                    <p><b>Apellido:</b> Lanero Pérez</p>
+                </div>
+                <div class="email">
+                    <p><b>Email:</b> a28841@svalero.com</p>
+                </div>
+                <div class="phone-number">
+                    <p><b>Phone Number:</b> 123456789</p>
+                </div>
+            </div>
+            
+            
             `
             
             break;
             
         case "orders":
             contentDiv.innerHTML=`
-                orders
+                <div class="orders-data-container">
+                    <table>
+                        <tr>
+                            <th>Id Order</th>
+                            <th>Order date</th>
+                            <th>Shipping Address</th>
+                            <th>Transsaction</th>
+                            <th>Order Status</th>
+                        </tr>
+                        <tr>
+                            <td><a href="#">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">1</a></td>
+                            <td>20/01/2004</td>
+                            <td>Calle Falsa 123</td>
+                            <td>Pending</td>
+                            <td>On going</td>
+                        </tr>
+
+                    </table>
+                </div>
             `
                 
             break;
@@ -90,3 +137,6 @@ function showOption(optionContent){
     }
 
 }
+
+let objectInitial = {"id": "orders"}
+showOption(objectInitial)
