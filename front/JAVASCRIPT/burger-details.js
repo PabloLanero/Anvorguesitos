@@ -210,174 +210,69 @@ function mockData() {
 
 
 
+//PICKS THE ID OF SELECTED PRODUCT/////////////////////////
+const urlParams = new URLSearchParams(window.location.search); 
+        // new URLSearchParams();      ina tool for analysis. it splits it
+        //(window.location.search);   return all what is after ? in a url (window.location.search) --> it looks to the navigator bar
 
-//CARD CREATOR//////////////////////////////////////////////////////////////
-function createProductCard(product, container) {
-    const card = document.createElement('div');
-    card.classList.add('card');
-
-    card.innerHTML = `
-    <div id="product-id-${product.id_product}">
-        <img src="${product.image}" alt="${product.productTitle || 'Product Image'}"  class="product-photo" data-id="${product.id_product}">
-        <div class="card-details">
-            <h4 class="product-name">${product.productTitle}</h4>
-            <div class="inputs">
-                <div class="price-quantity">
-                    <p class="price">${product.price}€</p>  
-                </div>
-                <div class="quantity-controllers">
-                    <button onclick="increment(${product.id_product})"   class="button-add-cart button-increase">+</button>
-                    <button onclick="decrement(${product.id_product})" class="button-add-cart button-decrease">-</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    `;
-    container.appendChild(card);
-}
+const idProduct = urlParams.get('idProduct');
+//console.log("idProduct = " + idProduct);
 
 
+//PICK THE COMPLETE PORDUCT
+const selectedProduct = mockData().results.find(prod => prod.id_product === parseInt(idProduct));
 
-/////////product by categories////////////////////
-
- function getProducts(category, container){          //it must be async when we call api
-    try {
-        const data = mockData(); // Simulating API call
-
-        //group by category in a new array 
-        const arrayProductsByCategory = data.results.filter(product => product.id_productCategory === category);
-
-        //create card
-        arrayProductsByCategory.forEach(product => createProductCard(product, container));
-
-
-    }catch (error) {
-        console.error(`Error in getting product`, error);
-    }
-}
-
-
-
-
-/////////////////////load products
 
 window.addEventListener('load', () => {
-
-const burgersContainer = document.getElementById("burgers-container");
-getProducts(1, burgersContainer);
-
-const sidesContainer = document.getElementById("sides-container");
-getProducts(2, sidesContainer);
-
-const drinksContainer = document.getElementById("drinks-container");
-getProducts(3, drinksContainer);
-
-calculation();  //calculate porducts in basket
-setUpProductClick();
-
-}
-);
-
-
-// WHEN WE CLICK IN AN IMAGE WE ARE REDIRECTED TO THE DETAIL-PAGE/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-function setUpProductClick(){
-    const allImages = document.querySelectorAll(".product-photo");
-
-
-//we add and eventlistener onclick for images
-    allImages.forEach((element) =>{
-        element.addEventListener("click", ()=>{
-
-            // we capture id
-            let id = parseInt(element.getAttribute("data-id"));
-
-            //find the product that has this id
-            const selectedProduct = mockData().results.find(prod => prod.id_product === id);
-
-            //we keep this productin localstorage
-            localStorage.setItem("clickedProduct", JSON.stringify(selectedProduct));
-
-            //redirect to detail-page with the searchArgument
-            window.location.href =`burger-detail.html?idProduct=${id}`;
-        });
-    });
-}
+    createContent(); //create content
+    calculation();  //calculate porducts in basket
+})
 
 
 
 
-//basket//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let basket = JSON.parse(localStorage.getItem("data")) || [];
-//before, basket was [] but we want to take the infomration from localStorge. an object with "data" key is added when we click on controllers.
-//  if nothing exist, return an empty array  --> in order not to get an error
+//GENERATE CONTENT
+
+//get container
+let container = document.getElementById("dynamic-container");
 
 
+//create content
+function createContent(){
 
+const contentContainer = document.createElement('div');
 
+contentContainer.classList.add('container');
 
-// Functions to change  quantity  
-function increment(id) {
-    let selectedItem = id;
-
-    let search = basket.find((x) => x.id_product === selectedItem);
-    //it is searching for the object wich we have selected. i t returns  wether if it exist in the basket yet
-
-    if (search === undefined) {
-
-        //we find the object from api and we save it in a variable
-        const  productData = mockData().results.find((product) => product.id_product === selectedItem);
-
-        //add to the basket
-        basket.push({
-            ...productData,   //Appends new elements to the end of an array, and returns the new length of the array.
-            item: 1,    //amount bought
-
-        });
-    } else {
-        search.item++;
-    }
-
-
-    localStorage.setItem("data", JSON.stringify(basket));
-    //keyvalue: data is the key, basket is the value that we keep
-    //basket is an object. if we want to safe data (not only "object") we have to transform it into a json by json.stringify "into a string"
-    console.log("actualizing basket")
-    calculation();
-    console.log("product added")
+contentContainer.innerHTML = `
+<div class="image-container">
+    <img src="${selectedProduct.image}" alt="${selectedProduct.productTitle}">
+</div>
+<div class="text-container">
+    <div class="name">
+        <h1>${selectedProduct.productTitle}</h1>
+    </div>
+    <div class="description">
+        <p>${selectedProduct.description}</p>
+    </div>
+    <!--<div class="ingredients">
+        
+    </div>-->
+    <div class="inputs">
+                    <button  class="button-add-cart button-increase" onclick="increment()">+</button>
+                    <button  class="button-add-cart button-decrease" onclick="decrement()">-</button>
+    </div>
+</div>
+`;
+container.appendChild(contentContainer);
 }
 
-function decrement(id) {
-    let selectedItem = id;
-
-    let search = basket.find((x) => x.id_product === selectedItem);
-    //it is searching for the object wich we have selected. i t returns  wether if it exist in the basket yet
-
-    //if object doesn´t exist
-    if (!search) {
-        return;
-    }
- //if quantity is more than 0 quit one
-    if (search.item > 0) {
-        search.item--;
-    }
 
 
-// if is 0 remove item from basket
-    if (search.item === 0) {
-        basket = basket.filter(x => x.id_product !== selectedItem); //filter return a new array with products wich quantity is not zero. it filters when id is different than selected item to include it in array
 
-    }
 
-    localStorage.setItem("data", JSON.stringify(basket));
-    //keyvalue: data is the key, basket is the value that we keep
-    //basket is an object. if we want to safe data (not only "object") we have to transform it into a json by json.stringify "into a string"
-    //console.log(basket);
-    // update(selectedItem.id);
-    calculation();
-}
 
+//calculate items in basket
 let calculation = () => {
     let cartIcon = document.getElementById("cartAmount");
 
@@ -395,3 +290,67 @@ let calculation = () => {
 
 
 
+
+
+//basket//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+let basket = JSON.parse(localStorage.getItem("data")) || [];
+//before, basket was [] but we want to take the infomration from localStorge. an object with "data" key is added when we click on controllers.
+//  if nothing exist, return an empty array  --> in order not to get an error
+
+
+
+//QUANTITY OF PRODUCTS
+
+function increment(){
+    
+    let search = basket.find((x) => x.id_product === selectedProduct.id_product);
+    //it is searching for the object wich we have selected. i t returns  wether if it exist in the basket yet
+
+    if (search === undefined) {
+
+        
+
+        //add to the basket
+        basket.push({
+            ...selectedProduct,   //Appends new elements to the end of an array, and returns the new length of the array.
+            item: 1,    //amount bought
+
+        });
+    } else {
+        search.item++;
+    }
+ 
+    localStorage.setItem("data", JSON.stringify(basket));
+    calculation();
+
+}
+
+
+
+function decrement(id) {
+    
+
+    let search = basket.find((x) => x.id_product === selectedProduct.id_product);
+    
+    if (!search) {
+        return;
+    }
+ //if quantity is more than 0 quit one
+    if (search.item > 0) {
+        search.item--;
+    }
+
+
+// if is 0 remove item from basket
+    if (search.item === 0) {
+        basket = basket.filter(x => x.id_product !== selectedProduct.id_product); //filter return a new array with products wich quantity is not zero. it filters when id is different than selected item to include it in array
+
+    }
+
+    localStorage.setItem("data", JSON.stringify(basket));
+    //keyvalue: data is the key, basket is the value that we keep
+    //basket is an object. if we want to safe data (not only "object") we have to transform it into a json by json.stringify "into a string"
+    //console.log(basket);
+    // update(selectedItem.id);
+    calculation();
+}
