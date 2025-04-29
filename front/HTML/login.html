@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../CSS/footer.css">
     <link rel="stylesheet" href="../CSS/login.css">
     <script src="../JAVASCRIPT/hamburguer_menu.js" defer></script>
+    <script src="../JAVASCRIPT/login.js" defer></script>
 </head>
 <body>
      <!--page - login-page--------------------------->
@@ -58,37 +59,38 @@
             </nav>
         </header>
     
-    <main>
-        <div class="title-join-us"><h1>JOIN US!</h1></div>
-        <div class="form-container">
-            <div class="form-elements">
-                <div class="input">
-                    <input class="texto" placeholder="Name" required>
-                </div>
-                <div class="input">
-                    <input class="texto" placeholder="Surname" required>
-                </div>
-                <div class="input">
-                    <input class="texto" placeholder="example@gmail.com" type="email" required>
-                </div>
-                <div class="input">
-                    <input class="number-phone" placeholder="123456789" type="number" required>
-                </div>
-                <div class="input">
-                    <input class="texto" placeholder="Password" type="password" required>
-                </div>
-                <div class="input">
-                    <input class="texto" placeholder="Repeat password" type="password" required>
-                </div>
+        <main>
+            <form>
+                <div class="title-join-us"><h1>JOIN US!</h1></div>   
+                <div class="form-container">
+                    <div class="form-elements">
+                        <div class="input">
+                            <input class="texto" placeholder="Name" required id="name">
+                        </div>
+                        <div class="input">
+                            <input class="texto" placeholder="Surname" id="surname" required >
+                        </div>
+                        <div class="input">
+                            <input class="texto" placeholder="example@gmail.com" type="email" id="email" required>
+                        </div>
+                        <div class="input">
+                            <input class="number-phone" placeholder="123456789" type="number" id="mobile-phone" required>
+                        </div>
+                        <div class="input">
+                            <input class="texto" placeholder="Password" type="password" id="password" required>
+                        </div>
+                        <div class="input">
+                            <input class="texto" placeholder="Repeat password" type="password" id="password-confirmation" required>
+                        </div>
+                    </div>
+        
+                    <div class="confirm">
+                        <button onclick="createUser()" type="button"  >Create Account</button>
+                    </div>
+        
             </div>
-
-            <div class="confirm">
-                <button>Create Account</button>
-            </div>
-
-        </div>
-
-    </main>
+        </form>
+        </main>
 
     <!--footer--------------------------------------------------------------------------------------->
 
