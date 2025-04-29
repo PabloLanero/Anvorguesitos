@@ -67,11 +67,12 @@ body {
 }
 
 
+
 .job {
     margin-bottom: 3%;
     border-radius: 10px;
     overflow: hidden;
-    margin:2%
+    margin: 2%
 }
 
 
@@ -119,13 +120,6 @@ body {
 }
 
 
-.requirements li {
-    list-style-type: disc;
-    margin-left: 10%; /* Espacio entre el borde izquierdo y los puntos */
-    margin: 10px 0;
-    color: white;
-}
-
 
 /*FORM CV------------------------------------------------------------------*/
 .upload-form {
@@ -170,46 +164,83 @@ body {
 .benefits {
     background-color: #BF3131;
     color: white;
-    padding:1%;
+    padding: 1%;
     border-radius: 15px;
-    margin:4%
+    margin: 4%
 }
 
+
+.benefits-section {
+    padding: 60px 0;
+    position: relative;
+}
+
+.benefits-title {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+
+
+.benefits {
+    background: #BF3131;
+    color: white;
+    border-radius: 12px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    width: 90%;
+}
 
 .container-benefits {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    /*Una columna*/
+    gap: 20px;
 }
 
-
 .benefit-item {
-    display: flex;
-    padding: 5%;
-    border-radius: 8px;
-    flex-direction: column;
-    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 10%;
 }
 
 .benefit-item h3 {
-    font-size: 18px;
-    padding: 1%;
-    margin-bottom: 10%;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 600;
     color: #EAD196;
+    border-bottom: 2px solid rgba(234, 209, 150, 0.3);
+    padding-bottom: 8px;
 }
 
+.benefit-item ul {
+    padding-left: 5px;
+    list-style: none;
+}
 
 .benefit-item li {
-    margin-bottom: 10%;
+    margin-bottom: 12px;
     position: relative;
-    padding-left: 15%;
+    padding-left: 25px;
+    /* Espacio ajustado */
+    font-size: 15px;
+    /* Tamaño ligeramente menor */
+    line-height: 1.5;
 }
 
 .benefit-item li:before {
     content: "✓";
     color: #EAD196;
     position: absolute;
-    left: 0;
+    left: 5px;
+    /* Posición ajustada */
+    font-weight: bold;
+    font-size: 16px;
 }
+
 
 
 /*Testimonies-----------------------------------------------------------*/
@@ -246,4 +277,199 @@ body {
     justify-content: flex-end;
     font-size: 13px;
     margin-top: 15px;
+}
+
+
+
+/*------------------------------Estilos para escritorio--------------------------------------------------------------------------------*/
+
+@media (min-width: 1024px) {
+
+    .title {
+        font-size: 150px;
+
+    }
+
+    .image-title {
+        width: 100%;
+    }
+
+    /*OFFERS--------------------------------------------------------------------------------------*/
+    .section-job-offers {
+        max-width: 70%;
+        margin: 0 auto;
+        padding: 40px 20px;
+        margin-bottom: -20%;
+    }
+
+    .title-offers {
+        font-size: 60px;
+        margin-bottom: 20px;
+    }
+
+    .job-offers {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .job {
+        margin-bottom: 5%;
+        transition: transform 0.3s;
+    }
+
+    .job:hover {
+        transform: translateY(-5px);
+        /* Efecto sutil al pasar el ratón */
+    }
+
+    .job-title {
+        padding: 20px;
+        font-size: 30px;
+        text-align: left;
+        padding-left: 40px;
+
+    }
+
+
+    .job-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+    }
+
+    .job-details.active {
+        max-height: 2000px;
+
+    }
+
+
+
+    /*BENEFITS-----------------------------------------------------------------------------------------*/
+
+    .benefits-section {
+        padding: 0%;
+    }
+
+    .benefits-title h1 {
+        font-size: 60px;
+        text-align: center;
+        justify-content: center;
+        margin: 4%;
+        margin-top: 20%;
+        margin-bottom: -1%;
+    }
+
+    .benefits-title h4 {
+        font-size: 40px;
+        text-align: center;
+        justify-content: center;
+        margin-bottom: 20%;
+    }
+
+    .benefits {
+        color: white;
+        border-radius: 20px;
+        margin-bottom: 10%;
+        margin-top: -10%;
+        padding: 60px 40px;
+        width: 90%;
+        overflow: hidden;
+    }
+
+
+    .container-benefits {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        text-align: left;
+    }
+
+    .benefit-item {
+        padding: 15px;
+        border-radius: 15px;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .benefit-item:hover {
+        transform: translateY(-5px);
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .benefit-item h3 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #EAD196;
+        border-bottom: 2px solid rgba(234, 209, 150, 0.3);
+    }
+
+
+    .benefit-item li {
+        position: relative;
+        padding-left: 28px;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .benefit-item li:before {
+        content: "✓";
+        color: #EAD196;
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    /*Testimonies-----------------------------------------------------------*/
+    .testimonies-introduction {
+        text-align: center;
+        margin: 5%;
+        padding: 5%;
+        margin-top: 10%;
+    }
+
+    .testimonies-introduction h1 {
+        font-size: 60px;
+        text-align: center;
+        justify-content: center;
+        margin: 4%;
+        margin-top: -8%;
+    }
+
+    .testimonies-introduction h4 {
+        font-size: 40px;
+        margin: -3%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .testimonies {
+        background-color: #BF3131;
+        color: white;
+        margin: 5%;
+        border-radius: 15px;
+        padding: 3%;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .review {
+        font-size: 20px;
+        margin: 15px;    
+    }
+
+    .review h3 {
+        display: flex;
+        text-align: center;
+    
+    }
+
+    .review h2 {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 20px;
+        margin-top: 4%;
+    }
+
 }
