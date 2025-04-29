@@ -9,8 +9,19 @@
     <link rel="stylesheet" href="../CSS/footer.css">
     <link rel="stylesheet" href="../CSS/see-order.css">
     <script src="../JAVASCRIPT/hamburguer_menu.js" defer></script>
+    <script src="../JAVASCRIPT/see-order.js" defer></script>
+
 </head>
+
+
+
+
+
+
+
+
 <body>
+  
     <header>
         <nav>
             <div class="left-nav">
@@ -18,10 +29,10 @@
                 <div class="nav-menu">
                     <ul class="nav-links" id="nav-links">
                         <li><a href="./home.html">Home</a></li>
-                        <li><a href="#menu-burgers">Menu</a></li>
+                        <li><a href="./home.html#menu-burgers">Menu</a></li>
                         <li><a href="./login.html">Login</a></li>
                         <li><a href="./about-us.html">About us</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="./contact.html">Join us</a></li>
                     </ul>
 
                     <div class="burger-button" id="burger-button">
@@ -42,9 +53,12 @@
             <div class="right-nav">
 
 
+<!--shopping-cart-->
 
-                <div class="shopping-cart" id="shopping-cart">
+
+                <div class="shopping-cart" id="shopping-cart" onclick="location.href='./see-order.html'">
                     <img src="../Images/Header/CART.png" alt="shopping-cart">
+                    <div  id="cartAmount" class="cartAmount">0</div>
 
                 </div>
 
@@ -57,115 +71,67 @@
     </header>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
     <main>
-        <div class="container">
-            <div class="products">
-                <div class="product">
-                    <div class="product-image">
-                        <img src="../Images/niceburguer.png">
-                    </div>
-                    <div class="product-details">
-                        <div class="product-name">
-                            <h1>Anvorguesita</h1>
-                        </div>
-                        <div class="product-numbers">
-                            <div class="product-cuantity">
-                                <p>Cantidad: 4</p>
-                            </div>
-                            <div class="product-price">
-                                <p>39,99€</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="product">
-                    <div class="product-image">
-                        <img src="../Images/niceburguer.png">
-                    </div>
-                    <div class="product-details">
-                        <div class="product-name">
-                            <h1>Anvorguesita</h1>
-                        </div>
-                        <div class="product-numbers">
-                            <div class="product-cuantity">
-                                <p>Cantidad: 4</p>
-                            </div>
-                            <div class="product-price">
-                                <p>39,99€</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="product">
-                    <div class="product-image">
-                        <img src="../Images/niceburguer.png">
-                    </div>
-                    <div class="product-details">
-                        <div class="product-name">
-                            <h1>Anvorguesita</h1>
-                        </div>
-                        <div class="product-numbers">
-                            <div class="product-cuantity">
-                                <p>Cantidad: 4</p>
-                            </div>
-                            <div class="product-price">
-                                <p>39,99€</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="product">
-                    <div class="product-image">
-                        <img src="../Images/niceburguer.png">
-                    </div>
-                    <div class="product-details">
-                        <div class="product-name">
-                            <h1>Anvorguesita</h1>
-                        </div>
-                        <div class="product-numbers">
-                            <div class="product-cuantity">
-                                <p>Cantidad: 4</p>
-                            </div>
-                            <div class="product-price">
-                                <p>39,99€</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="product">
-                    <div class="product-image">
-                        <img src="../Images/niceburguer.png">
-                    </div>
-                    <div class="product-details">
-                        <div class="product-name">
-                            <h1>Anvorguesita</h1>
-                        </div>
-                        <div class="product-numbers">
-                            <div class="product-cuantity">
-                                <p>Cantidad: 4</p>
-                            </div>
-                            <div class="product-price">
-                                <p>39,99€</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
+        <div class="general-container">
+            <div class="products" id="container-for-cards">
+               
             </div>
             <div class="final">
                 <div class="boton-compra">
                     <button>Realizar compra</button>
                 </div>
                 <div class="precio-total">
-                    <p>39,99€</p>
+                    <p id="totalAmount"></p>
                 </div>
             </div>
         </div>
     </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!--footer--------------------------------------------------------------------------------------->
 
     <footer class="footer">

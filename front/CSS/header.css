@@ -15,6 +15,36 @@ header {
     border-radius: 12px;
 }
 
+/*shopping cart*/
+.shopping-cart {
+    position:relative;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+
+}
+
+.cartAmount {
+  
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(114, 114, 114);
+    background-color: aliceblue;
+    border-radius: 100px;
+    font-size: 25px;
+    display: flex;
+    position: absolute;
+    top:-15px;
+    right:-15px;
+    padding:3px;
+
+
+
+}
+
+
+
+
 
 
 .shopping-cart img {
@@ -31,6 +61,7 @@ header {
     background-color: #BF3131;
     cursor: pointer;
 }
+
 
 
 /*nav - burger*/
@@ -118,7 +149,7 @@ h1 {
     nav {
         justify-content: space-between;
         padding: 0px 15px;
-        
+
     }
 
     .nav-links {

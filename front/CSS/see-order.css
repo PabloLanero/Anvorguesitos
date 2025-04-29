@@ -3,7 +3,7 @@ body{
 }
 
 /*Here starts the CSS for the products*/
-.container{
+.general-container{
     
     width: 99vw;
     margin-top:3vh;

@@ -9,10 +9,13 @@
     <link rel="stylesheet" href="../CSS/footer.css">
     <link rel="stylesheet" href="../CSS/burger-detail.css">
     <script src="../JAVASCRIPT/hamburguer_menu.js" defer></script>
-
-
+    <script src="../JAVASCRIPT/burger-details.js" defer></script>
 </head>
+
+
+
 <body>
+    
     <header>
         <nav>
             <div class="left-nav">
@@ -20,10 +23,10 @@
                 <div class="nav-menu">
                     <ul class="nav-links" id="nav-links">
                         <li><a href="./home.html">Home</a></li>
-                        <li><a href="#menu-burgers">Menu</a></li>
+                        <li><a href="./home.html#menu-burgers">Menu</a></li>
                         <li><a href="./login.html">Login</a></li>
                         <li><a href="./about-us.html">About us</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="./contact.html">Join us</a></li>
                     </ul>
 
                     <div class="burger-button" id="burger-button">
@@ -44,9 +47,12 @@
             <div class="right-nav">
 
 
+<!--shopping-cart-->
 
-                <div class="shopping-cart" id="shopping-cart">
+
+                <div class="shopping-cart" id="shopping-cart" onclick="location.href='./see-order.html'">
                     <img src="../Images/Header/CART.png" alt="shopping-cart">
+                    <div  id="cartAmount" class="cartAmount">0</div>
 
                 </div>
 
@@ -60,34 +66,11 @@
 
 
     <main>
-        <div class="contenedor">
-            <div class="contenedor-imagen">
-                <img src="../Images/niceburguer.png" alt="Foto de la hamburguesa, puede haber de cualquier tipo">
-            </div>
-            <div class="contenedor-texto">
-                <div class="nombre">
-                    <h1>Niceburguer</h1>
-                </div>
-                <div class="descripcion">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing 
-                        elit, sed do eiusmod tempor incididunt ut labore et 
-                        dolore magna aliqua. Ut enim ad minim veniam, quis 
-                        nostrud exercitation ullamco laboris nisi ut aliquip 
-                        ex ea commodo consequat. Duis aute irure dolor in 
-                        reprehenderit in voluptate velit esse cillum dolore 
-                        eu fugiat nulla pariatur.</p>
-                </div>
-                <!--<div class="ingredientes">
-                    
-                </div>-->
-                <div class="inputs ">
-                    <button class="button-add-cart">+</button>
-                    <button class="button-add-cart">-</button>
-                </div>
-            </div>
-
-        </div>
+        <div class="dynamic-container" id="dynamic-container">
+     
+    </div>
     </main>
+    
     
     <!--footer--------------------------------------------------------------------------------------->
 
