@@ -1,9 +1,0 @@
-{
-    "id": "1",
-    "name": "Pablo",
-    "lastName": "Lanero",
-    "email": "a28841@svalero.com",
-    "phoneNumber": "123456789",
-    "salary" : 1000.00,
-    "admin": true
-}
