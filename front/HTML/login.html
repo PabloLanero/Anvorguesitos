@@ -9,91 +9,89 @@
     <link rel="stylesheet" href="../CSS/footer.css">
     <link rel="stylesheet" href="../CSS/login.css">
     <script src="../JAVASCRIPT/hamburguer_menu.js" defer></script>
+    <script src="../JAVASCRIPT/login.js" defer></script>
+    <script src="../JAVASCRIPT/loged.js" defer></script>
 </head>
 <body>
      <!--page - login-page--------------------------->
     <div>
-       
-    <header>
-        <nav>
-            <div class="left-nav">
-
-                <div class="nav-menu">
-                    <ul class="nav-links" id="nav-links">
-                        <li><a href="./home.html">Home</a></li>
-                        <li><a href="./home.html#menu-burgers">Menu</a></li>
-                        <li><a href="./login.html">Login</a></li>
-                        <li><a href="./about-us.html">About us</a></li>
-                        <li><a href="./contact.html">Join us</a></li>
-                    </ul>
-
-                    <div class="burger-button" id="burger-button">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </div>
-
-
-                </div>
-                <div class="header-logo">
-                    <img src="../Images/INTRO-PAGE/LOGOColor_ONLY_BEAR.png" alt="logo">
-
-                </div>
-
-
-            </div>
-            <div class="right-nav">
-
-
-<!--shopping-cart-->
-
-
-                <div class="shopping-cart" id="shopping-cart" onclick="location.href='./see-order.html'">
-                    <img src="../Images/Header/CART.png" alt="shopping-cart">
-                    <div  id="cartAmount" class="cartAmount">0</div>
-
-                </div>
-
-            </div>
-
-
-
-
-        </nav>
-    </header>
-
+        <header>
+            <nav>
+                <div class="left-nav">
     
-    <main>
-        <div class="title-join-us"><h1>JOIN US!</h1></div>
-        <div class="form-container">
-            <div class="form-elements">
-                <div class="input">
-                    <input class="texto" placeholder="Name" required>
+                    <div class="nav-menu">
+                        <ul class="nav-links" id="nav-links">
+                            <li><a href="./home.html">Home</a></li>
+                            <li><a href="#menu-burgers">Menu</a></li>
+                            <li><a href="./login.html" id="login">Login</a></li>
+                            <li><a href="./about-us.html">About us</a></li>
+                            <li><a href="./contact.html">Contact</a></li>
+                        </ul>
+    
+                        <div class="burger-button" id="burger-button">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+    
+    
+                    </div>
+                    <div class="header-logo">
+                        <img src="../Images/INTRO-PAGE/LOGOColor_ONLY_BEAR.png" alt="logo">
+    
+                    </div>
+    
+    
                 </div>
-                <div class="input">
-                    <input class="texto" placeholder="Surname" required>
+                <div class="right-nav">
+    
+    
+    
+                    <div class="shopping-cart" id="shopping-cart">
+                        <img src="../Images/Header/CART.png" alt="shopping-cart">
+    
+                    </div>
+    
                 </div>
-                <div class="input">
-                    <input class="texto" placeholder="example@gmail.com" type="email" required>
-                </div>
-                <div class="input">
-                    <input class="number-phone" placeholder="123456789" type="number" required>
-                </div>
-                <div class="input">
-                    <input class="texto" placeholder="Password" type="password" required>
-                </div>
-                <div class="input">
-                    <input class="texto" placeholder="Repeat password" type="password" required>
-                </div>
+    
+    
+    
+    
+            </nav>
+        </header>
+    
+        <main>
+            <form>
+                <div class="title-join-us"><h1>JOIN US!</h1></div>   
+                <div class="form-container">
+                    <div class="form-elements">
+                        <div class="input">
+                            <input class="texto" placeholder="Name" required id="name">
+                        </div>
+                        <div class="input">
+                            <input class="texto" placeholder="Surname" id="surname" required >
+                        </div>
+                        <div class="input">
+                            <input class="texto" placeholder="example@gmail.com" type="email" id="email" required>
+                        </div>
+                        <div class="input">
+                            <input class="number-phone" placeholder="123456789" type="number" id="mobile-phone" required>
+                        </div>
+                        <div class="input">
+                            <input class="texto" placeholder="Password" type="password" id="password" required>
+                        </div>
+                        <div class="input">
+                            <input class="texto" placeholder="Repeat password" type="password" id="password-confirmation" required>
+                        </div>
+                    </div>
+        
+                    <div class="confirm">
+                        <button onclick="createUser()" type="button"  >Create Account</button>
+                    </div>
+        
             </div>
-
-            <div class="confirm">
-                <button>Create Account</button>
-            </div>
-
-        </div>
-
-    </main>
+        </form>
+        </main>
 
     <!--footer--------------------------------------------------------------------------------------->
 
