@@ -1,0 +1,128 @@
+
+
+
+
+
+/*general*/
+body{
+    background-color: #B1C29E;
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    display:flex;
+    align-self: center;
+    font-weight: bold;
+    padding-top:2%;
+    font-size: x-large;
+}
+
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.article{
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    margin:2vh;
+}
+
+
+
+
+
+
+
+/*buton proceed-to-payment*/
+
+.proceed-to-payment {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 40vw;
+    max-width: 200px;
+    height: 6vh;
+    margin: 20px auto; 
+    gap: 20px;
+}
+
+
+.proceed-to-payment button {
+    width: 100%; 
+    font-size: 15px;
+    background-color: #BF3131;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 1s;
+    padding: 10px;
+}
+
+
+.proceed-to-payment button:hover {
+    transform: scale(1.1);
+    background-color: #A12929; /* Tono más oscuro en hover */
+}
+
+
+/*forms*/
+
+
+
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #FCE7C8;
+    box-shadow: 0 2px 8px rgba(86, 82, 74, 0.1);
+    background-color: #919f82;
+    border-radius: 8px;
+    width:80%;
+    padding:20px;
+    max-width: 800px;
+    margin: 2vh;
+}
+
+.form-elements{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+   margin:2vh;
+   width: 100%;
+
+    
+}
+
+.input {
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+}
+
+
+.input input {
+    width: 100%;
+    max-width: 600px; 
+    margin:1vh;
+    height: 35px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: rgb(41, 41, 41);
+    color: white;
+}
+.input input:placeholder{
+    color: rgba(233, 233, 233, 0.5);
+}
+
