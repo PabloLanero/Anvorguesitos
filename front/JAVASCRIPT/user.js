@@ -1,16 +1,16 @@
 //To show the user name on the website
 
 let userIntroduction = document.getElementById("user-introduction")
-let userDatas = {
-    "id": "1",
-    "name": "Pablo",
-    "lastName": "Lanero",
-    "email": "a28841@svalero.com",
-    "phoneNumber": "123456789",
-    "salary" : 1000.00,
-    "admin": false
-}
+let userDatas = JSON.parse(sessionStorage.getItem("user"))
+console.log(userDatas)
 
+if(!userDatas){
+    window.location.href = "login.html"
+}else {
+    let place = document.getElementById("login")
+    console.log(userDatas.name)
+    place.innerHTML = userDatas.name
+}
 
 
 function showUser(div){
@@ -90,13 +90,13 @@ function showOption(optionContent){
                     <p><b>Nombre:</b> ${userDatas.name}</p>
                 </div>
                 <div class="lastName">
-                    <p><b>Apellido:</b> Lanero Pérez</p>
+                    <p><b>Apellido:</b> ${userDatas.lastName}</p>
                 </div>
                 <div class="email">
-                    <p><b>Email:</b> a28841@svalero.com</p>
+                    <p><b>Email:</b> ${userDatas.email}</p>
                 </div>
                 <div class="phone-number">
-                    <p><b>Phone Number:</b> 123456789</p>
+                    <p><b>Phone Number:</b> ${userDatas.mobilePhone}</p>
                 </div>
             </div>
             
@@ -374,3 +374,6 @@ function showOption(optionContent){
 
 let objectInitial = {"id": "seeData"}
 showOption(objectInitial)
+
+
+

@@ -5,24 +5,42 @@ function createUser() {
 
 //First of all, we get the values
 
-    let name = document.getElementById("name").value
-    let username = document.getElementById("surname").value
-    let email = document.getElementById("email").value
-    let mobilePhone = document.getElementById("mobile-phone").value
-    let password = document.getElementById("password").value
-    let passwordConfirmation = document.getElementById("password-confirmation").value
+    let name = document.getElementById("name")
+    let username = document.getElementById("surname")
+    let email = document.getElementById("email")
+    let mobilePhone = document.getElementById("mobile-phone")
+    let password = document.getElementById("password")
+    let passwordConfirmation = document.getElementById("password-confirmation")
     
-    if(password===passwordConfirmation) {
+    if(password.value===passwordConfirmation.value) {
 
         let user = {
-            "Name": name,
-            "Username": username,
-            "Email": email,
-            "MobilePhone": mobilePhone,
-            "Admin": false,
+            "name": name.value,
+            "lastName": username.value,
+            "email": email.value,
+            "mobilePhone": mobilePhone.value,
+            "admin": false,
         }
 
         console.log(user)
+        
+
+        sessionStorage.setItem("user",JSON.stringify(user))
+
+        window.location.href = "user.html"
     }
 
 }
+
+
+
+function isLogged(){
+    let user = JSON.parse(sessionStorage.getItem("user"))
+    if(user){
+        let place = document.getElementById("login")
+        console.log(user.name)
+        place.innerHTML = user.name
+    }
+}
+
+isLogged()
