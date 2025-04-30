@@ -10,10 +10,6 @@ if is logged,
 */ 
 if(!userDatas){
     window.location.href = "login.html"
-}else {
-    let place = document.getElementById("login")
-    console.log(userDatas.name)
-    place.innerHTML = userDatas.name
 }
 
 /**

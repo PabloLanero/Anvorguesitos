@@ -35,17 +35,3 @@ function createUser() {
 }
 
 
-/**
- * This method change the section from the header login 
- * to redirect to the 
- */
-function isLogged(){
-    let user = JSON.parse(sessionStorage.getItem("user"))
-    if(user){
-        let place = document.getElementById("login")
-        console.log(user.name)
-        place.innerHTML = user.name
-    }
-}
-
-isLogged()
