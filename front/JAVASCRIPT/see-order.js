@@ -242,25 +242,25 @@ function cardCreator(basket){
     card.classList.add("card");
 
     card.innerHTML = `
-    <div class="product general">
-     <div class="product-image">
-                        <img src="${product.image }" alt="${product.productTitle}"/>
-                    </div>
-                    <div class="product-details">
-                        <div class="product-name">
-                            <h3>${product.productTitle}</h3>
-                        </div>
-                        <div class="product-numbers">
-                            <div class="product-cuantity">
-                                <p>Cantidad: ${product.item}</p>
-                            </div>
-                            <div class="product-price">
-                                <p>${product.price*product.item} €</p>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    <hr>
+     <div class="product general">
+        <div class="product-image">
+            <img src="${product.image }" alt="${product.productTitle}"/>
+        </div>
+        <div class="product-details">
+            <div class="product-name">
+                <h3>${product.productTitle}</h3>
+            </div>
+            <div class="product-numbers">
+                <div class="product-cuantity">
+                    <p>Cantidad: ${product.item}</p>
+                </div>
+                <div class="product-price">
+                    <p>${product.price*product.item} €</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
 
     `;    
     container.appendChild(card)

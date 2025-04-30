@@ -322,7 +322,7 @@ function increment(id) {
     let selectedItem = id;
 
     let search = basket.find((x) => x.id_product === selectedItem);
-    //it is searching for the object wich we have selected. i t returns  wether if it exist in the basket yet
+    //it is searching for the object wich we have selected. it returns wether if it exist in the basket yet
 
     if (search === undefined) {
 
