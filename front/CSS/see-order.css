@@ -81,7 +81,7 @@ body{
 
 
 /*CSS for the button*/
-.boton-compra button{
+.button-confirm-cart button{
     background-color: #BF3131;
     color:white;
     padding: 1vw;
@@ -90,14 +90,14 @@ body{
     min-width: 150px;
 }
 
-.boton-compra button:hover{
+.button-confirm-cart button:hover{
     scale: 1.1;
     transition: 1s;
 }
 
 
 /*CSS to adjust the button to buy the product*/
-.boton-compra{
+.button-confirm-cart{
     width: 33vw;
     display: flex;
     justify-content: center;
@@ -107,7 +107,7 @@ body{
 
 
 /*CSS for the total price*/
-.precio-total{
+.total-price{
     width: 33vw;
     font-size: 20px;
     display: flex;
