@@ -1,9 +1,13 @@
 //To show the user name on the website
 
-let userIntroduction = document.getElementById("user-introduction")
 let userDatas = JSON.parse(sessionStorage.getItem("user"))
 console.log(userDatas)
 
+/*Check if first it is logged
+if not, redirected to the login page
+if is logged, 
+- change the section "login" to the username 
+*/ 
 if(!userDatas){
     window.location.href = "login.html"
 }else {
@@ -12,14 +16,19 @@ if(!userDatas){
     place.innerHTML = userDatas.name
 }
 
-
+/**
+ * 
+ * This function is to see the name at the top of the page
+ *  
+*/
 function showUser(div){
     //Aqui iria la logica para recoger el nombre del usuario
     div.innerHTML=`
-<h1>Welcome, ${userDatas.name} ${userDatas.lastName}!</h1>
-`    
+    <h1>Welcome, ${userDatas.name} ${userDatas.lastName}!</h1>
+    `    
 }
 
+let userIntroduction = document.getElementById("user-introduction")
 showUser(userIntroduction)
 
 
@@ -64,7 +73,12 @@ function seeOptions(div){
 
 seeOptions(optionsUser)
 
-//To controll how each option is focused
+/**
+ * 
+ * To controll how each option is focused, it removes the CSS "selected" 
+ * from every option and add to the selected one the CSS removed
+ * 
+ */
 function beSelected(option){
     let options = optionsUser.getElementsByTagName("div")
     //Se los quita a todos el atributo "selected"
@@ -77,12 +91,17 @@ function beSelected(option){
 }
 
 
-
+/*
+ * This function is to show the information depending on 
+ * what div has been selected
+ */
 function showOption(optionContent){
+    //First, we get the id
     const id = optionContent.id
     let contentDiv = document.getElementById("contentDiv")
-
+    //Now, in case of the div selected, we will show diferent kind of information
     switch (id) {
+        //To check your personal data
         case "seeData":
             contentDiv.innerHTML=`
             <div class="user-data-container" >
@@ -99,11 +118,9 @@ function showOption(optionContent){
                     <p><b>Phone Number:</b> ${userDatas.mobilePhone}</p>
                 </div>
             </div>
-            
-            
             `
-            
             break;
+            //To check the orders
         case "orders":
             contentDiv.innerHTML=`
                 <div class="orders-data-container">
@@ -194,68 +211,14 @@ function showOption(optionContent){
                             <td>Pending</td>
                             <td>On going</td>
                         </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
+                        
 
                     </table>
                 </div>
             `
                 
             break;
+            //To check the employees
         case "employees":
             contentDiv.innerHTML=`
                 <div class="orders-data-container">
@@ -284,52 +247,13 @@ function showOption(optionContent){
                             <td>123456789</td>
                             <td>1000,00€</td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Pablo</td>
-                            <td>Lanero Perez</td>
-                            <td>example@gmail.com</td>
-                            <td>123456789</td>
-                            <td>1000,00€</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Pablo</td>
-                            <td>Lanero Perez</td>
-                            <td>example@gmail.com</td>
-                            <td>123456789</td>
-                            <td>1000,00€</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Pablo</td>
-                            <td>Lanero Perez</td>
-                            <td>example@gmail.com</td>
-                            <td>123456789</td>
-                            <td>1000,00€</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Pajas</td>
-                            <td>3000</td>
-                            <td>example@gmail.com</td>
-                            <td>123456789</td>
-                            <td>6969,00€</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Pablo</td>
-                            <td>Lanero Perez</td>
-                            <td>example@gmail.com</td>
-                            <td>123456789</td>
-                            <td>1000,00€</td>
-                        </tr>
+                        
                     </table>
                 </div>
             `
                 
             break;
-
+        //To see the cv
         case "cvs":
             contentDiv.innerHTML=`
                 <table>
@@ -371,7 +295,7 @@ function showOption(optionContent){
     }
 
 }
-
+//To load the project and have some information
 let objectInitial = {"id": "seeData"}
 showOption(objectInitial)
 

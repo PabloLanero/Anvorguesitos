@@ -1,6 +1,8 @@
 
-
-
+/**
+ * This method will take every data in the formulary and
+ * save it in SessionStorage with the key "user"
+ */
 function createUser() {
 
 //First of all, we get the values
@@ -33,7 +35,10 @@ function createUser() {
 }
 
 
-
+/**
+ * This method change the section from the header login 
+ * to redirect to the 
+ */
 function isLogged(){
     let user = JSON.parse(sessionStorage.getItem("user"))
     if(user){
