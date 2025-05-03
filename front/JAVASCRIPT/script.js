@@ -1,5 +1,6 @@
 //mockData////////////////////////////////////////////////////
-function mockData() {
+async function mockData() {
+    ```
     return {
         "results": [
             {
@@ -206,6 +207,15 @@ function mockData() {
         ]
         
     };
+    ```
+
+
+
+    const datas =  await fetch("http://localhost:8080/api/Ejemplo")
+    const datasParsed = await datas.text()
+    const results = JSON.parse(datasParsed)
+    console.log(results.results)
+    return results
 }
 
 
