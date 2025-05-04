@@ -1,5 +1,6 @@
 //mockData////////////////////////////////////////////////////
-async function mockData() {
+ async function mockData() {
+    /*
     ```
     return {
         "results": [
@@ -208,14 +209,14 @@ async function mockData() {
         
     };
     ```
+    */
 
 
-
-    const datas =  await fetch("http://localhost:8080/api/Ejemplo")
-    const datasParsed = await datas.text()
+    const datas = await  fetch("http://localhost:8080/api/Ejemplo")
+    const datasParsed =  await datas.text()
     const results = JSON.parse(datasParsed)
     console.log(results.results)
-    return results
+    return results.results
 }
 
 
