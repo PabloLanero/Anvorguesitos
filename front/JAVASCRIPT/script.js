@@ -215,8 +215,8 @@
     const datas = await  fetch("http://localhost:8080/api/Ejemplo")
     const datasParsed =  await datas.text()
     const results = JSON.parse(datasParsed)
-    console.log(results.results)
-    return results.results
+    //console.log(results.results)
+    return results
 }
 
 
@@ -253,8 +253,10 @@ function createProductCard(product, container) {
 
  function getProducts(category, container){          //it must be async when we call api
     try {
+        const results =mockData()
+        
         const data = mockData(); // Simulating API call
-
+        
         //group by category in a new array 
         const arrayProductsByCategory = data.results.filter(product => product.id_productCategory === category);
 
