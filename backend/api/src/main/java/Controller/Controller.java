@@ -1,52 +1,44 @@
 package Controller;
 
-import Controller.Actions.PeliculaAction;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import Controller.Actions.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.Array;
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
 
-@WebServlet(name = "Controller", urlPatterns = {"/Pelicula"})
+
+import javax.servlet.annotation.WebServlet;
+//es una importación en Java que permite utilizar la anotación @WebServlet.
+//Registra un servlet de manera automática.
+// Especifica la URL en la que el servlet responderá.
+//Simplifica la configuración de servlets en aplicaciones Java EE o Jakarta EE.
+
+@WebServlet(name = "Controller", urlPatterns = {"/Controller"})   //quiere decir que responde a http://localhost:8080/Controller
 public class Controller extends HttpServlet {
 
-    private void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
-        //request.getMethod()
-        //request.getQueryString()
-        response.setContentType("text/plain;charset=UTF-8");
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException { //processrequest maneja las solicitudes  get y post para evitar duplicar codigo
+        response.setContentType("text/plain;charset=UTF-8"); //Define el tipo de contenido que se enviará al usuario
         PrintWriter out = response.getWriter();
-        String strAction = request.getParameter("ACTION");
-        //ACTION=PELICULA.FIND_ALL --> HAMBURGUER.FIND_ALL // USER.FIND
-        String[] arrayAction= new String[2];;
-        if (strAction != "")
+
+        String action = request.getParameter("ACTION");   //Extrae el valor de ACTION desde la solicitud HTTP.ej "PELICULA.FIND_ALL."
+        String[] arrayAction = new String[2]; //crea un array de dos posiciones para dividir el action entre el sujeto y la accion  [pelicula, find_all]
+        if (action != "")
         {
-            arrayAction = strAction.split("\\."); //[0] PELICULA <-> [1] FIND_ALL
+            arrayAction = action.split("\\."); //[0] PELICULA <-> [1] FIND_ALL  //parte por los puntos
         }
         switch (arrayAction[0].toUpperCase())
         {
-            case "PELICULA":
+            case "PRODUCTO":
             {
-                out.print(new PeliculaAction().execute(request,response, arrayAction[1]));
+                out.print(new ProductAction().execute(request,response, arrayAction[1]));
                 break;
             }
             default:
             {
-                System.out.println(arrayAction[0]);
-                throw new ServletException ("Acción " + arrayAction[0] +" no valida");
+                System.out.println(action);
+                throw new ServletException ( action +" not valid action");
             }
         }
-        System.out.println(strAction);
+
+        System.out.println(action);
     }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-
-}

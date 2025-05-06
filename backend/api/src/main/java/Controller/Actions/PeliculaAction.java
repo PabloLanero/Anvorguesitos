@@ -17,7 +17,7 @@ public class PeliculaAction implements IAction {
                 //strReturn
                 break;
             case "FIND_ALL":
-                Pelicula peli = new Pelicula();
+                Product peli = new Product();
                 peli.setTitulo("La Perseguida hasta el catre");
                 peli.setDuracion(12);
                 strReturn = findAll(peli);
@@ -29,14 +29,14 @@ public class PeliculaAction implements IAction {
         return strReturn;
     }
 
-    private String findAll(Pelicula peli ) {
+    private String findAll(Product peli ) {
 
         PeliculaDao peliculaDao = new PeliculaDao();
-        ArrayList<Pelicula> peliculas = peliculaDao.findAll(peli);
-        Pelicula pel = new Pelicula();
+        ArrayList<Product> peliculas = peliculaDao.findAll(peli);
+        Product pel = new Product();
         //ArrayList<Pelicula> peliculas = peliculaDao.findAll(null);
        //         ArrayList<Pelicula> peliculas = new ArrayList<>();
         peliculas.add(pel);
-        return Pelicula.toArrayJSon(peliculas);
+        return Product.toArrayJSon(peliculas);
     }
 }
