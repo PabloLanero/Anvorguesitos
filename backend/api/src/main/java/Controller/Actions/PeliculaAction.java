@@ -29,6 +29,7 @@ public class PeliculaAction implements IAction {
         return strReturn;
     }
 
+    /*
     private String findAll(Product peli ) {
 
         PeliculaDao peliculaDao = new PeliculaDao();
@@ -38,5 +39,5 @@ public class PeliculaAction implements IAction {
        //         ArrayList<Pelicula> peliculas = new ArrayList<>();
         peliculas.add(pel);
         return Product.toArrayJSon(peliculas);
-    }
+    }*/
 }
