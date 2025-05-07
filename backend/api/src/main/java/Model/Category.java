@@ -26,5 +26,14 @@ public class Category {
         this.category = category;
     }
 
+    //ToString
 
+
+    @Override
+    public String toString () {
+        return "Category{" +
+                "\"category\"='" + category + '\'' +
+                ", \"idCategory\"=" + idCategory +
+                '}';
+    }
 }

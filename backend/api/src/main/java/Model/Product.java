@@ -9,11 +9,21 @@ public class Product {
     private int idProduct;
     private Double price;
     private Category category;
-    private ArrayList<Ingredients> ingredients = new ArrayList<>();
+    private ArrayList<Ingredient> ingredients = new ArrayList<>();
 
     //Constructors
 
 
+    public Product (int idProduct, String productTitle, String description, Category category, ArrayList<Ingredient> ingredients, String imagePath, Double price) {
+        this.idProduct = idProduct;
+        this.productTitle = productTitle;
+        this.description = description;
+        this.category = category;
+        this.ingredients = ingredients;
+        this.imagePath = imagePath;
+        this.price = price;
+    }
+    public Product (){}
 
     //getters y setters
     public Category getCategory () {
@@ -40,10 +50,10 @@ public class Product {
     public void setImagePath (String imagePath) {
         this.imagePath = imagePath;
     }
-    public ArrayList<Ingredients> getIngredients () {
+    public ArrayList<Ingredient> getIngredients () {
         return ingredients;
     }
-    public void setIngredients (ArrayList<Ingredients> ingredients) {
+    public void setIngredients (ArrayList<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
     public Double getPrice () {
@@ -57,5 +67,20 @@ public class Product {
     }
     public void setProductTitle (String productTitle) {
         this.productTitle = productTitle;
+    }
+
+    //ToString
+
+    @Override
+    public String toString () {
+        return "Product{" +
+                "\"category\"=" + category +
+                ", \"productTitle\"='" + productTitle + '\'' +
+                ", \"description\"='" + description + '\'' +
+                ", \"imagePath\"='" + imagePath + '\'' +
+                ", \"idProduct\"=" + idProduct +
+                ", \"price\"=" + price +
+                ", \"ingredients\"=" + ingredients +
+                '}';
     }
 }

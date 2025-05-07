@@ -5,9 +5,15 @@ public class OrderLine {
     private Product product;
 
     //Constructors
+    public OrderLine (int idOrderLine, Product product, int cuantity) {
+        this.idOrderLine = idOrderLine;
+        this.product = product;
+        this.cuantity = cuantity;
+    }
 
-
-    //Getter y Setters
+    public OrderLine () {
+    }
+//Getter y Setters
 
     public int getIdOrderLine () {
         return idOrderLine;
@@ -30,4 +36,12 @@ public class OrderLine {
 
     //ToString
 
+    @Override
+    public String toString () {
+        return "OrderLine{" +
+                "\"cuantity\"=" + cuantity +
+                ", \"idOrderLine\"=" + idOrderLine +
+                ", \"product\"=" + product +
+                '}';
+    }
 }

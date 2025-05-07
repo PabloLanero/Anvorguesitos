@@ -1,12 +1,20 @@
 package Model;
 
-public class Ingredients {
+public class Ingredient {
     private int idIngredient;
     private String ingredientName;
     private String allergen;
 
     //Constructors
 
+
+    public Ingredient (int idIngredient, String ingredientName, String allergen) {
+        this.idIngredient = idIngredient;
+        this.ingredientName = ingredientName;
+        this.allergen = allergen;
+    }
+
+    public Ingredient () {};
 
     //Getter y Setters
     public int getIdIngredient () {
@@ -30,4 +38,12 @@ public class Ingredients {
 
     //ToString
 
+    @Override
+    public String toString () {
+        return "Ingredient{" +
+                "\"allergen\"='" + allergen + '\'' +
+                ", \"idIngredient\"=" + idIngredient +
+                ", \"ingredientName\"='" + ingredientName + '\'' +
+                '}';
+    }
 }

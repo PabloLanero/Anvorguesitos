@@ -6,7 +6,12 @@ public class PaymentMethod {
     private String paymentMethod;
 
     //Constructors
+    public PaymentMethod (int idPaymentMethod, String paymentMethod) {
+        this.idPaymentMethod = idPaymentMethod;
+        this.paymentMethod = paymentMethod;
+    }
 
+    public PaymentMethod (){}
 
     //Getter y Setters
     public int getIdPaymentMethod () {
@@ -24,4 +29,11 @@ public class PaymentMethod {
 
     //ToString
 
+    @Override
+    public String toString () {
+        return "PaymentMethod{" +
+                "idPaymentMethod=" + idPaymentMethod +
+                ", paymentMethod='" + paymentMethod + '\'' +
+                '}';
+    }
 }
