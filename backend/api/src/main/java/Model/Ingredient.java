@@ -8,6 +8,14 @@ public class Ingredient {
     //Constructors
 
 
+    public Ingredient (int idIngredient, String ingredientName, String allergen) {
+        this.idIngredient = idIngredient;
+        this.ingredientName = ingredientName;
+        this.allergen = allergen;
+    }
+
+    public Ingredient () {};
+
     //Getter y Setters
     public int getIdIngredient () {
         return idIngredient;
@@ -30,4 +38,12 @@ public class Ingredient {
 
     //ToString
 
+    @Override
+    public String toString () {
+        return "Ingredient{" +
+                "\"allergen\"='" + allergen + '\'' +
+                ", \"idIngredient\"=" + idIngredient +
+                ", \"ingredientName\"='" + ingredientName + '\'' +
+                '}';
+    }
 }

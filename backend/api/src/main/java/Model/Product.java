@@ -14,6 +14,16 @@ public class Product {
     //Constructors
 
 
+    public Product (int idProduct, String productTitle, String description, Category category, ArrayList<Ingredient> ingredients, String imagePath, Double price) {
+        this.idProduct = idProduct;
+        this.productTitle = productTitle;
+        this.description = description;
+        this.category = category;
+        this.ingredients = ingredients;
+        this.imagePath = imagePath;
+        this.price = price;
+    }
+    public Product (){}
 
     //getters y setters
     public Category getCategory () {
@@ -57,5 +67,20 @@ public class Product {
     }
     public void setProductTitle (String productTitle) {
         this.productTitle = productTitle;
+    }
+
+    //ToString
+
+    @Override
+    public String toString () {
+        return "Product{" +
+                "\"category\"=" + category +
+                ", \"productTitle\"='" + productTitle + '\'' +
+                ", \"description\"='" + description + '\'' +
+                ", \"imagePath\"='" + imagePath + '\'' +
+                ", \"idProduct\"=" + idProduct +
+                ", \"price\"=" + price +
+                ", \"ingredients\"=" + ingredients +
+                '}';
     }
 }

@@ -7,7 +7,13 @@ public class Store {
     private String location;
 
     //Constructor
+    public Store (int idStore, String location, String modeStore) {
+        this.idStore = idStore;
+        this.location = location;
+        this.modeStore = modeStore;
+    }
 
+    public Store (){}
 
     //Getter y Setters
     public int getIdStore () {
@@ -30,4 +36,14 @@ public class Store {
     }
 
     //ToString
+
+
+    @Override
+    public String toString () {
+        return "Store{" +
+                "\"idStore\"=" + idStore +
+                ", \"modeStore\"='" + modeStore + '\'' +
+                ", \"location\"='" + location + '\'' +
+                '}';
+    }
 }

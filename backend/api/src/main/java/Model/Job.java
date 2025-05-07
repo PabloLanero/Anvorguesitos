@@ -6,7 +6,14 @@ public class Job {
     private double minSalary, maxSalary;
 
     //Constructors
+    public Job (int idJob, String jobTitle, double maxSalary, double minSalary) {
+        this.idJob = idJob;
+        this.jobTitle = jobTitle;
+        this.maxSalary = maxSalary;
+        this.minSalary = minSalary;
+    }
 
+    public Job (){}
 
     //Getter y Setters
     public int getIdJob () {
@@ -35,4 +42,15 @@ public class Job {
     }
 
     //ToString
+
+
+    @Override
+    public String toString () {
+        return "Job{" +
+                "\"idJob\"=" + idJob +
+                ", \"jobTitle\"='" + jobTitle + '\'' +
+                ", \"minSalary\"=" + minSalary +
+                ", \"maxSalary\"=" + maxSalary +
+                '}';
+    }
 }

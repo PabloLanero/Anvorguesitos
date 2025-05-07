@@ -10,6 +10,21 @@ public class Employee {
     //Constructor
 
 
+    public Employee (int idEmployee, String employeeFirstName, String employeeLastName, String emailEmployee, String phoneEmployee, Store store, Job job, String hiringDate, double salary, String passwordEmployee) {
+        this.idEmployee = idEmployee;
+        this.employeeFirstName = employeeFirstName;
+        this.employeeLastName = employeeLastName;
+        this.emailEmployee = emailEmployee;
+        this.phoneEmployee = phoneEmployee;
+        this.store = store;
+        this.job = job;
+        this.hiringDate = hiringDate;
+        this.salary = salary;
+        this.passwordEmployee = passwordEmployee;
+    }
+
+    public Employee () {}
+
     //Getter y Setters
     public String getEmailEmployee () {
         return emailEmployee;
@@ -74,4 +89,19 @@ public class Employee {
 
     //ToString
 
+    @Override
+    public String toString () {
+        return "Employee{" +
+                "\"emailEmployee\"='" + emailEmployee + '\'' +
+                ", \"idEmployee\"=" + idEmployee +
+                ", \"employeeFirstName\"='" + employeeFirstName + '\'' +
+                ", \"employeeLastName\"='" + employeeLastName + '\'' +
+                ", \"hiringDate\"='" + hiringDate + '\'' +
+                ", \"phoneEmployee\"='" + phoneEmployee + '\'' +
+                ", \"passwordEmployee\"='" + passwordEmployee + '\'' +
+                ", \"salary\"=" + salary +
+                ", \"job\"=" + job +
+                ", \"store\"=" + store +
+                '}';
+    }
 }

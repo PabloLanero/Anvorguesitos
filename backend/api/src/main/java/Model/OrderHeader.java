@@ -15,6 +15,21 @@ public class OrderHeader {
     //Constructor
 
 
+    public OrderHeader (int idOrderHeader, String shippingAddress, String orderStatus, Customer customer, Employee employee, ArrayList<OrderLine> orderLine, PaymentMethod paymentMethod, String orderDate, boolean accepted) {
+        this.idOrderHeader = idOrderHeader;
+        this.shippingAddress = shippingAddress;
+        this.orderStatus = orderStatus;
+        this.customer = customer;
+        this.employee = employee;
+        this.orderLine = orderLine;
+        this.paymentMethod = paymentMethod;
+        this.orderDate = orderDate;
+        this.accepted = accepted;
+    }
+
+    public OrderHeader () {
+    }
+
     //Getter y Setters
     public boolean isAccepted () {
         return accepted;
@@ -73,4 +88,18 @@ public class OrderHeader {
 
     //ToString
 
+    @Override
+    public String toString () {
+        return "OrderHeader{" +
+                "\"accepted\"=" + accepted +
+                ", \"idOrderHeader\"=" + idOrderHeader +
+                ", \"orderDate\"='" + orderDate + '\'' +
+                ", \"shippingAddress\"='" + shippingAddress + '\'' +
+                ", \"orderStatus\"='" + orderStatus + '\'' +
+                ", \"paymentMethod\"=" + paymentMethod +
+                ", \"customer\"=" + customer +
+                ", \"employee\"=" + employee +
+                ", \"orderLine\"=" + orderLine +
+                '}';
+    }
 }
