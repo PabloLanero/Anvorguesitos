@@ -9,7 +9,7 @@ public class Product {
     private int idProduct;
     private Double price;
     private Category category;
-    private ArrayList<Ingredients> ingredients = new ArrayList<>();
+    private ArrayList<Ingredient> ingredients = new ArrayList<>();
 
     //Constructors
 
@@ -40,10 +40,10 @@ public class Product {
     public void setImagePath (String imagePath) {
         this.imagePath = imagePath;
     }
-    public ArrayList<Ingredients> getIngredients () {
+    public ArrayList<Ingredient> getIngredients () {
         return ingredients;
     }
-    public void setIngredients (ArrayList<Ingredients> ingredients) {
+    public void setIngredients (ArrayList<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
     public Double getPrice () {

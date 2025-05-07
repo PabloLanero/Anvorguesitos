@@ -1,6 +1,6 @@
 package Model;
 
-public class Ingredients {
+public class Ingredient {
     private int idIngredient;
     private String ingredientName;
     private String allergen;

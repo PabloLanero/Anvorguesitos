@@ -2,9 +2,9 @@ package Model;
 
 import java.util.ArrayList;
 
-public class ProductDao implements Dao{
+public class PaymentMethodDao implements Dao{
 
-    private final String SQL_FINDALL = "SELECT * FROM PRODUCTS WHERE 1=1";
+    private final String SQL_FINDALL = "SELECT * FROM PAYMENT_METHODS WHERE 1=1";
     private IMotorSql motorSql;
 
     @Override
