@@ -64,24 +64,28 @@ public class MotorSql implements IMotorSql {
             rs = st.executeQuery(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            rs = null;
         }
         return rs;
     }
 
 
     @Override
-    public void disconnect() {
-        try {
-            if (rs != null) {    //ResultSet almacena los resultados de una consulta SELECT. Si no se cierra correctamente, puede generar fugas de memoria.
+    public void disconnect () {
+        try{
+            if(rs != null && !rs.isClosed()){
                 rs.close();
             }
-            if (st != null) {   //lib recursos
+
+            if(st != null && !st.isClosed()){
                 st.close();
             }
-            if (conn != null) {   //lib recursos
+
+            if(conn != null && conn.isClosed()){
                 conn.close();
             }
-        } catch (SQLException ex) {
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }
