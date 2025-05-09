@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 
 public class Product {
+    //enum
+    enum Category {BURGER, SIDEDISH, DRINK};
+
     //atributos
     private String productTitle, description, imagePath;
     private int idProduct;

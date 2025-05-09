@@ -3,6 +3,8 @@ package Model;
 import java.util.ArrayList;
 
 public class OrderHeader {
+    //enum
+    enum PaymentMethod{CREDITCARD, CASH};
 
     private int idOrderHeader;
     private String orderDate, shippingAddress, orderStatus;
