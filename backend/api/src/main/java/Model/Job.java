@@ -46,11 +46,11 @@ public class Job {
 
     @Override
     public String toString () {
-        return "Job{" +
-                "\"idJob\"=" + idJob +
-                ", \"jobTitle\"='" + jobTitle + '\'' +
-                ", \"minSalary\"=" + minSalary +
-                ", \"maxSalary\"=" + maxSalary +
+        return "\"Job\":{" +
+                "\"idJob\":\"" + idJob + '\"' +
+                ", \"jobTitle\":\"" + jobTitle + '\"' +
+                ", \"minSalary\":\"" + minSalary + '\"' +
+                ", \"maxSalary\":\"" + maxSalary + '\"' +
                 '}';
     }
 }

@@ -72,14 +72,14 @@ public class Customer {
     //ToString
     @Override
     public String toString () {
-        return "Customer{" +
-                "\"emailCustomer\"='" + emailCustomer + '\'' +
-                ", \"idCustomer\"=" + idCustomer +
-                ", \"firstName\"='" + firstName + '\'' +
-                ", \"lastName\"='" + lastName + '\'' +
-                ", \"phoneCustomer\"='" + phoneCustomer + '\'' +
-                ", \"passwordCustomer\"='" + passwordCustomer + '\'' +
-                ", \"registered\"=" + registered +
+        return "\"Customer\":{" +
+                "\"emailCustomer\":\"" + emailCustomer + '\"' +
+                ", \"idCustomer\":\"" + idCustomer + '\"' +
+                ", \"firstName\":\"" + firstName + '\"' +
+                ", \"lastName\":\"" + lastName + '\"' +
+                ", \"phoneCustomer\":\"" + phoneCustomer + '\"' +
+                ", \"passwordCustomer\":\"" + passwordCustomer + '\"' +
+                ", \"registered\":\"" + registered + '\"' +
                 '}';
     }
 }

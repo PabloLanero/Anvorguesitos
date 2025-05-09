@@ -1,6 +1,6 @@
 package Model;
 
-public class Employee {
+public class    Employee {
     private int idEmployee;
     private String employeeFirstName, employeeLastName, hiringDate, emailEmployee, phoneEmployee,passwordEmployee;
     private double salary;
@@ -96,17 +96,17 @@ public class Employee {
 
     @Override
     public String toString () {
-        return "Employee{" +
-                "\"emailEmployee\"='" + emailEmployee + '\'' +
-                ", \"idEmployee\"=" + idEmployee +
-                ", \"employeeFirstName\"='" + employeeFirstName + '\'' +
-                ", \"employeeLastName\"='" + employeeLastName + '\'' +
-                ", \"hiringDate\"='" + hiringDate + '\'' +
-                ", \"phoneEmployee\"='" + phoneEmployee + '\'' +
-                ", \"passwordEmployee\"='" + passwordEmployee + '\'' +
-                ", \"salary\"=" + salary +
-                ", \"job\"=" + job +
-                ", \"store\"=" + store +
+        return "\"Employee\":{" +
+                "\"emailEmployee\":\"" + emailEmployee + '\"' +
+                ", \"idEmployee\":\"" + idEmployee + '\"' +
+                ", \"employeeFirstName\":\"" + employeeFirstName + + '\"' +
+                ", \"employeeLastName\":\"" + employeeLastName + '\"' +
+                ", \"hiringDate\":\"" + hiringDate + '\"' +
+                ", \"phoneEmployee\":\"" + phoneEmployee + '\"' +
+                ", \"passwordEmployee\":\"" + passwordEmployee + '\"' +
+                ", \"salary\":" + salary +
+                ", \"job\":{" + job + '}'+
+                ", \"store\":{" + store +'}'+
                 '}';
     }
 }

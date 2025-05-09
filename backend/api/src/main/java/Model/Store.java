@@ -40,10 +40,10 @@ public class Store {
 
     @Override
     public String toString () {
-        return "Store{" +
-                "\"idStore\"=" + idStore +
-                ", \"modeStore\"='" + modeStore + '\'' +
-                ", \"location\"='" + location + '\'' +
+        return "\"Store\":{" +
+                "\"idStore\":" + idStore +
+                ", \"modeStore\":'" + modeStore + '\'' +
+                ", \"location\":'" + location + '\'' +
                 '}';
     }
 }

@@ -32,7 +32,11 @@ public class OrderHeaderDao implements Dao{
 
     @Override
     public ArrayList  findAll(Object bean) {
+
+        //Creamos la lista en la que se va a almacenar los datos
         ArrayList<OrderHeader> listOrderHeader = new ArrayList<>();
+
+        //Y empezamos a crear la sentencia
         String sql = "SELECT OH.id_orderHeader, OH.orderDate, OH.shippingAddress, OH.isTransactionAcepted, OH.orderStatus, PM.id_paymentMethod, PM.paymentMethodName, " +
                 "CU.id_customer, CU.firstName, EM.id_employee, EM.employeeFirstName " +
                 "FROM Hambearguesitos.ORDERS_HEADER OH " +
@@ -41,13 +45,20 @@ public class OrderHeaderDao implements Dao{
                 "INNER JOIN Hambearguesitos.EMPLOYEES EM ON EM.id_employee = OH.id_employee " +
                 "WHERE 1 = 1 ";
         try{
+            //Nos conectamos
             motorSql.connect();
+            //Y si se pasa un objeto de tipo OrderHeader, se aplicarian los filtros aqui
             if(bean !=null){
+                //OrderHeader objOrderHeader = (OrderHeader) bean;
 
             }
             sql += ";";
+            //Aqui ejecumatos la sentencia para lanzarla a la base de datos
             ResultSet rs = motorSql.executeQuery(sql);
+
+            //Y aqui recogemos los datos para añadirlos a la lista
             while(rs.next()){
+                //Creamos un objeto con las propiedades de la fila devuelta como resultado
                 OrderHeader pedido = new OrderHeader(
                             //Aqui se instancia la parte del pedido
                         rs.getInt("id_orderHeader"),rs.getString("shippingAddress"),rs.getString("orderStatus"),
@@ -60,6 +71,8 @@ public class OrderHeaderDao implements Dao{
                             //Aqui se termina de crear el objeto de pedido
 
                         rs.getString("orderDate"),rs.getBoolean("isTransactionAcepted"));
+
+                //Y lo añadimos a la lista
                 listOrderHeader.add(pedido);
             }
             return listOrderHeader;

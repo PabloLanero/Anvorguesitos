@@ -32,9 +32,9 @@ public class Category {
 
     @Override
     public String toString () {
-        return "Category{" +
-                "\"category\"='" + category + '\'' +
-                ", \"idCategory\"=" + idCategory +
+        return "\"Category\":{" +
+                "\"category\":'" + category + '\'' +
+                ", \"idCategory\":" + idCategory +
                 '}';
     }
 }

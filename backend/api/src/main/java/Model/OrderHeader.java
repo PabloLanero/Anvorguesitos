@@ -99,16 +99,16 @@ public class OrderHeader {
 
     @Override
     public String toString () {
-        return "OrderHeader{" +
-                "\"accepted\"=" + accepted +
-                ", \"idOrderHeader\"=" + idOrderHeader +
-                ", \"orderDate\"='" + orderDate + '\'' +
-                ", \"shippingAddress\"='" + shippingAddress + '\'' +
-                ", \"orderStatus\"='" + orderStatus + '\'' +
-                ", \"paymentMethod\"=" + paymentMethod +
-                ", \"customer\"=" + customer +
-                ", \"employee\"=" + employee +
-                ", \"orderLine\"=" + listOrderLine +
+        return "\"OrderHeader\":{" +
+                "\"accepted\":" + accepted +
+                ", \"idOrderHeader\":" + idOrderHeader +
+                ", \"orderDate\": \"" + orderDate + '\"' +
+                ", \"shippingAddress\":\"" + shippingAddress + '\"' +
+                ", \"orderStatus\":\"" + orderStatus + '\"' +
+                ", \"paymentMethod\":{" + paymentMethod +
+                ", \"customer\":{" + customer +
+                ", \"employee\":{" + employee + 
+                ", \"orderLine\":\"" + listOrderLine +"\""+
                 '}';
     }
 }

@@ -31,9 +31,9 @@ public class PaymentMethod {
 
     @Override
     public String toString () {
-        return "PaymentMethod{" +
-                "idPaymentMethod=" + idPaymentMethod +
-                ", paymentMethod='" + paymentMethod + '\'' +
+        return "\"PaymentMethod\":{" +
+                "\"idPaymentMethod\":\"" + idPaymentMethod + '\"'+
+                ", \"paymentMethod\":\"" + paymentMethod + '\"' +
                 '}';
     }
 }

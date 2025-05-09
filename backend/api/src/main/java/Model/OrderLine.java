@@ -45,11 +45,11 @@ public class OrderLine {
     //ToString
     @Override
     public String toString () {
-        return "OrderLine{" +
-                "cuantity=" + cuantity +
-                ", idOrderLine=" + idOrderLine +
-                ", product=" + product +
-                ", orderHeader=" + orderHeader +
+        return "\"OrderLine\":{" +
+                "\"cuantity\":" + cuantity +
+                ", \"idOrderLine\":" + idOrderLine +
+                ", \"product\":" + product +
+                ", \"orderHeader\":" + orderHeader +
                 '}';
     }
 }
