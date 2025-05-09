@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context docBase="C:\Users\Suriv\OneDrive\Escritorio\Anvorgueseria\backend\api\src\webapp">
+  <Resources cacheMaxSize="10240">
+    <PreResources base="C:/Users/Suriv/OneDrive/Escritorio/Anvorgueseria/backend/api/target/classes" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/WEB-INF/classes"/>
+    <PostResources base="C:/Users/Suriv/.m2/repository/com/google/code/gson/gson/2.12.1/gson-2.12.1.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/gson-2.12.1.jar"/>
+    <PostResources base="C:/Users/Suriv/.m2/repository/com/google/errorprone/error_prone_annotations/2.36.0/error_prone_annotations-2.36.0.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/error_prone_annotations-2.36.0.jar"/>
+    <PostResources base="C:/Users/Suriv/OneDrive/Escritorio/Anvorgueseria/backend/api/lib/javax.servlet-api-4.0.1.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/javax.servlet-api-4.0.1.jar"/>
+    <PostResources base="C:/Users/Suriv/OneDrive/Escritorio/Anvorgueseria/backend/api/lib/gson-2.12.1.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/gson-2.12.1.jar"/>
+    <PostResources base="C:/Users/Suriv/OneDrive/Escritorio/Anvorgueseria/backend/api/lib/error_prone_annotations-2.36.0.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/error_prone_annotations-2.36.0.jar"/>
+  </Resources>
+</Context>

@@ -1,5 +1,7 @@
 //mockData////////////////////////////////////////////////////
-function mockData() {
+ async function mockData() {
+    /*
+    ```
     return {
         "results": [
             {
@@ -206,8 +208,17 @@ function mockData() {
         ]
         
     };
-}
+    ```
+    */
 
+
+    const datas = await  fetch("http://localhost:8080/api/Ejemplo")
+    const datasParsed =  await datas.json()
+    //const results = await datasParsed.json()
+    console.log(datasParsed)
+    return datasParsed
+}
+const products = mockData()
 
 
 
@@ -242,8 +253,10 @@ function createProductCard(product, container) {
 
  function getProducts(category, container){          //it must be async when we call api
     try {
-        const data = mockData(); // Simulating API call
-
+       
+        
+        const data =  products// Simulating API call
+        
         //group by category in a new array 
         const arrayProductsByCategory = data.results.filter(product => product.id_productCategory === category);
 

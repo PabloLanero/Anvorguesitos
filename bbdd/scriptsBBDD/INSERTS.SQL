@@ -1,5 +1,6 @@
 
 INSERT INTO INGREDIENTS ( ingredientName, allergen) VALUES 
+(NULL,NULL),
 ('Ternasco de Aragón (lamb or veal)', 'none'),
 ('Tudela asparagus', 'none'),
 ('Tronchón cheese', 'milk'),
@@ -40,13 +41,13 @@ INSERT INTO INGREDIENTS ( ingredientName, allergen) VALUES
 ('Spinach leaves', 'none'),
 ('Barbastro beef', 'none');
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO PRODUCT_CATEGORIES ( name) VALUES
 ('Burger'),
 ('Side Dish'),
 ('Drink');
-----------------------------------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------------------------
 INSERT INTO PRODUCTS (productTitle, description, price, id_productCategory, imagePath) VALUES
 ('Queen of the Pyrenees', 'The majesty of the Pyrenees in every bite. Tender and juicy Ternasco de Aragón lamb, accompanied by creamy Tronchón cheese, roasted Tudela asparagus, and a unique truffle sauce that adds a sophisticated touch. All served on rustic handmade bread that enhances the local flavors. A tribute to the heart of the Aragonese Pyrenees.', 16.50, 1, '../Images/products/burgers/1_hamburguesa---queen-of-the-pyrenees----the-majesty.png'),
 ('Under the Skies of Belchite', 'Inspired by the lands of Belchite, this burger brings together the best of the garden and tradition. Jiloca beef with a hint of Belchite honey and Fraga mustard creates the perfect balance of sweet and tangy. Served with caramelized onions, local Raf tomatoes, and spelt bread. An explosion of flavors that takes you straight to Belchite.', 14.50, 1, '../Images/products/burgers/2_hamburguesa----under-the-shadow-of-the-muela----th.png'),
@@ -70,15 +71,14 @@ INSERT INTO PRODUCTS (productTitle, description, price, id_productCategory, imag
 ('Cola Soda', 'A classic Coca-Cola, sweet and refreshing.', 1.50, 3, '../Images/products/drinks/20_cola-soda.jpg'),
 ('Lemon Soda', 'A refreshing orange soda with a sweet and tangy taste.', 1.50, 3, '../Images/products/drinks/21_lemon-soda.png'),
 ('Orange Soda', 'A refreshing lemon soda, perfect for a hot day.', 1.50, 3, '../Images/products/drinks/22_orange-soda (1).png'),
-('Cariñena Red Wine', 'A smooth red wine from the Cariñena region, perfect for pairing with any meal.', 6, 3, '../Images/products/drinks/23_premium-red-wine-.png'),
-('Somontano White Wine', 'A crisp and aromatic white wine from the Somontano region, ideal for seafood or chicken dishes.'),
+('Cariñena Red Wine', 'A smooth red wine from the Cariñena region, perfect for pairing with any meal.', 6, 3, '../Images/products/drinks/23_premium-red-wine-.png');
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------------------------
 INSERT INTO STORES ( modeStore, location) VALUES
 ('Online', 'Online'),
 ('Physical', 'San Ignacio de Loyola, n20');
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------------------------
 INSERT INTO CUSTOMERS (firstName, lastName, emailCustomer, phoneCustomer, passwordCustomer, isRegistered)
 VALUES
 ('Ana', 'García', 'ana.garcia@example.com', '5551234567', 'password123', 1),
@@ -94,7 +94,7 @@ VALUES
 
 
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 INSERT INTO PAYMENT_METHODS ( paymentMethodName)
@@ -105,7 +105,7 @@ VALUES
 
 
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------------------------
 INSERT INTO JOBS ( jobTitle, minSalary, maxSalary)
 VALUES
     ('Chef', 1500.00, 2500.00),
@@ -113,18 +113,21 @@ VALUES
     ('Manager', 2500.00, 3500.00);
 
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------
+#---------------------------------------MySQL---------------------------------------------
+
+
+
 INSERT INTO EMPLOYEES (
     employeeFirstName, employeeLastName, hiringDate, 
     emailEmployee, phoneEmployee, passwordEmployee, salary, id_job, id_store
 )
 VALUES
-    ('Juan', 'Pérez', TO_DATE('2021-06-01', 'YYYY-MM-DD'), 'juan.perez@email.com', '600123456', '**********', 2200.00, 1, 1),
-    ('Marta', 'González', TO_DATE('2020-05-15', 'YYYY-MM-DD'), 'marta.gonzalez@email.com', '600654321', '**********', 1750.00, 2, 1),
-    ('Pedro', 'Martínez', TO_DATE('2022-02-10', 'YYYY-MM-DD'), 'pedro.martinez@email.com', '600789123', '**********', 2000.00, 1, 2),
-    ('Laura', 'Sánchez', TO_DATE('2019-08-20', 'YYYY-MM-DD'), 'laura.sanchez@email.com', '600321987', '**********', 1600.00, 2, 2),
-    ('Carlos', 'Rodríguez', TO_DATE('2021-11-12', 'YYYY-MM-DD'), 'carlos.rodriguez@email.com', '600654987', '**********', 1800.00, 2, 1),
-    ('Ana', 'López', TO_DATE('2023-01-25', 'YYYY-MM-DD'), 'ana.lopez@email.com', '600321654', '**********', 3200.00, 3, 1);
+    ('Juan', 'Pérez', '2021-06-01', 'juan.perez@email.com', '600123456', '**********', 2200.00, 1, 1),
+    ('Marta', 'González', '2020-05-15', 'marta.gonzalez@email.com', '600654321', '**********', 1750.00, 2, 1),
+    ('Pedro', 'Martínez', '2022-02-10', 'pedro.martinez@email.com', '600789123', '**********', 2000.00, 1, 2),
+    ('Laura', 'Sánchez', '2019-08-20', 'laura.sanchez@email.com', '600321987', '**********', 1600.00, 2, 2),
+    ('Carlos', 'Rodríguez', '2021-11-12', 'carlos.rodriguez@email.com', '600654987', '**********', 1800.00, 2, 1),
+    ('Ana', 'López', '2023-01-25', 'ana.lopez@email.com', '600321654', '**********', 3200.00, 3, 1);
 
 
 
@@ -133,12 +136,9 @@ VALUES
 
 
 
-
-
-
-----------------------------------------------------------------------------------------------------------------------------------------------------------
-------------------------TABLAS INTERMEDIAS------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------------------------
+#------------------------TABLAS INTERMEDIAS------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -257,29 +257,35 @@ INSERT INTO INGREDIENTS_PRODUCTS ( id_ingredient, id_product) VALUES
 (34, 15), -- Rye bread
 
 -- Bebidas (sin ingredientes asignados)
-(NULL, 16), -- Gourmet French Fries (sin ingredientes relacionados)
+(1, 16), -- Gourmet French Fries (sin ingredientes relacionados)
 (5, 17),  -- Crispy Onion Rings (wheat)
-(NULL, 18), -- Fresh Salad (sin ingredientes relacionados)
-(NULL, 19), -- Water (sin ingredientes)
-(NULL, 20), -- Cocacola (sin ingredientes)
-(NULL, 21), -- Orange Fanta (sin ingredientes)
-(NULL, 22), -- Lemon Fanta (sin ingredientes)
-(NULL, 23), -- Cariñena Red Wine (sin ingredientes)
-(NULL, 24), -- Somontano White Wine (sin ingredientes)
-(NULL, 25); -- Ambar Beer (sin ingredientes)
+(1, 18), -- Fresh Salad (sin ingredientes relacionados)
+(1, 19), -- Water (sin ingredientes)
+(1, 20), -- Cocacola (sin ingredientes)
+(1, 22), -- Orange Fanta (sin ingredientes)
+(1, 21), -- Lemon Fanta (sin ingredientes)
+(1, 23); -- Cariñena Red Wine (sin ingredientes)
 
 
 
----------------------------------------------PEDIDOS DE MUESTRA----------------------------------------------------------------------------------------------------------------------
 
-
+#----------------------------------PEDIDOS DE MUESTRA----------------------------------
 
 INSERT INTO ORDERS_HEADER (orderDate, shippingAddress, isTransactionAcepted, orderStatus, id_paymentMethod, id_customer, id_employee) VALUES
-(TO_DATE('2025-04-01', 'YYYY-MM-DD'), 'Calle Mayor 123, Zaragoza', 1, 'Delivered', 1, 1, 2),
-(TO_DATE('2025-04-02', 'YYYY-MM-DD'), 'Av. Goya 45, Zaragoza', 1, 'Shipped', 2, 3, 3),
-(TO_DATE('2025-04-03', 'YYYY-MM-DD'), 'Calle del Sol 78, Huesca', 0, 'Cancelled', 1, 5, 1),
-(TO_DATE('2025-04-04', 'YYYY-MM-DD'), 'Paseo Independencia 89, Zaragoza', 1, 'Processing', 1, 7, 4),
-(TO_DATE('2025-04-05', 'YYYY-MM-DD'), 'Calle Luna 22, Teruel', 1, 'Delivered', 2, 9, 2);
+('2025-04-01', 'Calle Mayor 123, Zaragoza', 1, 'Delivered', 1, 1, 2),
+('2025-04-02', 'Av. Goya 45, Zaragoza', 1, 'Shipped', 2, 3, 3),
+('2025-04-03', 'Calle del Sol 78, Huesca', 0, 'Cancelled', 1, 5, 1),
+('2025-04-04', 'Paseo Independencia 89, Zaragoza', 1, 'Processing', 1, 7, 4),
+('2025-04-05', 'Calle Luna 22, Teruel', 1, 'Delivered', 2, 9, 2);
+
+
+
+
+
+
+
+
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
