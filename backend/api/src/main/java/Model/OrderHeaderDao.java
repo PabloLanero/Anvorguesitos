@@ -50,14 +50,13 @@ public class OrderHeaderDao implements Dao{
             //Y si se pasa un objeto de tipo OrderHeader, se aplicarian los filtros aqui
             if(bean !=null){
                 OrderHeader objOrderHeader = (OrderHeader) bean;
-<<<<<<< HEAD
-=======
+
                 if(objOrderHeader.getIdOrderHeader() > 0){
                     sql += " AND OH.id_orderHeader = "+ objOrderHeader.getIdOrderHeader()+ " ";
                 }
 
 
->>>>>>> d2fcc29fa1c4454e3efdd183b837cfc0193eec2c
+
 
             }
             sql += ";";
@@ -75,7 +74,7 @@ public class OrderHeaderDao implements Dao{
                             //Aqui se crea el empleado del pedido
                         new Employee(rs.getInt("id_employee"),rs.getString("employeeFirstName")),
                             //Aqui se crea el metodo de pago
-                        new PaymentMethod(rs.getInt("id_paymentMethod"),rs.getString("paymentMethodName")),
+                        OrderHeader.PaymentMethod.(rs.getInt("id_paymentMethod")),
                             //Aqui se termina de crear el objeto de pedido
 
                         rs.getString("orderDate"),rs.getBoolean("isTransactionAcepted"));

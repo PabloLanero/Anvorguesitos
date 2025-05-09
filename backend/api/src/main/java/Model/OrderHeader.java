@@ -118,7 +118,7 @@ public class OrderHeader {
                 ", \"orderDate\": \"" + orderDate + '\"' +
                 ", \"shippingAddress\":\"" + shippingAddress + '\"' +
                 ", \"orderStatus\":\"" + orderStatus + '\"' +
-                ", \"paymentMethod\":{" + paymentMethod +
+                ", \"paymentMethod\":\"" + paymentMethod + '\"' +
                 ", \"customer\":{" + customer +
                 ", \"employee\":{" + employee + 
                 ", \"orderLine\":\"" + listOrderLine +"\""+
