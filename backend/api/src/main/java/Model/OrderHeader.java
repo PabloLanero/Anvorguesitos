@@ -10,18 +10,27 @@ public class OrderHeader {
     private PaymentMethod paymentMethod;
     private Customer customer;
     private Employee employee;
-    private ArrayList<OrderLine> orderLine = new ArrayList<OrderLine>();
+    private ArrayList<OrderLine> listOrderLine = new ArrayList<OrderLine>();
 
     //Constructor
-
-
-    public OrderHeader (int idOrderHeader, String shippingAddress, String orderStatus, Customer customer, Employee employee, ArrayList<OrderLine> orderLine, PaymentMethod paymentMethod, String orderDate, boolean accepted) {
+    public OrderHeader (int idOrderHeader, String shippingAddress, String orderStatus, Customer customer, Employee employee, ArrayList<OrderLine> listOrderLine, PaymentMethod paymentMethod, String orderDate, boolean accepted) {
         this.idOrderHeader = idOrderHeader;
         this.shippingAddress = shippingAddress;
         this.orderStatus = orderStatus;
         this.customer = customer;
         this.employee = employee;
-        this.orderLine = orderLine;
+        this.listOrderLine = listOrderLine;
+        this.paymentMethod = paymentMethod;
+        this.orderDate = orderDate;
+        this.accepted = accepted;
+    }
+
+    public OrderHeader (int idOrderHeader, String shippingAddress, String orderStatus, Customer customer, Employee employee, PaymentMethod paymentMethod, String orderDate, boolean accepted) {
+        this.idOrderHeader = idOrderHeader;
+        this.shippingAddress = shippingAddress;
+        this.orderStatus = orderStatus;
+        this.customer = customer;
+        this.employee = employee;
         this.paymentMethod = paymentMethod;
         this.orderDate = orderDate;
         this.accepted = accepted;
@@ -61,11 +70,11 @@ public class OrderHeader {
     public void setOrderDate (String orderDate) {
         this.orderDate = orderDate;
     }
-    public ArrayList<OrderLine> getOrderLine () {
-        return orderLine;
+    public ArrayList<OrderLine> getListOrderLine () {
+        return listOrderLine;
     }
-    public void setOrderLine (ArrayList<OrderLine> orderLine) {
-        this.orderLine = orderLine;
+    public void setListOrderLine (ArrayList<OrderLine> listOrderLine) {
+        this.listOrderLine = listOrderLine;
     }
     public String getOrderStatus () {
         return orderStatus;
@@ -99,7 +108,7 @@ public class OrderHeader {
                 ", \"paymentMethod\"=" + paymentMethod +
                 ", \"customer\"=" + customer +
                 ", \"employee\"=" + employee +
-                ", \"orderLine\"=" + orderLine +
+                ", \"orderLine\"=" + listOrderLine +
                 '}';
     }
 }

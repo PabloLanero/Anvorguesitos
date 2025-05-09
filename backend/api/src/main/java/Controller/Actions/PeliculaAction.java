@@ -18,8 +18,8 @@ public class PeliculaAction implements IAction {
                 break;
             case "FIND_ALL":
                 Product peli = new Product();
-                peli.setTitulo("La Perseguida hasta el catre");
-                peli.setDuracion(12);
+                //peli.setTitulo("La Perseguida hasta el catre");
+                //peli.setDuracion(12);
                 //strReturn = findAll(peli);
                 //strReturn = findAll();
                 break;

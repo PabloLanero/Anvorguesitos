@@ -12,8 +12,6 @@ public class Product {
     private ArrayList<Ingredient> ingredients = new ArrayList<>();
 
     //Constructors
-
-
     public Product (int idProduct, String productTitle, String description, Category category, ArrayList<Ingredient> ingredients, String imagePath, Double price) {
         this.idProduct = idProduct;
         this.productTitle = productTitle;

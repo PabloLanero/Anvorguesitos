@@ -23,6 +23,11 @@ public class Employee {
         this.passwordEmployee = passwordEmployee;
     }
 
+    public Employee(int idEmployee, String employeeFirstName){
+        this.idEmployee = idEmployee;
+        this.employeeFirstName = employeeFirstName;
+    }
+
     public Employee () {}
 
     //Getter y Setters

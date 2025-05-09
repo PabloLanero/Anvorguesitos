@@ -16,6 +16,12 @@ public class Customer {
         this.passwordCustomer = passwordCustomer;
         this.registered = registered;
     }
+
+    public Customer(int idCustomer, String firstName){
+        this.idCustomer = idCustomer;
+        this.firstName = firstName;
+
+    }
     public Customer(){}
 
 

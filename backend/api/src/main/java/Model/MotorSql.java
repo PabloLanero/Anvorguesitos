@@ -18,10 +18,10 @@ public class MotorSql implements IMotorSql {
 
 
     // ¿Dónde está la Base de Datos?
-    private static final String URL = "jdbc:derby://localhost:1527/api";
-    private static final String CONTROLADOR = "org.apache.derby.jdbc.ClientDriver";
-    private static final String USER = "Anvorguesitos1234@";
-    private static final String PASS = "Anvorguesitos1234@";
+    private static final String URL = "jdbc:mysql://hambearguesitos.c10gecgoy05t.us-east-1.rds.amazonaws.com:3306/Hambearguesitos";;
+    private static final String CONTROLADOR = "com.mysql.cj.jdbc.Driver";
+    private static final String USER = "admin";
+    private static final String PASS = "Anvorguesitos1234.";
 
 
     //metodos a implementar

@@ -4,6 +4,7 @@ public class Category {
     private int idCategory;
     private String category;
 
+
     //Constructors
     public Category(int idCategory, String category) {
         this.idCategory = idCategory;
