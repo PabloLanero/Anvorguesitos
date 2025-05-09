@@ -1,12 +1,8 @@
 package Model;
 
-import java.sql.Connection; //→ Conectarse a la base de datos.
-import java.sql.DriverManager;  //-> que se encarga de gestionar los controladores JDBC (Java Database Connectivity) y establecer conexiones con bases de datos.
-import java.sql.ResultSet; //→ Obtener los resultados de una consulta SQL.
-import java.sql.SQLException;
-import java.sql.Statement;//→ Ejecutar sentencias SQL.
 
 
+import java.sql.*;
 
 public class MotorSql implements IMotorSql {
 
@@ -15,6 +11,7 @@ public class MotorSql implements IMotorSql {
     private Connection conn; //conector
     private Statement st;//ejecutar sentencias
     private ResultSet rs; //tabla virtual
+    private PreparedStatement preparedStatement;
 
 
     // ¿Dónde está la Base de Datos?
@@ -46,7 +43,20 @@ public class MotorSql implements IMotorSql {
     }
 
     @Override
+    public boolean execute () {
+        boolean bRet = false;
+        if(preparedStatement !=null){
+            try {
+                 bRet = preparedStatement.execute();
+            }catch (SQLException ex){
 
+                bRet= false;
+            }
+        }
+        return bRet;
+    }
+
+    @Override
     // Consultas DDL - Data Definition Language    // Consultas DML - Data Manipulation Language
     public int execute(String sql) {
         int resp = 0;
@@ -88,4 +98,21 @@ public class MotorSql implements IMotorSql {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public Connection getConnection(){
+        return conn;
+    }
+
+    @Override
+    public void setPreparedStatement(PreparedStatement stmt){
+        preparedStatement = stmt;
+    }
+
+    @Override
+    public boolean execute(PreparedStatement stmt){
+        setPreparedStatement(stmt);
+        return execute();
+    }
+
 }

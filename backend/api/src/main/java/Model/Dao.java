@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public interface Dao <E,I>{
     public int add(E bean);
-    public int delete (Integer e);
+    public int delete (I e);
     public int update(E bean);
     public ArrayList<E> findAll(E bean);
 }
