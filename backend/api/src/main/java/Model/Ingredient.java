@@ -16,6 +16,11 @@ public class Ingredient {
 
     public Ingredient () {};
 
+    public Ingredient(String allergen, String ingredientName) {
+        this.allergen = allergen;
+        this.ingredientName = ingredientName;
+    }
+
     //Getter y Setters
     public int getIdIngredient () {
         return idIngredient;

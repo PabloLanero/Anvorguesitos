@@ -13,8 +13,15 @@ public class OrderLine {
         this.orderHeader = orderHeader;
     }
 
+    public OrderLine(OrderHeader orderHeader, int cuantity, Product product) {
+        this.orderHeader = orderHeader;
+        this.cuantity = cuantity;
+        this.product = product;
+    }
     public OrderLine () {
     }
+
+
 //Getter y Setters
 
     public int getIdOrderLine () {

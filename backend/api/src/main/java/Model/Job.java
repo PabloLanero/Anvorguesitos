@@ -15,6 +15,12 @@ public class Job {
 
     public Job (){}
 
+    public Job(double maxSalary, double minSalary, String jobTitle) {
+        this.maxSalary = maxSalary;
+        this.minSalary = minSalary;
+        this.jobTitle = jobTitle;
+    }
+
     //Getter y Setters
     public int getIdJob () {
         return idJob;

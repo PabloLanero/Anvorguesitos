@@ -16,6 +16,14 @@ public class Customer {
         this.passwordCustomer = passwordCustomer;
         this.registered = registered;
     }
+    public Customer(boolean registered, String passwordCustomer, String phoneCustomer, String emailCustomer, String lastName, String firstName) {
+        this.registered = registered;
+        this.passwordCustomer = passwordCustomer;
+        this.phoneCustomer = phoneCustomer;
+        this.emailCustomer = emailCustomer;
+        this.lastName = lastName;
+        this.firstName = firstName;
+    }
 
     public Customer(int idCustomer, String firstName){
         this.idCustomer = idCustomer;
@@ -23,6 +31,7 @@ public class Customer {
 
     }
     public Customer(){}
+
 
 
     //Setter y getters

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 
 public class Product {
+    //enum
+    enum Category {BURGER, SIDEDISH, DRINK};
+
     //atributos
     private String productTitle, description, imagePath;
     private int idProduct;
@@ -22,6 +25,15 @@ public class Product {
         this.price = price;
     }
     public Product (){}
+
+    public Product(String productTitle, String description, String imagePath, Double price, Category category, ArrayList<Ingredient> ingredients) {
+        this.productTitle = productTitle;
+        this.description = description;
+        this.imagePath = imagePath;
+        this.price = price;
+        this.category = category;
+        this.ingredients = ingredients;
+    }
 
     //getters y setters
     public Category getCategory () {
