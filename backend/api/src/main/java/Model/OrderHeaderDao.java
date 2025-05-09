@@ -49,7 +49,12 @@ public class OrderHeaderDao implements Dao{
             motorSql.connect();
             //Y si se pasa un objeto de tipo OrderHeader, se aplicarian los filtros aqui
             if(bean !=null){
-                //OrderHeader objOrderHeader = (OrderHeader) bean;
+                OrderHeader objOrderHeader = (OrderHeader) bean;
+                if(objOrderHeader.getIdOrderHeader() > 0){
+                    sql += " AND OH.id_orderHeader = "+ objOrderHeader.getIdOrderHeader()+ " ";
+                }
+
+
 
             }
             sql += ";";
@@ -75,7 +80,7 @@ public class OrderHeaderDao implements Dao{
                 //Y lo añadimos a la lista
                 listOrderHeader.add(pedido);
             }
-            return listOrderHeader;
+
 
         }catch (SQLException sqlEx){
             System.out.println(sqlEx.getMessage());
