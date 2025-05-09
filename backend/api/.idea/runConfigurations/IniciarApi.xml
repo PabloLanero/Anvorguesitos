@@ -20,6 +20,7 @@
       </TomcatInfo>
     </option>
     <option name="vmOptions" value="" />
+    <module name="api" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

@@ -21,6 +21,21 @@ import java.util.ArrayList;
 @WebServlet(name = "OrderHeaderController", urlPatterns = {"/OrderHeader"})
 public class OrderHeaderController extends HttpServlet {
 
+
+    @Override
+    protected void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        resp.setContentType("application/json;charset=UTF-8");
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        resp.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+        resp.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        resp.setHeader("Access-Control-Max-Age", "3600");
+        String nombre = req.getParameter("user");
+        String nombreUser = req.getParameter("name");
+
+
+    }
+
     @Override
     protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -51,12 +66,5 @@ public class OrderHeaderController extends HttpServlet {
     }
 
 
-    @Override
-    protected void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //super.doPost(req, resp);
-        String nombre = req.getParameter("user");
-        String nombreUser = req.getParameter("name");
 
-
-    }
 }

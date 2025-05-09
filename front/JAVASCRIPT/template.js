@@ -1,5 +1,5 @@
 async function callAPI(){
-const datas =  await fetch("http://localhost:8080/api/OrderHeader")
+const datas =  await fetch("http://localhost:8080/api/OrderHeader?user=1&firstName=23", "POST")
 console.log(datas)
 const datasParsed = await datas.text()
 console.log(datasParsed)
