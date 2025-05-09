@@ -13,7 +13,13 @@ public class Store {
         this.modeStore = modeStore;
     }
 
+    public Store(String location, String modeStore) {
+        this.location = location;
+        this.modeStore = modeStore;
+    }
     public Store (){}
+
+
 
     //Getter y Setters
     public int getIdStore () {

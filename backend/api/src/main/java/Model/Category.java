@@ -13,6 +13,10 @@ public class Category {
     public Category() {
     }
 
+    public Category(String category) {
+        this.category = category;
+    }
+
     //Getter y Setters
     public int getidCategory() {
         return idCategory;

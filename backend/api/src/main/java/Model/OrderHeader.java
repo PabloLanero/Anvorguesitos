@@ -35,9 +35,20 @@ public class OrderHeader {
         this.orderDate = orderDate;
         this.accepted = accepted;
     }
-
+    public OrderHeader(ArrayList<OrderLine> listOrderLine, Employee employee, Customer customer, PaymentMethod paymentMethod, boolean accepted, String orderStatus, String shippingAddress, String orderDate) {
+        this.listOrderLine = listOrderLine;
+        this.employee = employee;
+        this.customer = customer;
+        this.paymentMethod = paymentMethod;
+        this.accepted = accepted;
+        this.orderStatus = orderStatus;
+        this.shippingAddress = shippingAddress;
+        this.orderDate = orderDate;
+    }
     public OrderHeader () {
     }
+
+
 
     //Getter y Setters
     public boolean isAccepted () {

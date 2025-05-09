@@ -30,6 +30,18 @@ public class    Employee {
 
     public Employee () {}
 
+    public Employee(String employeeFirstName, String employeeLastName, String hiringDate, String emailEmployee, String phoneEmployee, String passwordEmployee, double salary, Job job, Store store) {
+        this.employeeFirstName = employeeFirstName;
+        this.employeeLastName = employeeLastName;
+        this.hiringDate = hiringDate;
+        this.emailEmployee = emailEmployee;
+        this.phoneEmployee = phoneEmployee;
+        this.passwordEmployee = passwordEmployee;
+        this.salary = salary;
+        this.job = job;
+        this.store = store;
+    }
+
     //Getter y Setters
     public String getEmailEmployee () {
         return emailEmployee;

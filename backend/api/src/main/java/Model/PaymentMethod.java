@@ -13,6 +13,10 @@ public class PaymentMethod {
 
     public PaymentMethod (){}
 
+    public PaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
     //Getter y Setters
     public int getIdPaymentMethod () {
         return idPaymentMethod;
