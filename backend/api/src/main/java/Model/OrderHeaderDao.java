@@ -50,6 +50,14 @@ public class OrderHeaderDao implements Dao{
             //Y si se pasa un objeto de tipo OrderHeader, se aplicarian los filtros aqui
             if(bean !=null){
                 OrderHeader objOrderHeader = (OrderHeader) bean;
+<<<<<<< HEAD
+=======
+                if(objOrderHeader.getIdOrderHeader() > 0){
+                    sql += " AND OH.id_orderHeader = "+ objOrderHeader.getIdOrderHeader()+ " ";
+                }
+
+
+>>>>>>> d2fcc29fa1c4454e3efdd183b837cfc0193eec2c
 
             }
             sql += ";";
@@ -75,7 +83,7 @@ public class OrderHeaderDao implements Dao{
                 //Y lo añadimos a la lista
                 listOrderHeader.add(pedido);
             }
-            return listOrderHeader;
+
 
         }catch (SQLException sqlEx){
             System.out.println(sqlEx.getMessage());
