@@ -13,7 +13,7 @@ public class JobDao implements Dao{
     }
 
     @Override
-    public int delete(Integer e) {
+    public int delete(Object bean) {
         return 0;
     }
 
