@@ -1,15 +1,12 @@
 package Controller;
 
-import Model.Job;
+import Model.Customer;
+import Model.CustomerDao;
 import Model.OrderHeader;
 import Model.OrderHeaderDao;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParser;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,9 +14,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import com.google.gson.Gson;
 
-@WebServlet(name = "OrderHeaderController", urlPatterns = {"/OrderHeader"})
-public class OrderHeaderController extends HttpServlet {
+
+
+@WebServlet(name = "CustomerController", urlPatterns = {"/Customer"})
+public class CustomerController extends HttpServlet {
+
+
+    //variable gson
+    Gson gson = new Gson();
 
 
     @Override
@@ -35,19 +39,17 @@ public class OrderHeaderController extends HttpServlet {
         PrintWriter out =  resp.getWriter();
 
 
-        ArrayList<OrderHeader> listOrderHeader = new ArrayList<>();
-        OrderHeaderDao oHDao = new OrderHeaderDao();
+        ArrayList<Customer> listCustomers = new ArrayList<>();
+        CustomerDao customerDao = new CustomerDao();
 
-        listOrderHeader = oHDao.findAll(new OrderHeader());
+        listCustomers = customerDao.findAll(new Customer());
 
+        
 
+        //convertir a JSON
+        String json = gson.toJson(listCustomers);
+        out.println(json);
 
-        String resultado= "{";
-        for(OrderHeader oH : listOrderHeader){
-            resultado += oH.toString()+",\n";
-        }
-
-        out.println(resultado.substring(0,resultado.length()-2)+'}');
 
     }
 
@@ -64,6 +66,12 @@ public class OrderHeaderController extends HttpServlet {
 
 
     }
+
+
+
+
+
+
 
 
 

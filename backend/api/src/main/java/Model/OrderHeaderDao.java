@@ -75,10 +75,14 @@ public class OrderHeaderDao implements Dao{
             //Nos conectamos
             motorSql.connect();
             //Y si se pasa un objeto de tipo OrderHeader, se aplicarian los filtros aqui
-            if(bean !=null){
+            if(bean !=null && bean instanceof OrderHeader){
                 OrderHeader objOrderHeader = (OrderHeader) bean;
                 if(objOrderHeader.getIdOrderHeader() > 0){
                     sql += " AND OH.id_orderHeader = "+ objOrderHeader.getIdOrderHeader()+ " ";
+                }
+
+                if(objOrderHeader.getOrderDate() !="" && objOrderHeader.getOrderDate() !=null){
+                    sql += " AND OH.orderDate = " +objOrderHeader.getOrderDate()+" ";
                 }
 
 
