@@ -25,7 +25,7 @@ public class CategoryAction implements IAction{
 
     private String findAll(HttpServletRequest request, HttpServletResponse response){
 
-        CategoryDao peliculaDao = new CategoryDao();
+        //CategoryDao peliculaDao = new CategoryDao();
         //ArrayList<Category> Categories = CategoryDao.findAll(null);
         return null; //Category.toArrayJson(Categories);
     }

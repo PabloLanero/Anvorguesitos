@@ -1,5 +1,8 @@
 package Model;
 
+
+
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -21,8 +24,32 @@ public class OrderHeaderDao implements Dao{
     }
 
     @Override
-    public int delete(Integer e) {
-        return 0;
+    public int delete(Object bean) {
+        Integer idOrderHeader = -1;
+
+        if(bean instanceof Integer){
+            idOrderHeader = (Integer) bean;
+        } else if (bean instanceof OrderHeader) {
+            idOrderHeader = ((OrderHeader) bean).getIdOrderHeader();
+        }
+
+        //Si puedo asignar el id alergeno
+        if(idOrderHeader >0){
+            try{
+                motorSql.connect();
+                String sql = "DELETE FROM Hambearguesitos.ORDERS_HEADER OH WHERE OH.id_orderHeader = ? ;";
+                PreparedStatement sentencia = motorSql.getConnection().prepareStatement(sql);//;
+                sentencia.setInt(1,idOrderHeader);
+                motorSql.setPreparedStatement(sentencia);
+                motorSql.execute();
+            }catch (SQLException sqlEx){
+
+            }catch (Exception Ex){
+
+            }
+        }
+
+        return idOrderHeader;
     }
 
     @Override
@@ -50,11 +77,9 @@ public class OrderHeaderDao implements Dao{
             //Y si se pasa un objeto de tipo OrderHeader, se aplicarian los filtros aqui
             if(bean !=null){
                 OrderHeader objOrderHeader = (OrderHeader) bean;
-
                 if(objOrderHeader.getIdOrderHeader() > 0){
                     sql += " AND OH.id_orderHeader = "+ objOrderHeader.getIdOrderHeader()+ " ";
                 }
-
 
 
 
@@ -74,7 +99,7 @@ public class OrderHeaderDao implements Dao{
                             //Aqui se crea el empleado del pedido
                         new Employee(rs.getInt("id_employee"),rs.getString("employeeFirstName")),
                             //Aqui se crea el metodo de pago
-                        OrderHeader.PaymentMethod.(rs.getInt("id_paymentMethod")),
+                        OrderHeader.PaymentMethod.CASH,//{rs.getInt("id_paymentMethod")},
                             //Aqui se termina de crear el objeto de pedido
 
                         rs.getString("orderDate"),rs.getBoolean("isTransactionAcepted"));
