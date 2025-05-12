@@ -22,10 +22,10 @@
                 <div class="nav-menu">
                     <ul class="nav-links" id="nav-links">
                         <li><a href="./home.html">Home</a></li>
-                        <li><a href="#menu-burgers">Menu</a></li>
-                        <li><a href="./login.html">Login</a></li>
+                        <li><a href="./home.html#menu-burgers">Menu</a></li>
+                        <li><a href="./login.html" id="login">Login</a></li>
                         <li><a href="./about-us.html">About us</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="./join-the-team.html">Join the team</a></li>
                     </ul>
 
                     <div class="burger-button" id="burger-button">
@@ -46,9 +46,12 @@
             <div class="right-nav">
 
 
+<!--shopping-cart-->
 
-                <div class="shopping-cart" id="shopping-cart">
+
+                <div class="shopping-cart" id="shopping-cart" onclick="location.href='./see-order.html'">
                     <img src="../Images/Header/CART.png" alt="shopping-cart">
+                    <div  id="cartAmount" class="cartAmount">0</div>
 
                 </div>
 
@@ -61,11 +64,8 @@
     </header>
 
 
-
     <main class="main">
-        <h1 class="title">
-            JOIN THE TEAM
-        </h1>
+      
         <img class="image-title" src="../Images/JOIN-THE-TEAM/home-image.jpg" alt="home-image">
 
 
@@ -306,8 +306,8 @@
         <!--Testimonies-------------------------------------------------------------------->
         <section class="testimonies-section">
             <div class="testimonies-introduction">
-                <h1> TESTIMONIES </h1>
-                <h4><strong><em>what do they say about us?</em></strong> </h4>
+                <h1 class="whiteColor"> TESTIMONIES </h1>
+                <h4 class="whiteColor"><strong><em>what do they say about us?</em></strong> </h4>
             </div>
 
             <div class="testimonies">
@@ -347,35 +347,34 @@
 
 
 
-
     <!--footer--------------------------------------------------------------------------------------->
 
     <footer class="footer">
         <div class="wrap-footer">
 
-
+           
             <div class="text-element-footer element-footer opening-hours ">
                 <div class="footer-title">
                     <h3>Opening Hours</h3>
                     <ul class="schedule underh3">
-                        <li>
-                            <strong>Monday - Thursday:</strong>
-                            <p class="hours">13:30-16:30 y 20:00-23:30</p>
-                        </li>
-                        <li><strong>Friday:</strong>
-                            <p class="hours">13:30-16:30 y 20:00-00:30</p>
-                        </li>
-                        <li><strong>Saturday:</strong>
-                            <p class="hours"> 13:00-17:00 y 20:00-00:30</p>
-                        </li>
-                        <li><strong>Sunday:</strong>
-                            <p class="hours">13:00-16:30</p>
-                        </li>
+                      <li>
+                        <strong>Monday - Thursday:</strong>
+                        <p class="hours">13:30-16:30 y 20:00-23:30</p></li>
+                      <li><strong>Friday:</strong> 
+                        <p class="hours">13:30-16:30 y 20:00-00:30</p></li>
+                      <li><strong>Saturday:</strong>
+                        <p class="hours"> 13:00-17:00 y 20:00-00:30</p></li>
+                      <li><strong>Sunday:</strong>
+                        <p class="hours">13:00-16:30</p></li>
                     </ul>
-                </div>
+               </div>
             </div>
 
-
+            
+          
+            
+            
+           
             <div class="text-element-footer element-footer find-us ">
                 <div class="footer-title">
                     <h3>Find us!</h3>
@@ -385,11 +384,11 @@
                         <li>+34 976 00 00 00</li>
                     </ul>
                 </div>
-
+               
             </div>
 
-
-
+            
+          
             <div class="text-element-footer element-footer more ">
                 <div class="footer-title">
                     <h3>More!</h3>
@@ -399,44 +398,44 @@
                         <li><a href="./login.html">Login</a></li>
                         <li><a href="./about-us.html">About us</a></li>
                         <li><a href="./contact.html">Contact</a></li>
-
+            
                     </ul>
                 </div>
-
+                
             </div>
 
 
-
+          
             <div class="text-element-footer element-footer follow-us">
 
                 <div class="footer-title">
                     <h3>Follow us!</h3>
                     <ul class="social-media-icons underh3">
-                        <li><a href="#"><img src="../Images/SOCIAL-MEDIA/facebook.svg" alt="facebook"
-                                    class="social-media-icon"></img></a></li>
-                        <li><a href="#"><img src="../Images/SOCIAL-MEDIA/instagram.svg" alt="instagram"
-                                    class="social-media-icon"></img></a></li>
-                        <li><a href="#"><img src="../Images/SOCIAL-MEDIA/twitter.svg" alt="twitter"
-                                    class="social-media-icon"></img></a></li>
+                        <li><a href="#"><img src="../Images/SOCIAL-MEDIA/facebook.svg" alt="facebook" class="social-media-icon"></img></a></li>
+                        <li><a href="#"><img src="../Images/SOCIAL-MEDIA/instagram.svg" alt="instagram" class="social-media-icon"></img></a></li>
+                        <li><a href="#"><img src="../Images/SOCIAL-MEDIA/twitter.svg" alt="twitter" class="social-media-icon"></img></a></li>
+                   
+             
+            
                     </ul>
                 </div>
-
+                
             </div>
 
 
-
+           
             <div class="text-element-footer element-footer legal">
                 <div class="legal-links">
                     <h3>Legal</h3>
                     <ul class="underh3">
-                        <li> © 2025 <strong>Hambearguesería</strong> - Zaragoza, Spain. All rights reserved.</li>
-                        <li><a href="./legal-notice-privacy-policy.html">Legal Notice and privacy Policy</a> </li>
-
+                      <li> © 2025 <strong>Hambearguesería</strong> - Zaragoza, Spain. All rights reserved.</li>
+                      <li><a href="./legal-notice-privacy-policy.html">Legal Notice and privacy Policy</a> </li>
+            
                     </ul>
-                </div>
+               </div>
             </div>
 
-
+           
         </div>
 
     </footer>
