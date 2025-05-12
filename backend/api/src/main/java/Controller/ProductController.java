@@ -32,12 +32,22 @@ public class ProductController extends HttpServlet {
 
 
         PrintWriter out =  resp.getWriter();
+        //aplicar filtros si existen
+        String parametro = req.getParameter("id_product");
 
+        //creamos un nuevo producto, si existe un filtro,  lo asignaremos
+        Product producto = new Product();
+
+
+        if(parametro!="" && parametro!=null){
+            producto.setIdProduct(Integer.parseInt(parametro));
+        }
 
         ArrayList<Product> listProducts = new ArrayList<>();
         ProductDao productDao = new ProductDao();
 
-        listProducts = productDao.findAll(new Product());
+        //llamamos con el argumento de producto porque si es nulo, buscará todos
+        listProducts = productDao.findAll(producto);
 
 
 

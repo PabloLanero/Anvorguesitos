@@ -93,7 +93,7 @@ public class ProductDao implements Dao{
 
             //si tiene filtro, lo añadimos para construir la sentencia
             if(id_product > 0){
-                sqlSimple += " AND PRODUCTS.id_product = ? ";
+                sqlSimple += " AND PRODUCTS.id_product = ?";
             }
 
 

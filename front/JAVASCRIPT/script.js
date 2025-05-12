@@ -57,8 +57,8 @@ function createProductCard(product, container) {
     card.classList.add('card');
 
     card.innerHTML = `
-    <div id="product-id-${product.id_product}">
-        <img src="${product.imagePath}" alt="${product.productTitle || 'Product Image'}"  class="product-photo" data-id="${product.id_product}">
+    <div id="product-id-${product.idProduct}">
+        <img src="${product.imagePath}" alt="${product.productTitle || 'Product Image'}"  class="product-photo" data-id="${product.idProduct}">
         <div class="card-details">
             <h4 class="product-name">${product.productTitle}</h4>
             <div class="inputs">
@@ -66,8 +66,8 @@ function createProductCard(product, container) {
                     <p class="price">${product.price}€</p>  
                 </div>
                 <div class="quantity-controllers">
-                    <button onclick="increment(${product.id_product})"   class="button-add-cart button-increase">+</button>
-                    <button onclick="decrement(${product.id_product})" class="button-add-cart button-decrease">-</button>
+                    <button onclick="increment(${product.idProduct})"   class="button-add-cart button-increase">+</button>
+                    <button onclick="decrement(${product.idProduct})" class="button-add-cart button-decrease">-</button>
                 </div>
             </div>
         </div>
@@ -118,7 +118,7 @@ function setUpProductClick(){
             let id = parseInt(element.getAttribute("data-id"));
 
             //find the product that has this id
-            const selectedProduct =products.find(prod => prod.id_product === id);
+            const selectedProduct =products.find(prod => prod.idProduct === id);
 
             //we keep this productin localstorage
             localStorage.setItem("clickedProduct", JSON.stringify(selectedProduct));
@@ -145,13 +145,13 @@ let basket = JSON.parse(localStorage.getItem("data")) || [];
 function increment(id) {
     let selectedItem = id;
 
-    let search = basket.find((x) => x.id_product === selectedItem);
+    let search = basket.find((x) => x.idProduct === selectedItem);
     //it is searching for the object wich we have selected. it returns wether if it exist in the basket yet
 
     if (search === undefined) {
 
         //we find the object from api and we save it in a variable
-        const  productData = products.find((product) => product.id_product === selectedItem);
+        const  productData = products.find((product) => product.idProduct === selectedItem);
 
         //add to the basket
         basket.push({
@@ -175,7 +175,7 @@ function increment(id) {
 function decrement(id) {
     let selectedItem = id;
 
-    let search = basket.find((x) => x.id_product === selectedItem);
+    let search = basket.find((x) => x.idProduct === selectedItem);
     //it is searching for the object wich we have selected. i t returns  wether if it exist in the basket yet
 
     //if object doesn´t exist
@@ -190,7 +190,7 @@ function decrement(id) {
 
 // if is 0 remove item from basket
     if (search.item === 0) {
-        basket = basket.filter(x => x.id_product !== selectedItem); //filter return a new array with products wich quantity is not zero. it filters when id is different than selected item to include it in array
+        basket = basket.filter(x => x.idProduct !== selectedItem); //filter return a new array with products wich quantity is not zero. it filters when id is different than selected item to include it in array
 
     }
 
