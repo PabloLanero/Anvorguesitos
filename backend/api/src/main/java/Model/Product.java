@@ -39,8 +39,19 @@ public class Product {
     public Category getCategory () {
         return category;
     }
-    public void setCategory (Category category) {
-        this.category = category;
+    public void setCategory (int category) {
+        switch (category){
+            case 1:
+                this.category = Category.BURGER;
+                break;
+            case 2:
+                this.category = Category.SIDEDISH;
+                break;
+            case 3:
+                this.category = Category.DRINK;
+                break;
+        }
+
     }
     public String getDescription () {
         return description;

@@ -1,5 +1,5 @@
-//mockData////////////////////////////////////////////////////
-function mockData() {
+
+/*function mockData() {
     return {
         "results": [
             {
@@ -206,7 +206,7 @@ function mockData() {
         ]
         
     };
-}
+}*/
 
 
 
@@ -219,7 +219,7 @@ const idProduct = urlParams.get('idProduct');
 //console.log("idProduct = " + idProduct);
 
 
-//PICK THE COMPLETE PORDUCT
+//PICK THE COMPLETE PRODUCT
 const selectedProduct = mockData().results.find(prod => prod.id_product === parseInt(idProduct));
 
 

@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.Customer;
-import Model.CustomerDao;
-import Model.OrderHeader;
-import Model.OrderHeaderDao;
+import Model.*;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -14,12 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import com.google.gson.Gson;
 
 
-
-@WebServlet(name = "CustomerController", urlPatterns = {"/Customer"})
-public class CustomerController extends HttpServlet {
+@WebServlet(name = "ProductController", urlPatterns = {"/Product"})
+public class ProductController extends HttpServlet {
 
 
     //variable gson
@@ -39,15 +34,15 @@ public class CustomerController extends HttpServlet {
         PrintWriter out =  resp.getWriter();
 
 
-        ArrayList<Customer> listCustomers = new ArrayList<>();
-        CustomerDao customerDao = new CustomerDao();
+        ArrayList<Product> listProducts = new ArrayList<>();
+        ProductDao productDao = new ProductDao();
 
-        listCustomers = customerDao.findAll(new Customer());
+        listProducts = productDao.findAll(new Product());
 
 
 
         //convertir a JSON
-        String json = gson.toJson(listCustomers);
+        String json = gson.toJson(listProducts);
         out.println(json);
 
 
@@ -76,3 +71,29 @@ public class CustomerController extends HttpServlet {
 
 
 }
+
+/*
+
+@WebServlet("/api/orders")
+public class OrderServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // Leer el cuerpo de la solicitud (JSON)
+        BufferedReader reader = request.getReader();
+        StringBuilder jsonBuilder = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            jsonBuilder.append(line);
+        }
+        String json = jsonBuilder.toString();
+
+        // Convertir JSON a objeto Java usando Gson
+        Gson gson = new Gson();
+        Order order = gson.fromJson(json, Order.class);
+
+        // Simulación de respuesta
+        response.setContentType("application/json");
+        response.getWriter().write("{\"message\": \"Orden recibida\", \"userId\": " + order.getUserId() + "}");
+    }
+}
+
+ */

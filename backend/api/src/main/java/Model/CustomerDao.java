@@ -12,11 +12,14 @@ public class CustomerDao implements Dao{
     private IMotorSql motorSql;
 
 
-    //////////////////////////// TEORÍA METODOS CRUD SINTAXIS ANTON/////////////////////////////////////////////
 
+    // constructor que automaticamente crea motor
     public CustomerDao(){
         motorSql = new MotorSql();
     }
+
+    ////////////////////////////      METODOS CRUD     ////////////////////////////////////////////
+
 
 
     @Override
@@ -28,8 +31,10 @@ public class CustomerDao implements Dao{
     public int delete(Object obj) {
         //inicializamos el valor de ielement a -1 para que no interfiera
         Integer id_customer =  -1;
+        boolean nFilasAfectadas = false;
+        String sqlSimple = SQL_DELETE+ "ID_CUSTOMER = ?";
 
-        //1º Comprobar el tipo de objeto ( E o I) para asignarlo al id_customer
+        //1º casting
         if (obj instanceof Integer) {
             id_customer = (Integer)obj;
         }else if(obj instanceof Customer){
@@ -41,14 +46,14 @@ public class CustomerDao implements Dao{
         if (id_customer>0){
             try {
                 motorSql.connect();
-                String sqlSimple = SQL_DELETE+ "ID_CUSTOMER = ?";
 
 
                 PreparedStatement sentenciaPreparada = motorSql.getConnection().prepareStatement(sqlSimple);
 
                 sentenciaPreparada.setInt(1, id_customer);
 
-                motorSql.execute();
+                 nFilasAfectadas = motorSql.execute();
+
 
             }catch(SQLException sqlEx){
 
@@ -58,10 +63,7 @@ public class CustomerDao implements Dao{
         }
 
 
-
-
-
-        return 0;
+        return nFilasAfectadas ? 1:0;
     }
 
     @Override
@@ -75,13 +77,13 @@ public class CustomerDao implements Dao{
         ArrayList <Customer> listCustomers = new ArrayList<>();
 
         //sentencia sql
-        String sqlSimple = "SELECT * FROM  Hambearguesitos.CUSTOMERS CU WHERE 1 = 1 ";
+        String sqlSimple = SQL_FINDALL;
 
         //inicializamos el valor de ielement a -1 para que no interfiera
         Integer id_customer =  -1;
 
 
-        //Comprobar el tipo de objeto ( E o I) para asignarlo al id_customer
+        //casting
         if (obj instanceof Integer) {
             id_customer = (Integer)obj;
         }else if(obj instanceof Customer){
