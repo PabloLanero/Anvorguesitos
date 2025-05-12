@@ -26,7 +26,7 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 40vh;
+    height: 70vh;
     width: 40%;
     margin-top: 6vh;
     margin-bottom: 5%;
@@ -52,7 +52,7 @@ form{
     justify-content: center;
     width:50%;
     min-width: 320px;
-    margin: 4vh;
+    margin: 2vh;
 }
 
 .input input{

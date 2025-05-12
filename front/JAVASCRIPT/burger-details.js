@@ -31,9 +31,9 @@ async function getOneProductFromAPI(){
 
 
 //ASYNC FUNCTION TO LOAD
-
+let selectedProduct
 (async () => {
-let selectedProduct = await getOneProductFromAPI();
+selectedProduct = await getOneProductFromAPI();
 if(selectedProduct){
     console.log(selectedProduct);
 createContent(selectedProduct[0]); //create content

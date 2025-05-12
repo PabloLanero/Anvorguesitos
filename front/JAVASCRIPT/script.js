@@ -124,7 +124,7 @@ function setUpProductClick(){
             localStorage.setItem("clickedProduct", JSON.stringify(selectedProduct));
 
             //redirect to detail-page with the searchArgument
-            window.location.href =`burger-detail.html?idProduct=${id}`;
+            window.location.href =`burger-detail.html?id_product=${id}`;
         });
     });
 }

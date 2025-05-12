@@ -6,10 +6,12 @@ function isLogged(){
     try{
         let user = JSON.parse(sessionStorage.getItem("user"))
         if(user){
-            let place = document.getElementById("login")
-            console.log(user.name)
-            place.innerHTML = user.name
-            place.href = "./user.html"
+            let loginPlace = document.getElementById("login")
+            
+            loginPlace.innerHTML = user.name
+            loginPlace.href = "./user.html"
+            let signPlace = document.getElementById("sign")
+            signPlace.hidden= true
         }
     }catch(Exception){
         console.log("User not registered")

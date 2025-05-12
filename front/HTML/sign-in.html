@@ -1,118 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hambearguesería - About Us</title>
-    <link rel="stylesheet" href="../CSS/about-us.css">
+    <title>Burger House</title>
     <link rel="stylesheet" href="../CSS/reset.css">
-    <link rel="stylesheet" href="../CSS/footer.css">
     <link rel="stylesheet" href="../CSS/header.css">
+    <link rel="stylesheet" href="../CSS/footer.css">
+    <link rel="stylesheet" href="../CSS/signin.css">
     <script src="../JAVASCRIPT/hamburguer_menu.js" defer></script>
+    <script src="../JAVASCRIPT/sign-in.js" defer></script>
     <script src="../JAVASCRIPT/loged.js" defer></script>
-
-
-
 </head>
-
 <body>
-
-    <header>
-        <nav>
-            <div class="left-nav">
-
-                <div class="nav-menu">
-                    <ul class="nav-links" id="nav-links">
-                        <li><a href="./home.html">Home</a></li>
-                        <li><a href="./home.html#menu-burgers">Menu</a></li>
-                        <li><a href="./login.html" id="login">Login</a></li>
-                        <li><a href="./sign-in.html" id="sign">Sign in</a></li>
-                        <li><a href="./about-us.html">About us</a></li>
-                        <li><a href="./join-the-team.html">Join the team</a></li>
-                    </ul>
-
-                    <div class="burger-button" id="burger-button">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
+     <!--page - login-page--------------------------->
+    <div>
+        <header>
+            <nav>
+                <div class="left-nav">
+    
+                    <div class="nav-menu">
+                        <ul class="nav-links" id="nav-links">
+                            <li><a href="./home.html">Home</a></li>
+                            <li><a href="#menu-burgers">Menu</a></li>
+                            <li><a href="./login.html" id="login">Login</a></li>
+                            <li><a href="./sign-in.html" id="sign">Sign in</a></li>
+                            <li><a href="./about-us.html">About us</a></li>
+                            <li><a href="./join-the-team.html">Join the team</a></li>
+                        </ul>
+    
+                        <div class="burger-button" id="burger-button">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+    
+    
                     </div>
-
-
+                    <div class="header-logo">
+                        <img src="../Images/INTRO-PAGE/LOGOColor_ONLY_BEAR.png" alt="logo">
+    
+                    </div>
+    
+    
                 </div>
-                <div class="header-logo">
-                    <img src="../Images/INTRO-PAGE/LOGOColor_ONLY_BEAR.png" alt="logo">
-
+                <div class="right-nav">
+    
+    
+    
+                    <div class="shopping-cart" id="shopping-cart">
+                        <img src="../Images/Header/CART.png" alt="shopping-cart">
+    
+                    </div>
+    
                 </div>
-
-
-            </div>
-            <div class="right-nav">
-
-
-<!--shopping-cart-->
-
-
-                <div class="shopping-cart" id="shopping-cart" onclick="location.href='./see-order.html'">
-                    <img src="../Images/Header/CART.png" alt="shopping-cart">
-                    <div  id="cartAmount" class="cartAmount">0</div>
-
-                </div>
-
-            </div>
-
-
-
-
-        </nav>
-    </header>
-
-    <!--Main-->
-    <main>
-     
-        <!--Video of Hamburguer-->
-        <div class="video_hamburguer" >
-            <video class="video_about_us" autoplay loop muted playsinline>
-                <source src="../Images/About_Us/video_hamburguer.mp4" type="video/mp4">
-            </video>
-            <div class="video_overlay">
-                <h1>MEET US</h1>
-            </div>
-        </div>
+    
+    
+    
+    
+            </nav>
+        </header>
+    
+        <main>
+            <form>
+                <div class="title-join-us"><h1>CREATE ACCOUNT</h1></div>   
+                <div class="form-container">
+                    <div class="form-elements">
+                        <div class="input">
+                            <input class="texto" placeholder="Name" required id="name">
+                        </div>
+                        <div class="input">
+                            <input class="texto" placeholder="Surname" id="surname" required >
+                        </div>
+                        <div class="input">
+                            <input class="texto" placeholder="example@gmail.com" type="email" id="email" required>
+                        </div>
+                        <div class="input">
+                            <input class="number-phone" placeholder="123456789" type="number" id="mobile-phone" required>
+                        </div>
+                        <div class="input">
+                            <input class="texto" placeholder="Password" type="password" id="password" required>
+                        </div>
+                        <div class="input">
+                            <input class="texto" placeholder="Repeat password" type="password" id="password-confirmation" required>
+                        </div>
+                    </div>
         
-<div class="underVideo">
-        <div class="introduction article">
-            <h3 class="textUnderVideo"> At Hambearguesería, we don't just make hamburgers; we recreate Aragón in every bite.</h3>
-            <h3 class="textUnderVideo">Local ingredients, explosive flavors, a journey through Aragón.</h3>
-            <h3 class="textUnderVideo">So, how about a burger?</h3>
+                    <div class="confirm">
+                        <button onclick="createUser()" type="button"  >Create Account</button>
+                    </div>
+        
+            </div>
+        </form>
+        </main>
 
-        </div>
+    <!--footer--------------------------------------------------------------------------------------->
 
-
-        <div class="our_history article">
-            <h2 class="textUnderVideo"> OUR HISTORY</h2>
-            <h3 class="textUnderVideo"> Hambearguesería was founded in Zaragoza in 2025 by a group of friends passionate about good food and Aragón, who decided to combine their two loves: burgers and local ingredients.</h3>
-            <h3 class="textUnderVideo">It all began in a small kitchen, experimenting with recipes until we discovered the perfect combination.</h3>
-            <img class="image_our_history" src="../Images/About_Us/our_history.png" alt="image_our_history">
-            <h3 class="textUnderVideo">Starting from a modest spot, we became known for capturing the essence of Aragón in every detail, from the names of our burgers to the decor.</h3>
-            <h3 class="textUnderVideo"> Today we maintain that same spirit: same recipes, same suppliers and
-                the same love for sharing the best of our land.</h3>
-        </div>
-
-
-        <div class="collage article" >
-            <h2 class="textUnderVideo"> THE TEAM </h2>
-            <img class="collage" src="../Images/About_Us/collage_1.png" alt="collage_1">
-            <img class="collage" src="../Images/About_Us/collage_2.png" alt="collage_2">
-            <img class="collage" src="../Images/About_Us/collage_3.png " alt="collage_3">
-        </div>
-    </div>
-    </main>
-
-
-    <!--Footer-->
-   
     <footer class="footer">
         <div class="wrap-footer">
 
@@ -203,6 +186,4 @@
         </div>
 
     </footer>
-</body>
-
-</html>
+</div>
