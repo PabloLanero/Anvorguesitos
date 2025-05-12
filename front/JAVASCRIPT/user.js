@@ -1,14 +1,15 @@
 //To show the user name on the website
 
-let userDatas = JSON.parse(sessionStorage.getItem("user"))
-console.log(userDatas)
+let objUser = JSON.parse(sessionStorage.getItem("user"))
+console.log("this is the object that contains datas from user" )
+console.log(objUser)
 
 /*Check if first it is logged
 if not, redirected to the login page
 if is logged, 
 - change the section "login" to the username 
 */ 
-if(!userDatas){
+if(!objUser){
     window.location.href = "login.html"
 }
 
@@ -20,7 +21,7 @@ if(!userDatas){
 function showUser(div){
     //Aqui iria la logica para recoger el nombre del usuario
     div.innerHTML=`
-    <h1>Welcome, ${userDatas.name} ${userDatas.lastName}!</h1>
+    <h1>Welcome, ${objUser.name} ${objUser.lastName}!</h1>
     `    
 }
 
@@ -33,7 +34,7 @@ let optionsUser = document.getElementById("optionsUser")
 
 function seeOptions(div){
     //Aqui ira la logica para sacar las opciones que tenga el usuario
-    let administrator = userDatas.admin
+    let administrator = objUser.admin
 
     if(administrator){
         //Lo dejo hardcodeado para que se vea como se aplica
@@ -103,6 +104,34 @@ async function callAPI(URL){
 callAPI("http://localhost:8080/api/OrderHeader")
 
 
+
+//RECUPERO EMPLOYEES DE LA API
+
+let myEmployees = [];
+
+async function getEmployeesFromAPI(){
+    try
+    {
+const response = await fetch("http://localhost:8080/api/Employee");
+const employeesJSON = await response.json();
+console.log("Employees charged", employeesJSON );
+return employeesJSON
+    } catch(error){
+        console.error("Error al obtener usuario:", error);
+        return null;
+    }
+}
+
+(async () => {
+    employees = await getEmployeesFromAPI;
+    showOption(employees);
+
+})();
+
+
+
+
+
 /*
  * This function is to show the information depending on 
  * what div has been selected
@@ -118,16 +147,16 @@ function showOption(optionContent){
             contentDiv.innerHTML=`
             <div class="user-data-container" >
                 <div class="name">
-                    <p><b>Nombre:</b> ${userDatas.name}</p>
+                    <p><b>Nombre:</b> ${objUser.name}</p>
                 </div>
                 <div class="lastName">
-                    <p><b>Apellido:</b> ${userDatas.lastName}</p>
+                    <p><b>Apellido:</b> ${objUser.lastName}</p>
                 </div>
                 <div class="email">
-                    <p><b>Email:</b> ${userDatas.email}</p>
+                    <p><b>Email:</b> ${objUser.email}</p>
                 </div>
                 <div class="phone-number">
-                    <p><b>Phone Number:</b> ${userDatas.mobilePhone}</p>
+                    <p><b>Phone Number:</b> ${objUser.mobilePhone}</p>
                 </div>
             </div>
             `

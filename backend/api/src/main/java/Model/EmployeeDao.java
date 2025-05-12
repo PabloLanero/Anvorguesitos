@@ -1,11 +1,27 @@
 package Model;
 
+import java.sql.Array;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
 
 public class EmployeeDao implements Dao{
 
     private final String SQL_FINDALL = "SELECT * FROM EMPLOYEES WHERE 1=1";
+    private final String SQL_DELETE = "DELETE * FROM EMPLOYEES WHERE ";
+
     private IMotorSql motorSql;
+
+    // constructor que automaticamente crea motor
+    public EmployeeDao(){
+        motorSql = new MotorSql();
+    }
+
+
+
+    ////////////////////////////      METODOS CRUD     ////////////////////////////////////////////
 
     @Override
     public int add(Object bean) {
@@ -23,7 +39,115 @@ public class EmployeeDao implements Dao{
     }
 
     @Override
-    public ArrayList findAll(Object bean) {
-        return null;
+    public ArrayList findAll(Object obj) {
+        //creo arraylist
+        ArrayList<Employee> listEmployee = new ArrayList<>();
+
+        //sentencia sql
+        String sqlSimple = SQL_FINDALL;
+
+        //inicializamos el valor del id a -1 para evitar problemas
+        Integer id_employee = -1;
+
+        //casting
+        if(obj instanceof Integer){
+            id_employee = ((Integer) obj);
+        } else if (obj instanceof Employee) {
+            id_employee = ((Employee)obj).getIdEmployee();
+        }
+
+
+        try{
+            //nos conectamos
+            motorSql.connect();
+
+            //si tiene filtro, lo aplicamos
+            if(id_employee > 0){
+                sqlSimple+=" AND EMPLOYEES.id_employee = ?";
+            }
+
+
+            sqlSimple += ";";
+
+            //creamos la snetencia preparada para ejecutar
+            PreparedStatement sentenciaPreparada = motorSql.getConnection().prepareStatement(sqlSimple);
+
+
+            //asignamos le valor al interrogante
+            if(id_employee > 0){
+                sentenciaPreparada.setInt(1,id_employee);
+            }
+
+            //realizamos select
+            ResultSet rs = sentenciaPreparada.executeQuery();
+
+            //creamos el objeto con el resultset
+
+            while(rs.next()){
+                Employee employee = new Employee();
+
+                employee.setIdEmployee(rs.getInt("id_employee"));
+                employee.setEmployeeFirstName(rs.getString("employeeFirstName"));
+                employee.setEmployeeLastName(rs.getString("employeeLastName"));
+                employee.setHiringDate(rs.getString("hiringDate"));
+                employee.setEmailEmployee(rs.getString("emailEmployee"));
+                employee.setPhoneEmployee(rs.getString("phoneEmployee"));
+                employee.setSalary(rs.getDouble("salary"));
+
+                listEmployee.add(employee);
+            }
+
+
+            //creamos objeto con el rs
+        }catch (SQLException sqlEx){
+            System.out.println(sqlEx.getMessage());
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            motorSql.disconnect();
+        }
+
+
+        return listEmployee;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
