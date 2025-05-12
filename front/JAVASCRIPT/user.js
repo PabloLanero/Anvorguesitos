@@ -37,23 +37,25 @@ function seeOptions(div){
 
     if(administrator){
         //Lo dejo hardcodeado para que se vea como se aplica
+        
         div.innerHTML = `
-        <div class="option selected" onClick="beSelected(seeData), showOption(seeData)" id="seeData">
+        <div class="option selected" onClick="beSelected('seeData'), showOption('seeData')" id="seeData">
             <p>See your data</p>
         </div>
-        <div class="option" onClick="beSelected(orders), showOption(orders)" id="orders">
+        <div class="option" onClick="beSelected('orders'), showOption('orders')" id="orders">
             <p>Orders realized</p>
         </div>
 
-        <div class="option" onClick="beSelected(employees), showOption(employees)" id="employees">
+        <div class="option" onClick="beSelected('employees'), showOption('employees')" id="employees">
             <p>Employees</p>
         </div>
 
-        <div class="option" onClick="beSelected(cvs), showOption(cvs)" id="cvs">
+        <div class="option" onClick="beSelected('cvs'), showOption('cvs')" id="cvs">
             <p>CVs</p>
         </div>
 
         `
+        
     }else{
         div.innerHTML = `
         <div class="option selected" onClick="beSelected(seeData), showOption(seeData)" id="seeData">
@@ -80,11 +82,25 @@ function beSelected(option){
     //Se los quita a todos el atributo "selected"
     for (let index = 0; index < options.length; index++) {
         const element = options[index];
+        if(element.id === option ) element.classList.add("selected")
         element.classList.remove("selected")
     }
     //Se lo añade al div seleccionado
-    option.classList.add("selected")
+    
 }
+
+beSelected("seeData")
+
+
+
+let orders 
+let employees = []
+async function callAPI(URL){
+    let results = await fetch(URL)
+    orders = await results.json()
+}
+
+callAPI("http://localhost:8080/api/OrderHeader")
 
 
 /*
@@ -96,7 +112,7 @@ function showOption(optionContent){
     const id = optionContent.id
     let contentDiv = document.getElementById("contentDiv")
     //Now, in case of the div selected, we will show diferent kind of information
-    switch (id) {
+    switch (optionContent) {
         //To check your personal data
         case "seeData":
             contentDiv.innerHTML=`
@@ -118,9 +134,12 @@ function showOption(optionContent){
             break;
             //To check the orders
         case "orders":
-            contentDiv.innerHTML=`
+        contentDiv.innerHTML = "";
+        let datos = ""
+        datos +=`
                 <div class="orders-data-container">
                     <table>
+                    <tbody>
                         <tr>
                             <th>Id Order</th>
                             <th>Order date</th>
@@ -128,90 +147,31 @@ function showOption(optionContent){
                             <th>Transsaction</th>
                             <th>Order Status</th>
                         </tr>
-                        
+                        `
+            orders.forEach(element => {
+                console.log(element)
+                datos += `
                             <tr>
-                                <td><a href="./see-order.html">1</a></td>
-                                <td>20/01/2004</td>
-                                <td>Calle Falsa 123</td>
-                                <td>Pending</td>
-                                <td>On going</td>
+                                <td><a href="./see-order.html"> ${element.idOrderHeader} </a></td>
+                                <td> ${element.orderDate} </td>
+                                <td> ${element.shippingAddress} </td>
+                                <td> ${element.accepted} </td>
+                                <td> ${element.orderStatus} </td>
                             </tr>
-                        
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        
-
+                `
+            });
+        datos +=`
+                    </tbody>
                     </table>
                 </div>
-            `
+        `
+
+        contentDiv.innerHTML = datos
+            
+        
+
+
+            
                 
             break;
             //To check the employees
@@ -287,13 +247,14 @@ function showOption(optionContent){
             break;
     
         default:
+            console.log("Algo a salido mal",id)
             break;
     }
 
 }
 //To load the project and have some information
-let objectInitial = {"id": "seeData"}
-showOption(objectInitial)
+
+showOption("seeData")
 
 
 

@@ -21,7 +21,7 @@ function createUser() {
             "lastName": username.value,
             "email": email.value,
             "mobilePhone": mobilePhone.value,
-            "admin": false,
+            "admin": true,
         }
 
         console.log(user)

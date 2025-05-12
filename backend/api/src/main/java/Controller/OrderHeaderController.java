@@ -21,6 +21,8 @@ import java.util.ArrayList;
 @WebServlet(name = "OrderHeaderController", urlPatterns = {"/OrderHeader"})
 public class OrderHeaderController extends HttpServlet {
 
+    //variable gson
+    Gson gson = new Gson();
 
     @Override
     protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,12 +44,10 @@ public class OrderHeaderController extends HttpServlet {
 
 
 
-        String resultado= "{";
-        for(OrderHeader oH : listOrderHeader){
-            resultado += oH.toString()+",\n";
-        }
 
-        out.println(resultado.substring(0,resultado.length()-2)+'}');
+        String json = gson.toJson(listOrderHeader);
+        out.println(json);
+
 
     }
 
