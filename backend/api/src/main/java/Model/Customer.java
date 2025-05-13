@@ -30,6 +30,12 @@ public class Customer {
         this.firstName = firstName;
 
     }
+
+    public Customer (String firstName, String passwordCustomer) {
+        this.firstName = firstName;
+        this.passwordCustomer = passwordCustomer;
+    }
+
     public Customer(){}
 
 

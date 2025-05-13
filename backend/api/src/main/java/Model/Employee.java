@@ -42,6 +42,11 @@ public class    Employee {
         this.store = store;
     }
 
+    public Employee (String emailEmployee, String passwordEmployee) {
+        this.emailEmployee = emailEmployee;
+        this.passwordEmployee = passwordEmployee;
+    }
+
     //Getter y Setters
     public String getEmailEmployee () {
         return emailEmployee;

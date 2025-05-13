@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class CustomerDao implements Dao{
 
-    private final String SQL_FINDALL = "SELECT * FROM CUSTOMERS WHERE 1=1";
+    private final String SQL_FINDALL = "SELECT * FROM CUSTOMERS CU WHERE 1=1";
     private final String SQL_DELETE = "DELETE * FROM CUSTOMERS WHERE ";
     private IMotorSql motorSql;
 
@@ -83,12 +83,17 @@ public class CustomerDao implements Dao{
         Integer id_customer =  -1;
 
 
+        //Variables para logearse
+        String name = "";
+        String password ="";
         //casting
         if (obj instanceof Integer) {
             id_customer = (Integer)obj;
         }else if(obj instanceof Customer){
-            id_customer = ((Customer) obj).getIdCustomer();
-
+            Customer customer = (Customer) obj;
+            id_customer = customer.getIdCustomer();
+            name = customer.getFirstName();
+            password = customer.getPasswordCustomer();
         }
 
 
@@ -102,17 +107,36 @@ public class CustomerDao implements Dao{
                sqlSimple += " AND CU.id_customer = ? ";
            }
 
+            if(!name.isEmpty() && name != null){
+                sqlSimple += " AND CU.isRegistered = true AND CU.firstName = ? ";
+            }
+
+            if(!password.isEmpty() && password != null){
+                sqlSimple += " AND CU.isRegistered = true AND CU.passwordCustomer = ? ";
+            }
+
 
             sqlSimple += ";";
 
             //creamos la sentencia prpearada para ejecutar
             PreparedStatement sentenciaPreparada = motorSql.getConnection().prepareStatement(sqlSimple);
 
+            //Vamos a ir añadiendo los valores, en funcion de los valores comprobados, se añadiran en EL MISMO ORDEN
+            //Para ello utilizaremos una variable propia que cuente el orden que deben añadirse los valores
+            int orden = 1;
 
             //asignamos el valor al interrogante
-           if(id_customer > 0){
-               sentenciaPreparada.setInt(1,id_customer);
-           }
+            if(id_customer > 0){
+               sentenciaPreparada.setInt(orden++,id_customer);
+            }
+
+            if(!name.isEmpty() && name != null){
+                sentenciaPreparada.setString(orden++,name);
+            }
+
+            if(!password.isEmpty() && password != null){
+                sentenciaPreparada.setString(orden++,password);
+            }
 
            //realizamos select
             ResultSet rs = sentenciaPreparada.executeQuery();
