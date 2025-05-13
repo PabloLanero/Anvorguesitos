@@ -1,14 +1,15 @@
 //To show the user name on the website
 
-let userDatas = JSON.parse(sessionStorage.getItem("user"))
-console.log(userDatas)
+let objUser = JSON.parse(sessionStorage.getItem("user"))
+console.log("this is the object that contains datas from user" )
+console.log(objUser)
 
 /*Check if first it is logged
 if not, redirected to the login page
 if is logged, 
 - change the section "login" to the username 
 */ 
-if(!userDatas){
+if(!objUser){
     window.location.href = "login.html"
 }
 
@@ -20,7 +21,7 @@ if(!userDatas){
 function showUser(div){
     //Aqui iria la logica para recoger el nombre del usuario
     div.innerHTML=`
-    <h1>Welcome, ${userDatas.name} ${userDatas.lastName}!</h1>
+    <h1>Welcome, ${objUser.name} ${objUser.lastName}!</h1>
     `    
 }
 
@@ -33,27 +34,29 @@ let optionsUser = document.getElementById("optionsUser")
 
 function seeOptions(div){
     //Aqui ira la logica para sacar las opciones que tenga el usuario
-    let administrator = userDatas.admin
+    let administrator = objUser.admin
 
     if(administrator){
         //Lo dejo hardcodeado para que se vea como se aplica
+        
         div.innerHTML = `
-        <div class="option selected" onClick="beSelected(seeData), showOption(seeData)" id="seeData">
+        <div class="option selected" onClick="beSelected('seeData'), showOption('seeData')" id="seeData">
             <p>See your data</p>
         </div>
-        <div class="option" onClick="beSelected(orders), showOption(orders)" id="orders">
+        <div class="option" onClick="beSelected('orders'), showOption('orders')" id="orders">
             <p>Orders realized</p>
         </div>
 
-        <div class="option" onClick="beSelected(employees), showOption(employees)" id="employees">
+        <div class="option" onClick="beSelected('employees'), showOption('employees')" id="employees">
             <p>Employees</p>
         </div>
 
-        <div class="option" onClick="beSelected(cvs), showOption(cvs)" id="cvs">
+        <div class="option" onClick="beSelected('cvs'), showOption('cvs')" id="cvs">
             <p>CVs</p>
         </div>
 
         `
+        
     }else{
         div.innerHTML = `
         <div class="option selected" onClick="beSelected(seeData), showOption(seeData)" id="seeData">
@@ -80,11 +83,53 @@ function beSelected(option){
     //Se los quita a todos el atributo "selected"
     for (let index = 0; index < options.length; index++) {
         const element = options[index];
+        if(element.id === option ) element.classList.add("selected")
         element.classList.remove("selected")
     }
     //Se lo añade al div seleccionado
-    option.classList.add("selected")
+    
 }
+
+beSelected("seeData")
+
+
+
+let orders 
+let employees = []
+async function callAPI(URL){
+    let results = await fetch(URL)
+    orders = await results.json()
+}
+
+callAPI("http://localhost:8080/api/OrderHeader")
+
+
+
+//RECUPERO EMPLOYEES DE LA API
+
+let myEmployees = [];
+
+async function getEmployeesFromAPI(){
+    try
+    {
+const response = await fetch("http://localhost:8080/api/Employee");
+const employeesJSON = await response.json();
+console.log("Employees charged", employeesJSON );
+return employeesJSON
+    } catch(error){
+        console.error("Error al obtener usuario:", error);
+        return null;
+    }
+}
+
+(async () => {
+    employees = await getEmployeesFromAPI;
+    showOption(employees);
+
+})();
+
+
+
 
 
 /*
@@ -96,31 +141,34 @@ function showOption(optionContent){
     const id = optionContent.id
     let contentDiv = document.getElementById("contentDiv")
     //Now, in case of the div selected, we will show diferent kind of information
-    switch (id) {
+    switch (optionContent) {
         //To check your personal data
         case "seeData":
             contentDiv.innerHTML=`
             <div class="user-data-container" >
                 <div class="name">
-                    <p><b>Nombre:</b> ${userDatas.name}</p>
+                    <p><b>Nombre:</b> ${objUser.name}</p>
                 </div>
                 <div class="lastName">
-                    <p><b>Apellido:</b> ${userDatas.lastName}</p>
+                    <p><b>Apellido:</b> ${objUser.lastName}</p>
                 </div>
                 <div class="email">
-                    <p><b>Email:</b> ${userDatas.email}</p>
+                    <p><b>Email:</b> ${objUser.email}</p>
                 </div>
                 <div class="phone-number">
-                    <p><b>Phone Number:</b> ${userDatas.mobilePhone}</p>
+                    <p><b>Phone Number:</b> ${objUser.mobilePhone}</p>
                 </div>
             </div>
             `
             break;
             //To check the orders
         case "orders":
-            contentDiv.innerHTML=`
+        contentDiv.innerHTML = "";
+        let datos = ""
+        datos +=`
                 <div class="orders-data-container">
                     <table>
+                    <tbody>
                         <tr>
                             <th>Id Order</th>
                             <th>Order date</th>
@@ -128,125 +176,51 @@ function showOption(optionContent){
                             <th>Transsaction</th>
                             <th>Order Status</th>
                         </tr>
-                        
+                        `
+            orders.forEach(element => {
+                console.log(element)
+                datos += `
                             <tr>
-                                <td><a href="./see-order.html">1</a></td>
-                                <td>20/01/2004</td>
-                                <td>Calle Falsa 123</td>
-                                <td>Pending</td>
-                                <td>On going</td>
+                                <td><a href="./see-order.html"> ${element.idOrderHeader} </a></td>
+                                <td> ${element.orderDate} </td>
+                                <td> ${element.shippingAddress} </td>
+                                <td> ${element.accepted} </td>
+                                <td> ${element.orderStatus} </td>
                             </tr>
-                        
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        <tr>
-                            <td><a href="./see-order.html">1</a></td>
-                            <td>20/01/2004</td>
-                            <td>Calle Falsa 123</td>
-                            <td>Pending</td>
-                            <td>On going</td>
-                        </tr>
-                        
-
+                `
+            });
+        datos +=`
+                    </tbody>
                     </table>
                 </div>
-            `
+        `
+
+        contentDiv.innerHTML = datos
+            
+        
+
+
+            
                 
             break;
             //To check the employees
         case "employees":
             contentDiv.innerHTML=`
-                <div class="orders-data-container">
-                    <table>
-                        <tr>
-                            <th>Id Employee</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Phone Number</th>
-                            <th>Salary</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Pablo</td>
-                            <td>Lanero Perez</td>
-                            <td>example@gmail.com</td>
-                            <td>123456789</td>
-                            <td>1000,00€</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Pablo</td>
-                            <td>Lanero Perez</td>
-                            <td>example@gmail.com</td>
-                            <td>123456789</td>
-                            <td>1000,00€</td>
-                        </tr>
-                        
-                    </table>
+                <div class="orders-data-container" id="orders-data-container">
+                   
                 </div>
             `
+
+
+// Immediately Invoked Async Function
+(async () => {
+    
+    arrayListEmployees = await callAPI();
+    
+    employeesCardCreator() // 
+
+   
+})();
                 
             break;
         //To see the cv
@@ -287,13 +261,94 @@ function showOption(optionContent){
             break;
     
         default:
+            console.log("error en la funcion showOption",id)
             break;
     }
 
 }
 //To load the project and have some information
-let objectInitial = {"id": "seeData"}
-showOption(objectInitial)
+
+showOption("seeData")
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//create employees by javascript
+
+
+//1. get employees
+
+arrayListEmployees = [];
+
+//we define function to call api
+async function getEmployeesFromAPI() {
+    try {
+        const response = await fetch("http://localhost:8080/api/Product");
+        data = await response.json(); // Guardamos los productos en la variable global
+        console.log("Productos cargados:", data);
+        return data
+    } catch (error) {
+        console.error("Error al obtener los empleados:", error);
+        return []
+    }
+}
+
+
+
+
+
+//function to create card for employees
+function employeesCardCreator(arrayListEmployees){
+
+const container = document.getElementById("orders-data-container");
+
+arrayListEmployees.forEach( employee => {
+
+    const employeeCard = document.createElement("div");
+    employeeCard.classList.add("card");
+
+    cardCreator.innerHTML = 
+    `
+     <div class="employee general">
+            <div class = id_employee> ${employee.idEmployee} </div>;
+            <div class = first-name> ${employee.employeeFirstName} </div>;
+            <div class = last-name> ${employee.employeeLastName} </div>;
+            <div class = email>  ${employee.emailEmployee}</div>;
+            <div class = phone>  ${employee.phoneEmployee}</div>;
+            <div class = salary> ${employee.salary} </div>;  
+     </div>
+
+    `
+
+})
+
+
+}
 

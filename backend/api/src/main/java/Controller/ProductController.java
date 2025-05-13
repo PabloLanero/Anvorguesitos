@@ -39,7 +39,7 @@ public class ProductController extends HttpServlet {
         Product producto = new Product();
 
 
-        if(parametro!="" && parametro!=null){
+        if(parametro!=null && !parametro.isEmpty()){
             producto.setIdProduct(Integer.parseInt(parametro));
         }
 
@@ -54,6 +54,7 @@ public class ProductController extends HttpServlet {
         //convertir a JSON
         String json = gson.toJson(listProducts);
         out.println(json);
+        out.close();
 
 
     }

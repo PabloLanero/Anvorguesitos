@@ -1,15 +1,9 @@
 package Controller;
 
-import Model.Job;
-import Model.OrderHeader;
-import Model.OrderHeaderDao;
+import Model.*;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParser;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,15 +12,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-@WebServlet(name = "OrderHeaderController", urlPatterns = {"/OrderHeader"})
-public class OrderHeaderController extends HttpServlet {
+
+@WebServlet(name = "EmployeeController", urlPatterns = {"/Employee"})
+public class EmployeeController extends HttpServlet{
 
     //variable gson
     Gson gson = new Gson();
 
+
+
     @Override
     protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        //politics
         resp.setContentType("application/json;charset=UTF-8");
         resp.setHeader("Access-Control-Allow-Origin", "*");
         resp.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
@@ -35,21 +33,32 @@ public class OrderHeaderController extends HttpServlet {
 
 
         PrintWriter out =  resp.getWriter();
+        //aplicar filtros si existen
+        String parametro = req.getParameter("id_employee");
+
+        //creamos un nuevo empleado, si existe un filtro, lo aplicaremos
+        Employee employee = new Employee();
 
 
-        ArrayList<OrderHeader> listOrderHeader = new ArrayList<>();
-        OrderHeaderDao oHDao = new OrderHeaderDao();
+        if(parametro!=null && !parametro.isEmpty() ){
+            employee.setIdEmployee(Integer.parseInt(parametro));
+        }
 
-        listOrderHeader = oHDao.findAll(new OrderHeader());
+        ArrayList<Employee> listEmployees = new ArrayList<>();
+        EmployeeDao employeeDao = new EmployeeDao();
+
+        //llamamos con el argumento de producto porque si es nulo, buscará todos
+        listEmployees = employeeDao.findAll(employee);
 
 
 
-
-        String json = gson.toJson(listOrderHeader);
+        //convertir a JSON
+        String json = gson.toJson(listEmployees);
         out.println(json);
-
+        out.close();
 
     }
+
 
     @Override
     protected void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -59,12 +68,9 @@ public class OrderHeaderController extends HttpServlet {
         resp.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         resp.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
         resp.setHeader("Access-Control-Max-Age", "3600");
-        String nombre = req.getParameter("user");
-        String nombreUser = req.getParameter("name");
 
 
     }
-
 
 
 }
