@@ -206,36 +206,21 @@ function showOption(optionContent){
             //To check the employees
         case "employees":
             contentDiv.innerHTML=`
-                <div class="orders-data-container">
-                    <table>
-                        <tr>
-                            <th>Id Employee</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Phone Number</th>
-                            <th>Salary</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Pablo</td>
-                            <td>Lanero Perez</td>
-                            <td>example@gmail.com</td>
-                            <td>123456789</td>
-                            <td>1000,00€</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Pablo</td>
-                            <td>Lanero Perez</td>
-                            <td>example@gmail.com</td>
-                            <td>123456789</td>
-                            <td>1000,00€</td>
-                        </tr>
-                        
-                    </table>
+                <div class="orders-data-container" id="orders-data-container">
+                   
                 </div>
             `
+
+
+// Immediately Invoked Async Function
+(async () => {
+    
+    arrayListEmployees = await callAPI();
+    
+    employeesCardCreator() // 
+
+   
+})();
                 
             break;
         //To see the cv
@@ -276,7 +261,7 @@ function showOption(optionContent){
             break;
     
         default:
-            console.log("Algo a salido mal",id)
+            console.log("error en la funcion showOption",id)
             break;
     }
 
@@ -286,4 +271,84 @@ function showOption(optionContent){
 showOption("seeData")
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//create employees by javascript
+
+
+//1. get employees
+
+arrayListEmployees = [];
+
+//we define function to call api
+async function getEmployeesFromAPI() {
+    try {
+        const response = await fetch("http://localhost:8080/api/Product");
+        data = await response.json(); // Guardamos los productos en la variable global
+        console.log("Productos cargados:", data);
+        return data
+    } catch (error) {
+        console.error("Error al obtener los empleados:", error);
+        return []
+    }
+}
+
+
+
+
+
+//function to create card for employees
+function employeesCardCreator(arrayListEmployees){
+
+const container = document.getElementById("orders-data-container");
+
+arrayListEmployees.forEach( employee => {
+
+    const employeeCard = document.createElement("div");
+    employeeCard.classList.add("card");
+
+    cardCreator.innerHTML = 
+    `
+     <div class="employee general">
+            <div class = id_employee> ${employee.idEmployee} </div>;
+            <div class = first-name> ${employee.employeeFirstName} </div>;
+            <div class = last-name> ${employee.employeeLastName} </div>;
+            <div class = email>  ${employee.emailEmployee}</div>;
+            <div class = phone>  ${employee.phoneEmployee}</div>;
+            <div class = salary> ${employee.salary} </div>;  
+     </div>
+
+    `
+
+})
+
+
+}
 
