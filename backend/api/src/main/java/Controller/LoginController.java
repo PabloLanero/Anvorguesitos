@@ -35,9 +35,13 @@ public class LoginController extends HttpServlet {
         String password = req.getParameter("password");
         PrintWriter out = resp.getWriter();
         if(name.contains("@")){
+            //AQUI, LA VARIABLE name ES EL CORREO
             Employee emp = new Employee(name,password);
             EmployeeDao empDao = new EmployeeDao();
-            out.println(empDao.findAll(emp));
+            ArrayList<Employee> employeeArrayList = empDao.findAll(emp);
+
+            Sesion sesion = new Sesion(employeeArrayList.get(0));
+            out.println(gson.toJson(sesion));
         }else{
             Customer customer = new Customer(name,password);
             CustomerDao customerDao = new CustomerDao();

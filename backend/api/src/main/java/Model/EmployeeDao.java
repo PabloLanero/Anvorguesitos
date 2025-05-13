@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class EmployeeDao implements Dao{
 
-    private final String SQL_FINDALL = "SELECT * FROM EMPLOYEES WHERE 1=1";
+    private final String SQL_FINDALL = "SELECT * FROM EMPLOYEES WHERE 1=1 ";
     private final String SQL_DELETE = "DELETE * FROM EMPLOYEES WHERE ";
 
     private IMotorSql motorSql;
@@ -48,6 +48,8 @@ public class EmployeeDao implements Dao{
 
         //inicializamos el valor del id a -1 para evitar problemas
         Integer id_employee = -1;
+        String correo = "";
+        String password = "";
 
         //casting
         if(obj instanceof Integer){
@@ -66,16 +68,35 @@ public class EmployeeDao implements Dao{
                 sqlSimple+=" AND EMPLOYEES.id_employee = ?";
             }
 
+            if(!correo.isEmpty() && correo !=null){
+                sqlSimple += " AND EMPLOYEES.emailEmployee = ? ";
+            }
+
+
+            if(!password.isEmpty() && password !=null){
+                sqlSimple += " AND EMPLOYEES.passwordEmployee = ? ";
+            }
 
             sqlSimple += ";";
 
             //creamos la snetencia preparada para ejecutar
             PreparedStatement sentenciaPreparada = motorSql.getConnection().prepareStatement(sqlSimple);
 
+            //Vamos a ir añadiendo los valores, en funcion de los valores comprobados, se añadiran en EL MISMO ORDEN
+            //Para ello utilizaremos una variable propia que cuente el orden que deben añadirse los valores
+            int orden = 1;
 
             //asignamos le valor al interrogante
             if(id_employee > 0){
-                sentenciaPreparada.setInt(1,id_employee);
+                sentenciaPreparada.setInt(orden++,id_employee);
+            }
+
+            if(!correo.isEmpty() && correo != null){
+                sentenciaPreparada.setString(orden++,correo);
+            }
+
+            if(!password.isEmpty() && password != null){
+                sentenciaPreparada.setString(orden++,password);
             }
 
             //realizamos select
