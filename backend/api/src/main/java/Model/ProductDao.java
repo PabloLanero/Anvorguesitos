@@ -126,7 +126,7 @@ public class ProductDao implements Dao{
 
 
                 product.setImagePath(rs.getString("imagePath"));
-                product.setIngredients(new IngredientDao().findAll(product.getIdProduct()));
+                product.setIngredients(new IngredientDao().findAll(product));
 
                 listProducts.add(product);
 
