@@ -166,7 +166,7 @@ async function showOption(optionContent) {
                 console.log(element)
                 datos += `
                             <tr>
-                                <td><a href="./see-order.html"> ${element.idOrderHeader} </a></td>
+                                <td><a href="./see-order-details.html?idOrder=${element.idOrderHeader}"> ${element.idOrderHeader} </a></td>
                                 <td> ${element.orderDate} </td>
                                 <td> ${element.shippingAddress} </td>
                                 <td> ${element.accepted} </td>
@@ -325,6 +325,7 @@ if(!container){
                             <th>Shipping Address</th>
                             <th>Transsaction</th>
                             <th>Order Status</th>
+                            <th>Salary</th>
                         </tr>`
 
     arrayListEmployees.forEach(employee => {

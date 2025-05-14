@@ -7,7 +7,8 @@ import java.util.ArrayList;
 
 public class OrderLineDao implements Dao{
 
-    private final String SQL_FINDALL = "SELECT ORL.* FROM Hambearguesitos.ORDERS_LINE ORL WHERE 1 = 1 ";
+    private final String SQL_FINDALL = "SELECT ORL.id_orderLine, ORL.orderQuantity, PRO.id_product, PRO.productTitle, PRO.imagePath\n" +
+            " FROM Hambearguesitos.ORDERS_LINE ORL INNER JOIN PRODUCTS PRO ON ORL.id_product = PRO.id_product WHERE 1 = 1 ";
     private IMotorSql motorSql;
 
     public OrderLineDao(){
@@ -61,10 +62,12 @@ public class OrderLineDao implements Dao{
             while(rs.next()){
                 OrderLine orderLine = new OrderLine();
                 orderLine.setIdOrderLine(rs.getInt("id_orderLine"));
-                Integer idProducto = rs.getInt("id_product");
-                ProductDao productDao = new ProductDao();
-                ArrayList<Product> productoArrayList = productDao.findAll(idProducto);
-                orderLine.setProduct(productoArrayList.get(0));
+                Product product = new Product();
+                product.setIdProduct(rs.getInt("id_product"));
+                product.setProductTitle(rs.getString("productTitle"));
+                product.setImagePath(rs.getString("imagePath"));
+
+                orderLine.setProduct(product);
                 orderLine.setCuantity(rs.getInt("orderQuantity"));
                 orderLineArrayList.add(orderLine);
             }
