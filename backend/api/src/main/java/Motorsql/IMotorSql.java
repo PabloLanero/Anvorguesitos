@@ -1,4 +1,4 @@
-package Model;
+package Motorsql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

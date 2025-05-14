@@ -2,9 +2,9 @@ package Controller;
 
 import Controller.Session.Sesion;
 import Model.Customer;
-import Model.CustomerDao;
+import Model.DAO.CustomerDao;
 import Model.Employee;
-import Model.EmployeeDao;
+import Model.DAO.EmployeeDao;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;

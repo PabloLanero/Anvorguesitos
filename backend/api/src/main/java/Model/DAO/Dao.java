@@ -1,4 +1,6 @@
-package Model;
+package Model.DAO;
+
+import Motorsql.IMotorSql;
 
 import java.util.ArrayList;
 
