@@ -38,7 +38,7 @@ INSERT INTO INGREDIENTS ( ingredientName, allergen) VALUES
 ('Apple compote', 'none'),
 ('Wild boar meat from Sierra de Guara', 'none'),
 ('Spinach leaves', 'none'),
-('Barbastro beef', 'none')
+('Barbastro beef', 'none'),
 (NULL,NULL);
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------------

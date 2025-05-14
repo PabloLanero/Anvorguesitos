@@ -58,55 +58,39 @@ async function getOneProductFromAPI() {
 
 
 
-
-//AUX -->GENERATE CONTENT
-
-//get container
-let container = document.getElementById("dynamic-container");
-
-
-//create content
-function createContent(selectedProduct) {
-
-
-    const contentContainer = document.createElement('div');
-
-    contentContainer.classList.add('container');
-
-    contentContainer.innerHTML = `
-<div class="image-container">
-    <img src="${selectedProduct.imagePath}" alt="${selectedProduct.productTitle}">
-</div>
-<div class="text-container">
-    <div class="name">
-        <h1>${selectedProduct.productTitle}</h1>
-    </div>
-    <div class="description">
-        <p>${selectedProduct.description}</p>
-    </div>
-    <!--<div class="ingredients">
-        
-    </div>-->
-    <div class="inputs">
-                    <button  class="button-add-cart button-increase" onclick="increment()">+</button>
-                    <button  class="button-add-cart button-decrease" onclick="decrement()">-</button>
-    </div>
-</div>
-`;
-    container.appendChild(contentContainer);
-}
-
-
-
 //LOAD PRODUCT///////////////////////////////////////////////////////
 
 let selectedProduct;
+let allergensArray = [];
+
 
 (async () => {
     let selectedProductArray = await getOneProductFromAPI();
     let selectedProduct = selectedProductArray[0];
     console.log(selectedProduct);
     if (selectedProduct) {
+
+
+    let ingredientsFromSelectedProduct = selectedProduct.ingredients;
+    console.log("los ingredinetes son")
+    console.log(ingredientsFromSelectedProduct)
+
+    
+
+
+
+    //saco los alergenos
+    ingredientsFromSelectedProduct.forEach(ingredient => {
+    
+        if (ingredient.allergen != "none") { 
+            allergensArray.push(ingredient.allergen) ;
+            console.log("alergeno: "+ ingredient.allergen)
+        }
+    
+    });
+
+    console.log("Alergenos dentro de createContent:", allergensArray);
+
 
         createContent(selectedProduct); //create content
     } else {
@@ -115,22 +99,78 @@ let selectedProduct;
 
 
 
-    let ingredientsFromSelectedProduct = selectedProduct.ingredients;
-    console.log("los ingredinetes son")
-    console.log(ingredientsFromSelectedProduct)
+})();
 
-    let allergens = [];
 
-    ingredientsFromSelectedProduct.forEach(ingredient => {
-        if (ingredient.allergen != "none") { allergens.push(ingredient) }
 
+
+
+//AUX -->GENERATE CONTENT
+
+//get container
+let container = document.getElementById("dynamic-container");
+
+
+//CREAR CONTENIDO DINAMMICAMENTE, TITULO, DESCRIPCIÓN Y ALÉRENOS DEL PRODUCTO
+function createContent(selectedProduct) {
+    const contentContainer = document.createElement('div');
+    contentContainer.classList.add('container');
+
+    contentContainer.innerHTML = `
+        <div class="image-container">
+            <img src="${selectedProduct.imagePath}" alt="${selectedProduct.productTitle}">
+        </div>
+        <div class="text-container">
+            <div class="name">
+                <h1>${selectedProduct.productTitle}</h1>
+            </div>
+            <div class="description">
+                <p>${selectedProduct.description}</p>
+            </div>
+            <div class="allergens" id="listAllergens"></div>
+            <div class="inputs">
+                <button class="button-add-cart button-increase" onclick="increment()">+</button>
+                <button class="button-add-cart button-decrease" onclick="decrement()">-</button>
+            </div>
+        </div>
+    `;
+
+    //SEARCH IN CONTENT OCNTAINER THE ELEMENT THAT FITS IN #LISTALLERGENS
+    let containerAllergens = contentContainer.querySelector("#listAllergens");
+    console.log("Elemento listAllergens es ", containerAllergens);
+    
+   
+    containerAllergens.innerHTML = "";
+
+   
+  
+    // if there is allergens, insert allergens title
+    if (allergensArray.length > 0) {
+        console.log("entro aqui #1")
+        const titleAllergen = document.createElement("div");
+        titleAllergen.classList.add("titleAllergen");
+        titleAllergen.innerHTML = "<h3>ALLERGENS</h3>";
+        containerAllergens.appendChild(titleAllergen);
+        console.log("titulo de alergenos cargado")
+    }else{
+        console.log("el allergensArray esa vacio");
+    }
+
+    // add allergen
+    allergensArray.forEach(allergen => {
+        console.log("entro aqui #2")
+        const allergenDiv = document.createElement("div");
+        allergenDiv.classList.add("oneAllergen");
+        allergenDiv.innerHTML = `<div>${allergen}</div>`;
+        containerAllergens.appendChild(allergenDiv);
+        console.log("alergeno añadido al html")
     });
 
-    console.log("los alergenos son");
-    console.log(allergens);
+    //add to the main container
+    container.appendChild(contentContainer);
+}
 
 
-})();
 
 
 
