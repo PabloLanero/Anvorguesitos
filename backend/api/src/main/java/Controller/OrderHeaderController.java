@@ -45,7 +45,7 @@ public class OrderHeaderController extends HttpServlet {
             orderHeader.setIdOrderHeader(Integer.parseInt(id_orderHeader));
         }
 
-        listOrderHeader = oHDao.findAll(orderHeader);
+        listOrderHeader = oHDao.findAll(orderHeader, null);
 
 
 

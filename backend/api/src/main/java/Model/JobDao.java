@@ -23,7 +23,7 @@ public class JobDao implements Dao{
     }
 
     @Override
-    public ArrayList findAll(Object bean) {
+    public ArrayList findAll(Object bean, IMotorSql motorSql) {
         return null;
     }
 }

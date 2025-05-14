@@ -47,7 +47,7 @@ public class ProductController extends HttpServlet {
         ProductDao productDao = new ProductDao();
 
         //llamamos con el argumento de producto porque si es nulo, buscará todos
-        listProducts = productDao.findAll(producto);
+        listProducts = productDao.findAll(producto,null);
 
 
 

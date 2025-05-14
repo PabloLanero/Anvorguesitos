@@ -58,11 +58,11 @@ public class OrderHeaderDao implements Dao{
     }
 
     @Override
-    public ArrayList  findAll(Object bean) {
+    public ArrayList findAll(Object obj, IMotorSql motorSql) {
 
         //Creamos la lista en la que se va a almacenar los datos
         ArrayList<OrderHeader> listOrderHeader = new ArrayList<>();
-
+        boolean bCloseDbConnection = false;
         //Y empezamos a crear la sentencia
         String sql = "SELECT OH.id_orderHeader, OH.orderDate, OH.shippingAddress, OH.isTransactionAcepted, OH.orderStatus, OH.id_paymentMethod, " +
                 "CU.id_customer, CU.firstName, EM.id_employee, EM.employeeFirstName " +
@@ -72,10 +72,14 @@ public class OrderHeaderDao implements Dao{
                 "WHERE 1 = 1 ";
         try{
             //Nos conectamos
-            motorSql.connect();
+            if(motorSql == null) {
+                motorSql = new MotorSql();
+                motorSql.connect();
+                bCloseDbConnection = true;
+            }
             //Y si se pasa un objeto de tipo OrderHeader, se aplicarian los filtros aqui
-            if(bean !=null && bean instanceof OrderHeader){
-                OrderHeader objOrderHeader = (OrderHeader) bean;
+            if(obj !=null && obj instanceof OrderHeader){
+                OrderHeader objOrderHeader = (OrderHeader) obj;
                 if(objOrderHeader.getIdOrderHeader() > 0 ){
                     sql += " AND OH.id_orderHeader = "+ objOrderHeader.getIdOrderHeader()+ " ";
                 }
@@ -111,7 +115,7 @@ public class OrderHeaderDao implements Dao{
                 //Creamos un orderLine que tenga el pedido
                 OrderLine orderLine = new OrderLine(pedido);
                 OrderLineDao orderLineDao = new OrderLineDao();
-                ArrayList<OrderLine> orderLineArrayList = orderLineDao.findAll(orderLine);
+                ArrayList<OrderLine> orderLineArrayList = orderLineDao.findAll(orderLine, motorSql);
                 pedido.setListOrderLine(orderLineArrayList);
 
                 //Y lo añadimos a la lista
@@ -124,7 +128,9 @@ public class OrderHeaderDao implements Dao{
         }catch (Exception ex){
             System.out.println("Ha habido un problema "+ ex.getMessage());
         }finally {
-            motorSql.disconnect();
+            if(bCloseDbConnection) {
+                motorSql.disconnect();
+            }
         }
 
 

@@ -68,7 +68,7 @@ public class ProductDao implements Dao{
     }
 
     @Override
-    public ArrayList findAll(Object obj) {
+    public ArrayList findAll(Object obj, IMotorSql motorSql) {
         //creo arraylist
         ArrayList<Product> listProducts = new ArrayList<>();
 
@@ -77,6 +77,7 @@ public class ProductDao implements Dao{
 
         //inicializamos el valor de ielement a -1 para que no interfiera
         Integer id_product =  -1;
+        boolean bCloseDbConnection = false;
 
         //casting
         if (obj instanceof Integer) {
@@ -89,8 +90,12 @@ public class ProductDao implements Dao{
 
         try{
             //nos conectamos
-            motorSql.connect();
-
+            if (motorSql == null)
+            {
+            motorSql = new MotorSql();
+                motorSql.connect();
+                bCloseDbConnection = true;
+            }
             //si tiene filtro, lo añadimos para construir la sentencia
             if(id_product > 0){
                 sqlSimple += " AND PRODUCTS.id_product = ?";
@@ -126,7 +131,7 @@ public class ProductDao implements Dao{
 
 
                 product.setImagePath(rs.getString("imagePath"));
-                product.setIngredients(new IngredientDao().findAll(product));
+                product.setIngredients(new IngredientDao().findAll(product,motorSql));
 
                 listProducts.add(product);
 
@@ -140,7 +145,9 @@ public class ProductDao implements Dao{
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
+        if (bCloseDbConnection ) {
             motorSql.disconnect();
+        }
         }
 
 

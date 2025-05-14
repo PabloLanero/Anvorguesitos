@@ -38,7 +38,7 @@ public class LoginController extends HttpServlet {
             //AQUI, LA VARIABLE name ES EL CORREO
             Employee emp = new Employee(name,password);
             EmployeeDao empDao = new EmployeeDao();
-            ArrayList<Employee> employeeArrayList = empDao.findAll(emp);
+            ArrayList<Employee> employeeArrayList = empDao.findAll(emp, null);
 
             Sesion sesion = new Sesion(employeeArrayList.get(0));
             out.println(gson.toJson(sesion));
@@ -46,7 +46,7 @@ public class LoginController extends HttpServlet {
             Customer customer = new Customer(name,password);
             CustomerDao customerDao = new CustomerDao();
 
-            ArrayList<Customer> customerArrayList = customerDao.findAll(customer);
+            ArrayList<Customer> customerArrayList = customerDao.findAll(customer, null);
             Sesion sesion = new Sesion(customerArrayList.get(0));
 
 
