@@ -1,44 +1,41 @@
 //To show the user name on the website
 
-let objUser = JSON.parse(sessionStorage.getItem("user"))
-console.log("this is the object that contains datas from user" )
+let objUser = sessionStorage.getItem("user");
+
+if (objUser != null) {
+    objUser = JSON.parse(objUser);
+} else {
+    window.location.href = "login.html";
+}
+console.log("this is the object that contains datas from user")
 console.log(objUser)
 
-/*Check if first it is logged
-if not, redirected to the login page
-if is logged, 
-- change the section "login" to the username 
-*/ 
-if(!objUser){
-    window.location.href = "login.html"
-}
 
-/**
- * 
- * This function is to see the name at the top of the page
- *  
-*/
-function showUser(div){
+
+//MOSTRAR ARRIBA EL NOMBRE DE SUARIO
+function showUser(div) {
     //Aqui iria la logica para recoger el nombre del usuario
-    div.innerHTML=`
+    div.innerHTML = `
     <h1>Welcome, ${objUser.name} ${objUser.lastName}!</h1>
-    `    
+    `
 }
-
 let userIntroduction = document.getElementById("user-introduction")
 showUser(userIntroduction)
+
+
+
 
 
 //To show the user's options 
 let optionsUser = document.getElementById("optionsUser")
 
-function seeOptions(div){
+function seeOptions(div) {
     //Aqui ira la logica para sacar las opciones que tenga el usuario
     let administrator = objUser.admin
 
-    if(administrator){
+    if (administrator) {
         //Lo dejo hardcodeado para que se vea como se aplica
-        
+
         div.innerHTML = `
         <div class="option selected" onClick="beSelected('seeData'), showOption('seeData')" id="seeData">
             <p>See your data</p>
@@ -56,13 +53,13 @@ function seeOptions(div){
         </div>
 
         `
-        
-    }else{
+
+    } else {
         div.innerHTML = `
-        <div class="option selected" onClick="beSelected(seeData), showOption(seeData)" id="seeData">
+        <div class="option selected" onClick="beSelected('seeData'), showOption('seeData')" id="seeData">
             <p>See your data</p>
         </div>
-        <div class="option" onClick="beSelected(orders), showOption(orders)" id="orders">
+        <div class="option" onClick="beSelected('orders'), showOption('orders')" id="orders">
             <p>My Orders</p>
         </div>   
 
@@ -78,55 +75,43 @@ seeOptions(optionsUser)
  * from every option and add to the selected one the CSS removed
  * 
  */
-function beSelected(option){
+function beSelected(option) {
+
     let options = optionsUser.getElementsByTagName("div")
     //Se los quita a todos el atributo "selected"
     for (let index = 0; index < options.length; index++) {
         const element = options[index];
-        if(element.id === option ) element.classList.add("selected")
-        element.classList.remove("selected")
+        if (element.id != option) {
+            element.classList.remove("selected");
+        } else {
+            {
+                element.classList.add("selected")
+            }
+        }
+
+        console.log("opcion " + option + "lo lee bien");
     }
-    //Se lo añade al div seleccionado
-    
 }
 
 beSelected("seeData")
 
 
 
-let orders 
-let employees = []
-async function callAPI(URL){
+//ORDERS
+let orders
+
+
+async function callAPI(URL) {
     let results = await fetch(URL)
     orders = await results.json()
+
 }
 
 callAPI("http://localhost:8080/api/OrderHeader")
 
 
 
-//RECUPERO EMPLOYEES DE LA API
 
-let myEmployees = [];
-
-async function getEmployeesFromAPI(){
-    try
-    {
-const response = await fetch("http://localhost:8080/api/Employee");
-const employeesJSON = await response.json();
-console.log("Employees charged", employeesJSON );
-return employeesJSON
-    } catch(error){
-        console.error("Error al obtener usuario:", error);
-        return null;
-    }
-}
-
-(async () => {
-    employees = await getEmployeesFromAPI;
-    showOption(employees);
-
-})();
 
 
 
@@ -136,15 +121,15 @@ return employeesJSON
  * This function is to show the information depending on 
  * what div has been selected
  */
-function showOption(optionContent){
+async function showOption(optionContent) {
     //First, we get the id
-    const id = optionContent.id
+    const id = optionContent
     let contentDiv = document.getElementById("contentDiv")
     //Now, in case of the div selected, we will show diferent kind of information
     switch (optionContent) {
         //To check your personal data
         case "seeData":
-            contentDiv.innerHTML=`
+            contentDiv.innerHTML = `
             <div class="user-data-container" >
                 <div class="name">
                     <p><b>Nombre:</b> ${objUser.name}</p>
@@ -161,11 +146,11 @@ function showOption(optionContent){
             </div>
             `
             break;
-            //To check the orders
+        //To check the orders
         case "orders":
-        contentDiv.innerHTML = "";
-        let datos = ""
-        datos +=`
+            contentDiv.innerHTML = "";
+            let datos = ""
+            datos += `
                 <div class="orders-data-container">
                     <table>
                     <tbody>
@@ -189,43 +174,32 @@ function showOption(optionContent){
                             </tr>
                 `
             });
-        datos +=`
+            datos += `
                     </tbody>
                     </table>
                 </div>
         `
 
-        contentDiv.innerHTML = datos
-            
-        
-
-
-            
-                
+            contentDiv.innerHTML = datos
             break;
-            //To check the employees
+        //To check the employees
         case "employees":
-            contentDiv.innerHTML=`
-                <div class="orders-data-container" id="orders-data-container">
-                   
-                </div>
-            `
+            contentDiv.innerHTML = `
+                <div class="orders-data-container" id="orders-data-container"></div>`
 
 
-// Immediately Invoked Async Function
-(async () => {
-    
-    arrayListEmployees = await callAPI();
-    
-    employeesCardCreator() // 
+                    arrayListEmployees = await getEmployeesFromAPI();
+                    console.log(arrayListEmployees);
 
-   
-})();
+                    employeesCardCreator(arrayListEmployees); // 
+
+
                 
+
             break;
         //To see the cv
         case "cvs":
-            contentDiv.innerHTML=`
+            contentDiv.innerHTML = `
                 <table>
                     <tr>
                         <th>Vacancy</th>
@@ -257,18 +231,21 @@ function showOption(optionContent){
                     </tr>
                 </table>
             `
-                    
+
             break;
-    
+
         default:
-            console.log("error en la funcion showOption",id)
+            console.log("error en la funcion showOption", id)
             break;
     }
 
 }
 //To load the project and have some information
 
-showOption("seeData")
+(async() => {
+
+await showOption("seeData")
+})
 
 
 
@@ -300,19 +277,17 @@ showOption("seeData")
 
 
 
-//create employees by javascript
 
+//CREAR EMPLEADOS DINAMICAMENTE: RECPERARLOS DE LA API + CREAR TARJETAS + METERLO EN SHOWOPTION
 
-//1. get employees
-
-arrayListEmployees = [];
+let arrayListEmployees = [];
 
 //we define function to call api
 async function getEmployeesFromAPI() {
     try {
-        const response = await fetch("http://localhost:8080/api/Product");
-        data = await response.json(); // Guardamos los productos en la variable global
-        console.log("Productos cargados:", data);
+        const response = await fetch("http://localhost:8080/api/Employee");
+        let data = await response.json(); // Guardamos los productos en la variable global
+        console.log("employees cargados:", data);
         return data
     } catch (error) {
         console.error("Error al obtener los empleados:", error);
@@ -322,33 +297,59 @@ async function getEmployeesFromAPI() {
 
 
 
+(async () => {
+    arrayListEmployees = await getEmployeesFromAPI();
+    console.log("se ha almacenado en arraylist empolyees: ", arrayListEmployees);
+    showOption("employees");
+})
+
+
 
 
 //function to create card for employees
-function employeesCardCreator(arrayListEmployees){
+function employeesCardCreator(arrayListEmployees) {
+    const container = document.getElementById("orders-data-container");
 
-const container = document.getElementById("orders-data-container");
+if(!container){
+    console.error("el contenedor orders-data-container no se ha encontrado")
+    return
+}
 
-arrayListEmployees.forEach( employee => {
+    container.innerHTML = "";
+    let html = `<div class="orders-data-container">
+                    <table>
+                    <tbody>
+                        <tr>
+                            <th>Id Order</th>
+                            <th>Order date</th>
+                            <th>Shipping Address</th>
+                            <th>Transsaction</th>
+                            <th>Order Status</th>
+                        </tr>`
 
-    const employeeCard = document.createElement("div");
-    employeeCard.classList.add("card");
+    arrayListEmployees.forEach(employee => {
 
-    cardCreator.innerHTML = 
+    
+
+        html +=
+            `
+     <tr>
+            <td> ${employee.idEmployee} </td>
+            <td> ${employee.employeeFirstName} </td>
+            <td> ${employee.employeeLastName} </td>
+            <td>  ${employee.emailEmployee}</td>
+            <td>  ${employee.phoneEmployee}</td>
+            <td> ${employee.salary} </td>
+     </tr>
     `
-     <div class="employee general">
-            <div class = id_employee> ${employee.idEmployee} </div>;
-            <div class = first-name> ${employee.employeeFirstName} </div>;
-            <div class = last-name> ${employee.employeeLastName} </div>;
-            <div class = email>  ${employee.emailEmployee}</div>;
-            <div class = phone>  ${employee.phoneEmployee}</div>;
-            <div class = salary> ${employee.salary} </div>;  
-     </div>
+    
+    })
 
-    `
 
-})
+    html += `</tbody></table></div>`
+    container.innerHTML = html
 
+    
 
 }
 
