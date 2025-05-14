@@ -1,10 +1,12 @@
-package Model;
+package Model.DAO;
+
+import Motorsql.IMotorSql;
 
 import java.util.ArrayList;
 
-public class StoreDao implements Dao{
+public class JobDao implements Dao{
 
-    private final String SQL_FINDALL = "SELECT * FROM STORES WHERE 1=1";
+    private final String SQL_FINDALL = "SELECT * FROM JOBS WHERE 1=1";
     private IMotorSql motorSql;
 
     @Override

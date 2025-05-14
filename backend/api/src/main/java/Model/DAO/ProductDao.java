@@ -1,6 +1,9 @@
-package Model;
+package Model.DAO;
 
-import java.sql.Array;
+import Motorsql.IMotorSql;
+import Motorsql.MotorSql;
+import Model.Product;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

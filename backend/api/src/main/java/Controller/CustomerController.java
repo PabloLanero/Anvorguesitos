@@ -1,9 +1,7 @@
 package Controller;
 
 import Model.Customer;
-import Model.CustomerDao;
-import Model.OrderHeader;
-import Model.OrderHeaderDao;
+import Model.DAO.CustomerDao;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -14,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import com.google.gson.Gson;
-
 
 
 @WebServlet(name = "CustomerController", urlPatterns = {"/Customer"})
