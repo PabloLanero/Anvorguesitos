@@ -1,6 +1,5 @@
 
 INSERT INTO INGREDIENTS ( ingredientName, allergen) VALUES 
-(NULL,NULL),
 ('Ternasco de Aragón (lamb or veal)', 'none'),
 ('Tudela asparagus', 'none'),
 ('Tronchón cheese', 'milk'),
@@ -39,7 +38,8 @@ INSERT INTO INGREDIENTS ( ingredientName, allergen) VALUES
 ('Apple compote', 'none'),
 ('Wild boar meat from Sierra de Guara', 'none'),
 ('Spinach leaves', 'none'),
-('Barbastro beef', 'none');
+('Barbastro beef', 'none')
+(NULL,NULL);
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -256,15 +256,15 @@ INSERT INTO INGREDIENTS_PRODUCTS ( id_ingredient, id_product) VALUES
 (7, 15),  -- Belchite honey
 (34, 15), -- Rye bread
 
--- Bebidas (sin ingredientes asignados)
-(1, 16), -- Gourmet French Fries (sin ingredientes relacionados)
+-- Bebidas y guarniciones (sin ingredientes asignados)
+(40, 16), -- Gourmet French Fries (sin ingredientes relacionados)
 (5, 17),  -- Crispy Onion Rings (wheat)
-(1, 18), -- Fresh Salad (sin ingredientes relacionados)
-(1, 19), -- Water (sin ingredientes)
-(1, 20), -- Cocacola (sin ingredientes)
-(1, 22), -- Orange Fanta (sin ingredientes)
-(1, 21), -- Lemon Fanta (sin ingredientes)
-(1, 23); -- Cariñena Red Wine (sin ingredientes)
+(40, 18), -- Fresh Salad (sin ingredientes relacionados)
+(40, 19), -- Water (sin ingredientes)
+(40, 20), -- Cocacola (sin ingredientes)
+(40, 22), -- Orange Fanta (sin ingredientes)
+(40, 21), -- Lemon Fanta (sin ingredientes)
+(40, 23); -- Cariñena Red Wine (sin ingredientes)
 
 
 
