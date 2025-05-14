@@ -23,7 +23,7 @@ public class StoreDao implements Dao{
     }
 
     @Override
-    public ArrayList findAll(Object bean) {
+    public ArrayList findAll(Object bean, IMotorSql motorSql) {
         return null;
     }
 }

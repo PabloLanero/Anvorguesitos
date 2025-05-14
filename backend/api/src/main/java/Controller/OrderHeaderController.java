@@ -39,8 +39,13 @@ public class OrderHeaderController extends HttpServlet {
 
         ArrayList<OrderHeader> listOrderHeader = new ArrayList<>();
         OrderHeaderDao oHDao = new OrderHeaderDao();
+        OrderHeader orderHeader = new OrderHeader();
+        String id_orderHeader = req.getParameter("idOrder");
+        if( id_orderHeader !=null && !id_orderHeader.isEmpty() ){
+            orderHeader.setIdOrderHeader(Integer.parseInt(id_orderHeader));
+        }
 
-        listOrderHeader = oHDao.findAll(new OrderHeader());
+        listOrderHeader = oHDao.findAll(orderHeader, null);
 
 
 
@@ -61,6 +66,8 @@ public class OrderHeaderController extends HttpServlet {
         resp.setHeader("Access-Control-Max-Age", "3600");
         String nombre = req.getParameter("user");
         String nombreUser = req.getParameter("name");
+
+
 
 
     }

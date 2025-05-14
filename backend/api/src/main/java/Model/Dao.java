@@ -12,5 +12,5 @@ public interface Dao <E,I>{
     public int add(E obj);
     public int delete (I e);
     public int update(E obj);
-    public ArrayList<E> findAll(E obj);
+    public ArrayList<E> findAll(E obj, IMotorSql motorSql);
 }

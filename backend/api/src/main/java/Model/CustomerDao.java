@@ -72,7 +72,7 @@ public class CustomerDao implements Dao{
     }
 
     @Override
-    public ArrayList findAll(Object obj) {
+    public ArrayList findAll(Object obj, IMotorSql motorSql) {
         //inicializo array de customers
         ArrayList <Customer> listCustomers = new ArrayList<>();
 

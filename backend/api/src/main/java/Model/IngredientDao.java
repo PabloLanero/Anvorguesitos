@@ -31,7 +31,7 @@ public class IngredientDao implements Dao{
     }
 
     @Override
-    public ArrayList findAll(Object obj) {
+    public ArrayList findAll(Object obj, IMotorSql motorSql) {
 
         ArrayList<Ingredient> listIngredients = new ArrayList<>();
 
@@ -54,8 +54,9 @@ public class IngredientDao implements Dao{
 
         try
         {
-            motorSql.connect();
-
+            if (motorSql == null) {
+                motorSql.connect();
+            }
 
 
             if(id_ingredient > 0 && id_productFiltered == -1) {
@@ -94,7 +95,11 @@ public class IngredientDao implements Dao{
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
-            motorSql.disconnect();
+            if (motorSql
+
+                    != null) {
+                motorSql.disconnect();
+            }
         }
 
         return listIngredients;

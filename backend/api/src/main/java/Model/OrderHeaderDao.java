@@ -58,26 +58,29 @@ public class OrderHeaderDao implements Dao{
     }
 
     @Override
-    public ArrayList  findAll(Object bean) {
+    public ArrayList findAll(Object obj, IMotorSql motorSql) {
 
         //Creamos la lista en la que se va a almacenar los datos
         ArrayList<OrderHeader> listOrderHeader = new ArrayList<>();
-
+        boolean bCloseDbConnection = false;
         //Y empezamos a crear la sentencia
-        String sql = "SELECT OH.id_orderHeader, OH.orderDate, OH.shippingAddress, OH.isTransactionAcepted, OH.orderStatus, PM.id_paymentMethod, PM.paymentMethodName, " +
+        String sql = "SELECT OH.id_orderHeader, OH.orderDate, OH.shippingAddress, OH.isTransactionAcepted, OH.orderStatus, OH.id_paymentMethod, " +
                 "CU.id_customer, CU.firstName, EM.id_employee, EM.employeeFirstName " +
                 "FROM Hambearguesitos.ORDERS_HEADER OH " +
-                "INNER JOIN Hambearguesitos.PAYMENT_METHODS PM ON PM.id_paymentMethod = OH.id_paymentMethod " +
                 "INNER JOIN Hambearguesitos.CUSTOMERS CU ON CU.id_customer = OH.id_customer " +
                 "INNER JOIN Hambearguesitos.EMPLOYEES EM ON EM.id_employee = OH.id_employee " +
                 "WHERE 1 = 1 ";
         try{
             //Nos conectamos
-            motorSql.connect();
+            if(motorSql == null) {
+                motorSql = new MotorSql();
+                motorSql.connect();
+                bCloseDbConnection = true;
+            }
             //Y si se pasa un objeto de tipo OrderHeader, se aplicarian los filtros aqui
-            if(bean !=null && bean instanceof OrderHeader){
-                OrderHeader objOrderHeader = (OrderHeader) bean;
-                if(objOrderHeader.getIdOrderHeader() > 0){
+            if(obj !=null && obj instanceof OrderHeader){
+                OrderHeader objOrderHeader = (OrderHeader) obj;
+                if(objOrderHeader.getIdOrderHeader() > 0 ){
                     sql += " AND OH.id_orderHeader = "+ objOrderHeader.getIdOrderHeader()+ " ";
                 }
 
@@ -95,18 +98,25 @@ public class OrderHeaderDao implements Dao{
             //Y aqui recogemos los datos para añadirlos a la lista
             while(rs.next()){
                 //Creamos un objeto con las propiedades de la fila devuelta como resultado
-                OrderHeader pedido = new OrderHeader(
-                            //Aqui se instancia la parte del pedido
-                        rs.getInt("id_orderHeader"),rs.getString("shippingAddress"),rs.getString("orderStatus"),
-                            //Aqui se crea el cliente del pedido
-                        new Customer(rs.getInt("id_customer"),rs.getString("firstName")),
-                            //Aqui se crea el empleado del pedido
-                        new Employee(rs.getInt("id_employee"),rs.getString("employeeFirstName")),
-                            //Aqui se crea el metodo de pago
-                        OrderHeader.PaymentMethod.CASH,//{rs.getInt("id_paymentMethod")},
-                            //Aqui se termina de crear el objeto de pedido
+                OrderHeader pedido = new OrderHeader();
 
-                        rs.getString("orderDate"),rs.getBoolean("isTransactionAcepted"));
+                pedido.setIdOrderHeader(rs.getInt("id_orderHeader"));
+                pedido.setShippingAddress(rs.getString("shippingAddress"));
+                pedido.setOrderStatus(rs.getString("orderStatus"));
+                pedido.setCustomer(new Customer(rs.getInt("id_customer"),rs.getString("firstName")));
+                pedido.setEmployee(new Employee(rs.getInt("id_employee"),rs.getString("employeeFirstName")));
+                pedido.setPaymentMethod(rs.getInt("id_paymentMethod"));
+                pedido.setOrderDate(rs.getString("orderDate"));
+                pedido.setAccepted(rs.getBoolean("isTransactionAcepted"));
+
+
+
+
+                //Creamos un orderLine que tenga el pedido
+                OrderLine orderLine = new OrderLine(pedido);
+                OrderLineDao orderLineDao = new OrderLineDao();
+                ArrayList<OrderLine> orderLineArrayList = orderLineDao.findAll(orderLine, motorSql);
+                pedido.setListOrderLine(orderLineArrayList);
 
                 //Y lo añadimos a la lista
                 listOrderHeader.add(pedido);
@@ -117,6 +127,10 @@ public class OrderHeaderDao implements Dao{
             System.out.println(sqlEx.getMessage());
         }catch (Exception ex){
             System.out.println("Ha habido un problema "+ ex.getMessage());
+        }finally {
+            if(bCloseDbConnection) {
+                motorSql.disconnect();
+            }
         }
 
 

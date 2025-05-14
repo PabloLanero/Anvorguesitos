@@ -39,7 +39,7 @@ public class EmployeeDao implements Dao{
     }
 
     @Override
-    public ArrayList findAll(Object obj) {
+    public ArrayList findAll(Object obj, IMotorSql motorSql) {
         //creo arraylist
         ArrayList<Employee> listEmployee = new ArrayList<>();
 

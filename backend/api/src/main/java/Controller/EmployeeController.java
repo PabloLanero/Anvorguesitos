@@ -48,7 +48,7 @@ public class EmployeeController extends HttpServlet{
         EmployeeDao employeeDao = new EmployeeDao();
 
         //llamamos con el argumento de producto porque si es nulo, buscará todos
-        listEmployees = employeeDao.findAll(employee);
+        listEmployees = employeeDao.findAll(employee, null);
 
 
 

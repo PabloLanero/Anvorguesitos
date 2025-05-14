@@ -18,6 +18,11 @@ public class OrderLine {
         this.cuantity = cuantity;
         this.product = product;
     }
+
+    public OrderLine(OrderHeader orderHeader){
+        setOrderHeader(orderHeader);
+    }
+
     public OrderLine () {
     }
 

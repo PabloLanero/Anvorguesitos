@@ -42,7 +42,7 @@ public class CustomerController extends HttpServlet {
         ArrayList<Customer> listCustomers = new ArrayList<>();
         CustomerDao customerDao = new CustomerDao();
 
-        listCustomers = customerDao.findAll(new Customer());
+        listCustomers = customerDao.findAll(new Customer(), null);
 
 
 

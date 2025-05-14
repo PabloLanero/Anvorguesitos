@@ -47,6 +47,11 @@ public class OrderHeader {
         this.shippingAddress = shippingAddress;
         this.orderDate = orderDate;
     }
+
+    public OrderHeader(int id){
+        setIdOrderHeader(id);
+    }
+
     public OrderHeader () {
     }
 
@@ -98,8 +103,16 @@ public class OrderHeader {
     public PaymentMethod getPaymentMethod () {
         return paymentMethod;
     }
-    public void setPaymentMethod (PaymentMethod paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setPaymentMethod (int paymentMethod) {
+        switch (paymentMethod){
+            case 1:
+                this.paymentMethod = PaymentMethod.CREDITCARD;
+                break;
+            case 2:
+                this.paymentMethod = PaymentMethod.CASH;
+                break;
+        }
+
     }
     public String getShippingAddress () {
         return shippingAddress;
