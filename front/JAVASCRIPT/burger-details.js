@@ -83,7 +83,7 @@ let allergensArray = [];
     ingredientsFromSelectedProduct.forEach(ingredient => {
     
         if (ingredient.allergen != "none") { 
-            allergensArray.push(ingredient.allergen) ;
+            if(!allergensArray.includes(ingredient.allergen)) allergensArray.push(ingredient.allergen) ;
             console.log("alergeno: "+ ingredient.allergen)
         }
     
