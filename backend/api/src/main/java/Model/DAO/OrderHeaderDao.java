@@ -1,6 +1,10 @@
-package Model;
+package Model.DAO;
 
 
+
+import Model.*;
+import Motorsql.IMotorSql;
+import Motorsql.MotorSql;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

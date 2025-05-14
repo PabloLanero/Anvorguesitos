@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.*;
+import Model.DAO.ProductDao;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
