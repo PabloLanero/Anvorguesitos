@@ -1,5 +1,7 @@
 package Model.DAO;
 
+import Motorsql.IMotorSql;
+
 import java.util.ArrayList;
 
 //E: Representa el tipo de entidad que se manipulará (Ejemplo: Usuario, Producto)

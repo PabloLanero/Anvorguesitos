@@ -1,6 +1,9 @@
 package Model.DAO;
 
+import Model.OrderLine;
+import Model.Product;
 import Motorsql.IMotorSql;
+import Motorsql.MotorSql;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
