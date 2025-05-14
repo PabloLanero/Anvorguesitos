@@ -47,6 +47,11 @@ public class OrderHeader {
         this.shippingAddress = shippingAddress;
         this.orderDate = orderDate;
     }
+
+    public OrderHeader(int id){
+        setIdOrderHeader(id);
+    }
+
     public OrderHeader () {
     }
 

@@ -77,7 +77,7 @@ public class OrderHeaderDao implements Dao{
             //Y si se pasa un objeto de tipo OrderHeader, se aplicarian los filtros aqui
             if(bean !=null && bean instanceof OrderHeader){
                 OrderHeader objOrderHeader = (OrderHeader) bean;
-                if(objOrderHeader.getIdOrderHeader() > 0){
+                if(objOrderHeader.getIdOrderHeader() > 0 ){
                     sql += " AND OH.id_orderHeader = "+ objOrderHeader.getIdOrderHeader()+ " ";
                 }
 
@@ -107,6 +107,12 @@ public class OrderHeaderDao implements Dao{
                             //Aqui se termina de crear el objeto de pedido
 
                         rs.getString("orderDate"),rs.getBoolean("isTransactionAcepted"));
+
+                //Creamos un orderLine que tenga el pedido
+                OrderLine orderLine = new OrderLine(pedido);
+                OrderLineDao orderLineDao = new OrderLineDao();
+                ArrayList<OrderLine> orderLineArrayList = orderLineDao.findAll(orderLine);
+                pedido.setListOrderLine(orderLineArrayList);
 
                 //Y lo añadimos a la lista
                 listOrderHeader.add(pedido);
