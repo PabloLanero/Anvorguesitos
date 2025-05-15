@@ -13,6 +13,8 @@ public class CustomerDao implements Dao{
 
     private final String SQL_FINDALL = "SELECT * FROM CUSTOMERS CU WHERE 1=1";
     private final String SQL_DELETE = "DELETE * FROM CUSTOMERS WHERE ";
+    private final String SQL_INSERT = "INSERT INTO CUSTOMERS (firstName, lastName, emailCustomer, phoneCustomer, passwordCustomer, isRegistered) VALUES (?, ?, ?, ?, ?, ?)";
+
     private IMotorSql motorSql;
 
 
@@ -27,15 +29,47 @@ public class CustomerDao implements Dao{
 
 
     @Override
-    public int add(Object bean) {
-        return 0;
+    public int add(Object obj) {
+        //flag exito
+        boolean exito = false;
+        try
+        {
+            //0. conectamos a la bbdd
+            motorSql.connect();
+
+            //1. casteamos obj a customer
+            Customer customer = (Customer)obj;
+
+            //3. preparamos sentencia sql
+            PreparedStatement sentenciaPreparada = motorSql.getConnection().prepareStatement(SQL_INSERT);
+
+            //4. asignamos valores al insert
+            sentenciaPreparada.setString( 1,customer.getFirstName());
+            sentenciaPreparada.setString( 2,customer.getLastName());
+            sentenciaPreparada.setString( 3, customer.getEmailCustomer());
+            sentenciaPreparada.setString( 4, customer.getPhoneCustomer());
+            sentenciaPreparada.setString( 5, customer.getPasswordCustomer());
+            sentenciaPreparada.setBoolean( 6,customer.isRegistered());
+
+            //si funciona seteamos variable de exito
+            exito = sentenciaPreparada.execute();
+
+        }catch (SQLException sqlEx){
+            System.out.println(sqlEx.getMessage());
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            motorSql.disconnect();
+        }
+
+        return exito? 1:0;
     }
 
     @Override
     public int delete(Object obj) {
         //inicializamos el valor de ielement a -1 para que no interfiera
         Integer id_customer =  -1;
-        boolean nFilasAfectadas = false;
+        boolean filasAfectadas = false;
         String sqlSimple = SQL_DELETE+ "ID_CUSTOMER = ?";
 
         //1º casting
@@ -51,13 +85,11 @@ public class CustomerDao implements Dao{
             try {
                 motorSql.connect();
 
-
                 PreparedStatement sentenciaPreparada = motorSql.getConnection().prepareStatement(sqlSimple);
 
                 sentenciaPreparada.setInt(1, id_customer);
 
-                 nFilasAfectadas = motorSql.execute();
-
+                 filasAfectadas = motorSql.execute();
 
             }catch(SQLException sqlEx){
 
@@ -67,7 +99,7 @@ public class CustomerDao implements Dao{
         }
 
 
-        return nFilasAfectadas ? 1:0;
+        return filasAfectadas ? 1:0;
     }
 
     @Override
