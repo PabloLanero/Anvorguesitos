@@ -58,6 +58,12 @@ public class CustomerController extends HttpServlet {
         //la respuesta tendrá un formato de texto plano con esa codificación
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        response.setHeader("Access-Control-Max-Age", "3600");
+
+
 
         //creo un parseador(una clase de la librería de gson)  => analiza y convierte a JSON objetos java y al revés
         JsonParser parser = new JsonParser();

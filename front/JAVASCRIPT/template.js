@@ -10,20 +10,20 @@ console.log(datos  )
 */
 
 
-const datas = await fetch("http://localhost:8080/api/Customer", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        "name": "AAA",
-        "lastName": "registered.lastName",
-        "email": "registered.email",
-        "mobilePhone": "registered.mobilePhone",
-        "admin": "false",
-        "id": "1",
-    })
-});
+        const datas = await fetch("http://localhost:8080/api/Customer", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "name": "AAA",
+                "lastName": "registered.lastName",
+                "email": "registered.email",
+                "mobilePhone": "registered.mobilePhone",
+                "admin": "false",
+                "id": "1",
+            })
+        });
 
 
 
