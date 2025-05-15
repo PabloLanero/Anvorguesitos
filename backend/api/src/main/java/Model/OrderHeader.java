@@ -100,7 +100,17 @@ public class OrderHeader {
     public void setOrderStatus (String orderStatus) {
         this.orderStatus = orderStatus;
     }
-    public PaymentMethod getPaymentMethod () {
+    public int getPaymentMethod () {
+        int iRet = -1;
+        switch (this.paymentMethod){
+            case CASH:
+                iRet = 2;
+                break;
+            case CREDITCARD:
+                iRet = 1;
+                break;
+        }
+
         return paymentMethod;
     }
     public void setPaymentMethod (int paymentMethod) {

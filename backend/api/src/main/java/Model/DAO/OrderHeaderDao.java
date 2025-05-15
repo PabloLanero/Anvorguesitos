@@ -1,7 +1,5 @@
 package Model.DAO;
 
-
-
 import Model.*;
 import Motorsql.IMotorSql;
 import Motorsql.MotorSql;
@@ -11,44 +9,88 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class OrderHeaderDao implements Dao{
+public class OrderHeaderDao implements Dao {
 
     private final String SQL_FINDALL = "SELECT * FROM ORDERS_HEADER WHERE 1=1";
+    private final String SQL_INSERT = "INSERT INTO ORDERS_HEADER (orderDate, shippingAddress, isTransactionAcepted, orderStatus, id_paymentMethod, id_customer, id_employee)VALUES (?, ?, ?, ?, ?, ?, ?)";
+
     private IMotorSql motorSql;
 
     //Constructor
-    public OrderHeaderDao(){
+    public OrderHeaderDao() {
         motorSql = new MotorSql();
     }
 
-
     @Override
-    public int add(Object bean) {
-        return 0;
+    public int add(Object obj) {
+        //flag exito
+        boolean exito = false;
+
+        try {
+            //nos conectamos a la bbdd
+            motorSql.connect();
+
+            //casteamos el bean
+            OrderHeader orderHeader = (OrderHeader) obj;
+
+            //preparamos sentencia sql
+            PreparedStatement sentenciaPreparada = motorSql.getConnection().prepareStatement(SQL_INSERT);
+
+            //asignamos valores orderDate, shippingAddress, isTransactionAcepted, orderStatus, id_paymentMethod, id_customer, id_employee
+            sentenciaPreparada.setString(1, orderHeader.getOrderDate());
+            sentenciaPreparada.setString(2, orderHeader.getShippingAddress());
+            sentenciaPreparada.setBoolean(3, orderHeader.isAccepted());
+            sentenciaPreparada.setString(4, orderHeader.getOrderStatus());
+            sentenciaPreparada.setInt(5, orderHeader.getCustomer().getIdCustomer());
+            sentenciaPreparada.setInt(6, orderHeader.getEmployee().getIdEmployee());
+            sentenciaPreparada.setInt(7, orderHeader.getPaymentMethod());
+
+
+
+
+
+            //FALTA METER LOS ORDERLINE
+            for(OrderLine orderLine : orderHeader.getListOrderLine()){
+                orderLine.setCuantity(orderLine.getCuantity());
+                orderLine.setProduct(orderLine.getProduct());
+                orderLine.setOrderHeader(orderHeader.getIdOrderHeader());
+            }
+
+
+
+        } catch (SQLException sqlEx) {
+            System.out.println(sqlEx.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            motorSql.disconnect();
+        }
+
+        return exito ? 1 : 0;
     }
 
     @Override
     public int delete(Object bean) {
         Integer idOrderHeader = -1;
 
-        if(bean instanceof Integer){
+        if (bean instanceof Integer) {
             idOrderHeader = (Integer) bean;
         } else if (bean instanceof OrderHeader) {
             idOrderHeader = ((OrderHeader) bean).getIdOrderHeader();
         }
 
         //Si puedo asignar el id alergeno
-        if(idOrderHeader >0){
-            try{
+        if (idOrderHeader > 0) {
+            try {
                 motorSql.connect();
                 String sql = "DELETE FROM Hambearguesitos.ORDERS_HEADER OH WHERE OH.id_orderHeader = ? ;";
                 PreparedStatement sentencia = motorSql.getConnection().prepareStatement(sql);//;
-                sentencia.setInt(1,idOrderHeader);
+                sentencia.setInt(1, idOrderHeader);
                 motorSql.setPreparedStatement(sentencia);
                 motorSql.execute();
-            }catch (SQLException sqlEx){
+            } catch (SQLException sqlEx) {
 
-            }catch (Exception Ex){
+            } catch (Exception Ex) {
 
             }
         }
@@ -74,47 +116,41 @@ public class OrderHeaderDao implements Dao{
                 "INNER JOIN Hambearguesitos.CUSTOMERS CU ON CU.id_customer = OH.id_customer " +
                 "INNER JOIN Hambearguesitos.EMPLOYEES EM ON EM.id_employee = OH.id_employee " +
                 "WHERE 1 = 1 ";
-        try{
+        try {
             //Nos conectamos
-            if(motorSql == null) {
+            if (motorSql == null) {
                 motorSql = new MotorSql();
                 motorSql.connect();
                 bCloseDbConnection = true;
             }
             //Y si se pasa un objeto de tipo OrderHeader, se aplicarian los filtros aqui
-            if(obj !=null && obj instanceof OrderHeader){
+            if (obj != null && obj instanceof OrderHeader) {
                 OrderHeader objOrderHeader = (OrderHeader) obj;
-                if(objOrderHeader.getIdOrderHeader() > 0 ){
-                    sql += " AND OH.id_orderHeader = "+ objOrderHeader.getIdOrderHeader()+ " ";
+                if (objOrderHeader.getIdOrderHeader() > 0) {
+                    sql += " AND OH.id_orderHeader = " + objOrderHeader.getIdOrderHeader() + " ";
                 }
 
-                if(objOrderHeader.getOrderDate() !="" && objOrderHeader.getOrderDate() !=null){
-                    sql += " AND OH.orderDate = " +objOrderHeader.getOrderDate()+" ";
+                if (objOrderHeader.getOrderDate() != "" && objOrderHeader.getOrderDate() != null) {
+                    sql += " AND OH.orderDate = " + objOrderHeader.getOrderDate() + " ";
                 }
-
-
-
             }
             sql += ";";
             //Aqui ejecumatos la sentencia para lanzarla a la base de datos
             ResultSet rs = motorSql.executeQuery(sql);
 
             //Y aqui recogemos los datos para añadirlos a la lista
-            while(rs.next()){
+            while (rs.next()) {
                 //Creamos un objeto con las propiedades de la fila devuelta como resultado
                 OrderHeader pedido = new OrderHeader();
 
                 pedido.setIdOrderHeader(rs.getInt("id_orderHeader"));
                 pedido.setShippingAddress(rs.getString("shippingAddress"));
                 pedido.setOrderStatus(rs.getString("orderStatus"));
-                pedido.setCustomer(new Customer(rs.getInt("id_customer"),rs.getString("firstName")));
-                pedido.setEmployee(new Employee(rs.getInt("id_employee"),rs.getString("employeeFirstName")));
+                pedido.setCustomer(new Customer(rs.getInt("id_customer"), rs.getString("firstName")));
+                pedido.setEmployee(new Employee(rs.getInt("id_employee"), rs.getString("employeeFirstName")));
                 pedido.setPaymentMethod(rs.getInt("id_paymentMethod"));
                 pedido.setOrderDate(rs.getString("orderDate"));
                 pedido.setAccepted(rs.getBoolean("isTransactionAcepted"));
-
-
-
 
                 //Creamos un orderLine que tenga el pedido
                 OrderLine orderLine = new OrderLine(pedido);
@@ -126,19 +162,15 @@ public class OrderHeaderDao implements Dao{
                 listOrderHeader.add(pedido);
             }
 
-
-        }catch (SQLException sqlEx){
+        } catch (SQLException sqlEx) {
             System.out.println(sqlEx.getMessage());
-        }catch (Exception ex){
-            System.out.println("Ha habido un problema "+ ex.getMessage());
-        }finally {
-            if(bCloseDbConnection) {
+        } catch (Exception ex) {
+            System.out.println("Ha habido un problema " + ex.getMessage());
+        } finally {
+            if (bCloseDbConnection) {
                 motorSql.disconnect();
             }
         }
-
-
-
 
         return listOrderHeader;
     }
