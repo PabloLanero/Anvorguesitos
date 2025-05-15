@@ -21,7 +21,8 @@ public class OrderLineDao implements Dao{
     }
 
     @Override
-    public int add(Object bean) {
+    public int add(Object obj) {
+
         return 0;
     }
 

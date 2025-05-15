@@ -1,8 +1,11 @@
 package Controller;
 
+import Model.Customer;
 import Model.OrderHeader;
 import Model.DAO.OrderHeaderDao;
+import Model.OrderLine;
 import com.google.gson.Gson;
+import com.google.gson.JsonParser;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -63,8 +66,23 @@ public class OrderHeaderController extends HttpServlet {
         String nombreUser = req.getParameter("name");
 
 
+        //creo un parseador(una clase de la librería de gson)  => analiza y convierte a JSON objetos java y al revés
+        JsonParser parser = new JsonParser();
+        Gson gson = new Gson();
 
+        // creo un usuario a raíz de: uso biblioteca gson --> clase parseadora --> parsea el cuerpo de la petición (JSON) a clase java de ese tipo
 
+        /*
+        body_all = parser.parse(getBody(request));
+        body_order_header = body_all['name']
+        OrderHeader newOrderHeader  = gson.fromJson(body_order_header, OrderHeader.class);
+        for (lines body_all['lines'] as line) {
+            line add newOrderHeader.id
+            OrderLine = gson.fromJson(line, OrderLine.class);
+        }
+
+*/
+         
     }
 
 
