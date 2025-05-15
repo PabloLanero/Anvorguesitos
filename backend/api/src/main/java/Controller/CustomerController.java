@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -54,14 +55,15 @@ public class CustomerController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-
-        //la respuesta tendrá un formato de texto plano con esa codificación
-        response.setContentType("text/plain");
-        response.setCharacterEncoding("UTF-8");
+        response.setStatus(HttpServletResponse.SC_OK);
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
         response.setHeader("Access-Control-Max-Age", "3600");
+        //la respuesta tendrá un formato de texto plano con esa codificación
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
+
 
 
 
@@ -72,6 +74,8 @@ public class CustomerController extends HttpServlet {
         // creo un usuario a raíz de: uso biblioteca gson --> clase parseadora --> parsea el cuerpo de la petición (JSON) a clase java de ese tipo
         Customer newCustomer  = gson.fromJson(parser.parse(getBody(request)), Customer.class);
 
+        CustomerDao customerDao = new CustomerDao();
+        customerDao.add(newCustomer);
         //lo transformamos a json para ver por consola que se ha creado
         System.out.println(gson.toJson(newCustomer));
 

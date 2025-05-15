@@ -11,18 +11,16 @@ console.log(datos  )
 
 
         const datas = await fetch("http://localhost:8080/api/Customer", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            method: "post",
             body: JSON.stringify({
-                "name": "AAA",
+                "firstName": "AAA",
                 "lastName": "registered.lastName",
-                "email": "registered.email",
-                "mobilePhone": "registered.mobilePhone",
-                "admin": "false",
-                "id": "1",
+                "emailCustomer": "registered.email",
+                "phoneCustomer": "registered.mobilePhone",
+                "registered": false,
+                "idCustomer": 1000,
             })
+            
         });
 
 
