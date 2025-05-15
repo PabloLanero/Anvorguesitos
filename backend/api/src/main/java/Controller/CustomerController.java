@@ -48,6 +48,8 @@ public class CustomerController extends HttpServlet {
         out.close();
 
 
+
+
     }
 
     @Override
@@ -75,8 +77,14 @@ public class CustomerController extends HttpServlet {
         //lo transformamos a json para ver por consola que se ha creado
         System.out.println(gson.toJson(newCustomer));
 
+
+        //enviar el json a la bbdd
+
+
+
         //enviamos respuesta al usuario
         response.getWriter().print("hola " + newCustomer.getFirstName() +  " tu usuario se ha agregado correctamente"+ "\r\n");
+
 
     }
 
