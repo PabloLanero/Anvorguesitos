@@ -13,12 +13,13 @@ console.log(datos  )
         const datas = await fetch("http://localhost:8080/api/Customer", {
             method: "post",
             body: JSON.stringify({
-                "firstName": "AAA",
-                "lastName": "registered.lastName",
-                "emailCustomer": "registered.email",
-                "phoneCustomer": "registered.mobilePhone",
-                "registered": false,
-                "idCustomer": 1000,
+                "firstName": "Izarbe",
+                "lastName": "Bailo",
+                "emailCustomer": "ejemplo@gmail.com",
+                "phoneCustomer": "123456789",
+                "registered": true,
+                "passwordCustomer": "123"
+                
             })
             
         });
