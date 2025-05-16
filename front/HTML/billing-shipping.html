@@ -92,13 +92,13 @@
                         <input class="number-phone" placeholder="123456789" type="number" id="CustomerMobilePhone" required value="">
                     </div>
                     <div class="input">
-                        <input class="text" placeholder="Street" required>
+                        <input class="text" placeholder="Street" id="street" required>
                     </div>
                     <div class="input">
-                        <input class="text" placeholder="Street-number" required>
+                        <input class="text" placeholder="Street-number" id="street-number" required>
                     </div>
                     <div class="input">
-                        <input class="text" placeholder="Floor, door and additional information" required>
+                        <input class="text" id="floor" placeholder="Floor, door and additional information" required>
                     </div>
 
                 </div>
@@ -146,7 +146,7 @@
 
 
         <div class="proceed-to-payment">
-            <button onclick="location.href='./payment.html'">Proceed to payment</button>
+            <button onclick="makeOrder()">Proceed to payment</button>
         </div>
         
 

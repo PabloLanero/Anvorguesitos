@@ -24,7 +24,7 @@ public class OrderHeaderDao implements Dao {
     @Override
     public int add(Object obj) {
         //flag exito
-        int filasAfectadas = 0;
+        int iRet = 0;
 
         try {
             //nos conectamos a la bbdd
@@ -46,13 +46,15 @@ public class OrderHeaderDao implements Dao {
             sentenciaPreparada.setInt(6, orderHeader.getPaymentMethod());
 
 
-            filasAfectadas = sentenciaPreparada.executeUpdate();
+            iRet = sentenciaPreparada.executeUpdate();
 
             ResultSet resultSetId = motorSql.executeQuery("SELECT LAST_INSERT_ID() FROM ORDERS_HEADER;");
 
             while(resultSetId.next()) {
                 orderHeader.setIdOrderHeader(resultSetId.getInt("LAST_INSERT_ID()"));
             }
+
+            iRet = orderHeader.getIdOrderHeader();
             OrderLineDao orderLineDao = new OrderLineDao();
             //FALTA METER LOS ORDERLINE
             for(OrderLine orderLine : orderHeader.getListOrderLine()){
@@ -71,7 +73,7 @@ public class OrderHeaderDao implements Dao {
             motorSql.disconnect();
         }
 
-        return filasAfectadas ;
+        return iRet ;
     }
 
     @Override
