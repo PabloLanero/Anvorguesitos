@@ -38,12 +38,50 @@ function showCustomerInformation(customer){
     let registered = customer.registered ? "Yes" : "No"
 
     let html = `
-    <p><strong>First Name:</strong></p><p> ${customer.firstName}</p>
+    <p><strong>Customer First Name:</strong></p><p> ${customer.firstName}</p>
     <p><strong>Registered:</strong></p><p>  ${registered}</p>
 
     
     `
 
     divCustomer.innerHTML = html
+
+}
+
+function showEmployeeInformation(employee){
+    let divEmployee = document.getElementById("employee_information")
+
+    
+
+    let html = `
+    <p><strong>Employee First Name:</strong></p><p> ${employee.employeeFirstName}</p>
+    
+
+    
+    `
+
+    divEmployee.innerHTML = html
+
+}
+
+
+function showOrderLines(arrayOrderLines){
+    let divOrder = document.getElementById("order_products")
+    let html = "";
+    arrayOrderLines.forEach(orderLine => {
+        html+=`
+        <div class="order-line">
+            <div class="order-image">
+                <img src="${orderLine.product.imagePath}">
+            </div>
+            <div class="order-details">
+                <a href="./burger-detail.html?id_product=${orderLine.product.idProduct}"><h3>${orderLine.product.productTitle}</h3></a>
+                <p>x${orderLine.cuantity}</p>
+            </div>
+        </div>
+        `
+    });
+
+    divOrder.innerHTML = html
 
 }

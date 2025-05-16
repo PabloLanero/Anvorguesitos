@@ -26,7 +26,7 @@ let calculation = () => {
 function cardCreator(basket){
 
     const container = document.getElementById("container-for-cards");
-
+    container.innerHTML = ""
     basket.forEach(product => {
 
      const card = document.createElement("div");
@@ -50,6 +50,10 @@ function cardCreator(basket){
                 </div>
             </div>
         </div>
+        <div class="product-button">
+        <button onClick="increment(${product.idProduct})">+</button>
+            <button onClick="decrement(${product.idProduct})">-</button>
+        </div>
     </div>
     <hr>
 
@@ -61,6 +65,78 @@ function cardCreator(basket){
  ;
 
 }
+
+
+//function to increase the amount of products
+function increment(id) {
+    let selectedItem = id;
+
+    let search = basket.find((x) => x.idProduct === selectedItem);
+    //it is searching for the object wich we have selected. it returns wether if it exist in the basket yet
+
+    if (search === undefined) {
+
+        //we find the object from api and we save it in a variable
+        const  productData = products.find((product) => product.idProduct === selectedItem);
+
+        //add to the basket
+        basket.push({
+            ...productData,   //Appends new elements to the end of an array, and returns the new length of the array.
+            item: 1,    //amount bought
+
+        });
+    } else {
+        search.item++;
+    }
+
+
+    localStorage.setItem("data", JSON.stringify(basket));
+    //keyvalue: data is the key, basket is the value that we keep
+    //basket is an object. if we want to safe data (not only "object") we have to transform it into a json by json.stringify "into a string"
+    
+    cardCreator(basket)
+    calculation();
+    calculatorTotalPrice()
+    
+}
+
+
+
+//Function to decrease the amount of products
+function decrement(id) {
+    let selectedItem = id;
+
+    let search = basket.find((x) => x.idProduct === selectedItem);
+    //it is searching for the object wich we have selected. i t returns  wether if it exist in the basket yet
+
+    //if object doesn´t exist
+    if (!search) {
+        return;
+    }
+ //if quantity is more than 0 quit one
+    if (search.item > 0) {
+        search.item--;
+    }
+
+
+// if is 0 remove item from basket
+    if (search.item === 0) {
+        basket = basket.filter(x => x.idProduct !== selectedItem); //filter return a new array with products wich quantity is not zero. it filters when id is different than selected item to include it in array
+
+    }
+
+    localStorage.setItem("data", JSON.stringify(basket));
+    //keyvalue: data is the key, basket is the value that we keep
+    //basket is an object. if we want to safe data (not only "object") we have to transform it into a json by json.stringify "into a string"
+    //console.log(basket);
+    // update(selectedItem.id);
+    cardCreator(basket)
+    calculation();
+    calculatorTotalPrice()
+}
+
+
+
 
 //BASKET TOTAL PRICE///////////////////////
 
