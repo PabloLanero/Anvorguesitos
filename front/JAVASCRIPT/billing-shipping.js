@@ -59,7 +59,7 @@ async function makeOrder(){
     let idOrder= await resultado.text()
     console.log(resultado)
     if(idOrder>0) {
-        window.location.href = ".see-order-details.html?idOrder="+idOrder
+        window.location.href = "see-order-details.html?idOrder="+idOrder
         localStorage.removeItem("data")
     }
 }
