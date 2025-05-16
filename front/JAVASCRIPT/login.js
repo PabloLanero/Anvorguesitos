@@ -1,14 +1,23 @@
 async function login(){
-    let name = document.getElementById("name")
+
+    try
+    {
+        let name = document.getElementById("name")
     let password = document.getElementById("password")
 
-    let user = await fetch(`http://localhost:8080/api/Login?name=${name.value}&password=${password.value}`)
+    let user = await fetch("http://localhost:8080/api/Login", {
+        method: "POST",
+        body: JSON.stringify({
+          "name": name.value,
+          "password": password.value
+        })
+      })
+    console.log(user)
     let registered = await user.json()
     console.log(registered)
-
+ 
     
-    
-    if(registered){
+    if(registered != null){
 
         
         let userRegistered = {
@@ -25,6 +34,16 @@ async function login(){
 
         sessionStorage.setItem("user",JSON.stringify(userRegistered))
         window.location.href = "user.html"
+    } else{
+      alert("Usuario o contraseña incorrectos")
+      name.value =null
+      password.value =null
     }
+    }catch(error){
+        console.error("error al conectar usuario")
+        console.log(error)
+
+    }
+   
 
 }

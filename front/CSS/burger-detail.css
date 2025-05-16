@@ -73,16 +73,30 @@ main {
 .button-add-cart {
     display: flex;
     align-items: center;
-    background-color: #F0A04B;
+    justify-content: center;
     max-height: 50px;
-    border-radius: 100%;
     padding: 20px;
     transition: all 0.3s ease;
-    border: 1px solid #f27d00;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    font-size: 3em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
+    
+    width: 6vh;
+    height: 6vh;
+    max-width: 60px;
+    border-radius: 50%; 
+    background-color: rgb(255, 128, 0);
+    
+    border: 1px solid rgb(189, 63, 17);
+}
+
+
+.button-add-cart p{
+display: flex;
+
+align-self: center;
+font-size: 6vh;
+    text-align: center;
+    color: aliceblue; 
     font-weight: bold;
-    color: white;
 }
 
 .button-add-cart:hover {
@@ -110,7 +124,8 @@ main {
 .titleAllergen {
     text-decoration: underline;  
     text-align: center;  
-    margin-bottom: 10px;  
+    margin-bottom: 6px;  
+    padding-top: 15px;
 }
 
 
@@ -126,9 +141,10 @@ main {
     justify-content: center; 
     align-items: center; 
     gap: 3px; 
-    background-color: #ffcfcf;  
+    background-color: #ffffff62;  
     border-radius: 8px; 
-    padding: 5px 10px; 
-    width: 100%;  
+    padding: 8px 15px; 
+    max-width: 50%;  
     box-sizing: border-box; 
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }

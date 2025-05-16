@@ -67,7 +67,7 @@ function createProductCard(product, container) {
                 </div>
                 <div class="quantity-controllers">
                     <button onclick="increment(${product.idProduct})"   class="button-add-cart button-increase">+</button>
-                    <button onclick="decrement(${product.idProduct})" class="button-add-cart button-decrease">-</button>
+                    <!--at this moment, we dont use this button ; <button onclick="decrement(${product.idProduct})" class="button-add-cart button-decrease">-</button>-->
                 </div>
             </div>
         </div>

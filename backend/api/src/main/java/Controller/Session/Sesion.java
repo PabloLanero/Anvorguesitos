@@ -17,7 +17,7 @@ import Model.Employee;
 
 public class Sesion {
 
-    String firstName, lastName, email, mobilePhone;
+    String firstName, lastName, email, mobilePhone,name,password;
     int id;
     boolean admin;
 
@@ -79,6 +79,19 @@ public class Sesion {
     public void setMobilePhone (String mobilePhone) {
         this.mobilePhone = mobilePhone;
     }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 
     //Metodo ToString
 

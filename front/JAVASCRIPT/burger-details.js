@@ -127,11 +127,11 @@ function createContent(selectedProduct) {
             <div class="description">
                 <p>${selectedProduct.description}</p>
             </div>
-            <div class="allergens" id="listAllergens"></div>
             <div class="inputs">
-                <button class="button-add-cart button-increase" onclick="increment()">+</button>
-                <button class="button-add-cart button-decrease" onclick="decrement()">-</button>
+                <button class="button-add-cart button-increase" onclick="increment()"><p>+</p></button>
+                <!--at this moment, we dont use it: <button class="button-add-cart button-decrease" onclick="decrement()">-</button>-->
             </div>
+            <div class="allergens" id="listAllergens"></div>
         </div>
     `;
 
