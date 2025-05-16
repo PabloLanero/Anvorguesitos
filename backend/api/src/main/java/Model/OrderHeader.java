@@ -111,7 +111,7 @@ public class OrderHeader {
                 break;
         }
 
-        return paymentMethod;
+        return iRet;
     }
     public void setPaymentMethod (int paymentMethod) {
         switch (paymentMethod){

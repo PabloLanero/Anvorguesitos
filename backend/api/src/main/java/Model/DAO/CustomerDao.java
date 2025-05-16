@@ -31,7 +31,7 @@ public class CustomerDao implements Dao{
     @Override
     public int add(Object obj) {
         //flag exito
-        boolean exito = false;
+        int filasAfectadas = 0;
         try
         {
             //0. conectamos a la bbdd
@@ -52,7 +52,7 @@ public class CustomerDao implements Dao{
             sentenciaPreparada.setBoolean( 6,customer.isRegistered());
 
             //si funciona seteamos variable de exito
-            exito = sentenciaPreparada.execute();
+            filasAfectadas = sentenciaPreparada.executeUpdate();
 
         }catch (SQLException sqlEx){
             System.out.println(sqlEx.getMessage());
@@ -62,7 +62,7 @@ public class CustomerDao implements Dao{
             motorSql.disconnect();
         }
 
-        return exito? 1:0;
+        return filasAfectadas;
     }
 
     @Override
@@ -112,6 +112,8 @@ public class CustomerDao implements Dao{
         //inicializo array de customers
         ArrayList <Customer> listCustomers = new ArrayList<>();
 
+        //Para la conexion
+        boolean bCloseDbConnection = false;
         //sentencia sql
         String sqlSimple = SQL_FINDALL;
 
@@ -136,7 +138,11 @@ public class CustomerDao implements Dao{
         try
         {
            //nos conectamos
-           motorSql.connect();
+            if (motorSql == null) {
+                motorSql = new MotorSql();
+                motorSql.connect();
+                bCloseDbConnection = true;
+            }
 
            //si tiene filtro, lo añadimos para construir la sentencia
            if(id_customer > 0){
@@ -198,7 +204,9 @@ public class CustomerDao implements Dao{
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
-            motorSql.disconnect();
+            if (bCloseDbConnection) {
+                motorSql.disconnect();
+            }
         }
 
 

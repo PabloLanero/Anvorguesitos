@@ -61,6 +61,15 @@ body{
 }
 
 
+/*CSS to control the button to decrease*/
+.product-button button{
+    width:20px;
+    height: 20px;
+    margin: 30px;
+    background-color: #f6dc9e;
+    border-radius: 10px;
+}
+
 /*CSS to control how it is controlled*/
 .product{
     display: flex;

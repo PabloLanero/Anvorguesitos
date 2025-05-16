@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class OrderHeaderDao implements Dao {
 
     private final String SQL_FINDALL = "SELECT * FROM ORDERS_HEADER WHERE 1=1";
-    private final String SQL_INSERT = "INSERT INTO ORDERS_HEADER (orderDate, shippingAddress, isTransactionAcepted, orderStatus, id_paymentMethod, id_customer, id_employee)VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private final String SQL_INSERT = "INSERT INTO ORDERS_HEADER (orderDate, shippingAddress, isTransactionAcepted, orderStatus, id_paymentMethod, id_customer, id_employee)VALUES (sysdate(), ?, ?, ?, ?, ?, ?);";
 
     private IMotorSql motorSql;
 
@@ -24,7 +24,7 @@ public class OrderHeaderDao implements Dao {
     @Override
     public int add(Object obj) {
         //flag exito
-        boolean exito = false;
+        int filasAfectadas = 0;
 
         try {
             //nos conectamos a la bbdd
@@ -37,23 +37,28 @@ public class OrderHeaderDao implements Dao {
             PreparedStatement sentenciaPreparada = motorSql.getConnection().prepareStatement(SQL_INSERT);
 
             //asignamos valores orderDate, shippingAddress, isTransactionAcepted, orderStatus, id_paymentMethod, id_customer, id_employee
-            sentenciaPreparada.setString(1, orderHeader.getOrderDate());
-            sentenciaPreparada.setString(2, orderHeader.getShippingAddress());
-            sentenciaPreparada.setBoolean(3, orderHeader.isAccepted());
-            sentenciaPreparada.setString(4, orderHeader.getOrderStatus());
-            sentenciaPreparada.setInt(5, orderHeader.getCustomer().getIdCustomer());
-            sentenciaPreparada.setInt(6, orderHeader.getEmployee().getIdEmployee());
-            sentenciaPreparada.setInt(7, orderHeader.getPaymentMethod());
+            //sentenciaPreparada.setString(1, orderHeader.getOrderDate());
+            sentenciaPreparada.setString(1, orderHeader.getShippingAddress());
+            sentenciaPreparada.setBoolean(2, orderHeader.isAccepted());
+            sentenciaPreparada.setString(3, orderHeader.getOrderStatus());
+            sentenciaPreparada.setInt(4, orderHeader.getCustomer().getIdCustomer());
+            sentenciaPreparada.setInt(5, orderHeader.getEmployee().getIdEmployee());
+            sentenciaPreparada.setInt(6, orderHeader.getPaymentMethod());
 
 
+            filasAfectadas = sentenciaPreparada.executeUpdate();
 
+            ResultSet resultSetId = motorSql.executeQuery("SELECT LAST_INSERT_ID() FROM ORDERS_HEADER;");
 
-
+            while(resultSetId.next()) {
+                orderHeader.setIdOrderHeader(resultSetId.getInt("LAST_INSERT_ID()"));
+            }
+            OrderLineDao orderLineDao = new OrderLineDao();
             //FALTA METER LOS ORDERLINE
             for(OrderLine orderLine : orderHeader.getListOrderLine()){
-                orderLine.setCuantity(orderLine.getCuantity());
-                orderLine.setProduct(orderLine.getProduct());
-                orderLine.setOrderHeader(orderHeader.getIdOrderHeader());
+
+                orderLine.setOrderHeader(orderHeader);
+                orderLineDao.add(orderLine);
             }
 
 
@@ -66,7 +71,7 @@ public class OrderHeaderDao implements Dao {
             motorSql.disconnect();
         }
 
-        return exito ? 1 : 0;
+        return filasAfectadas ;
     }
 
     @Override
