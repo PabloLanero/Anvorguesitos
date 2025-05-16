@@ -10,8 +10,7 @@ function isLogged(){
             
             loginPlace.innerHTML = user.name
             loginPlace.href = "./user.html"
-            let signPlace = document.getElementById("sign")
-            signPlace.hidden= true
+           
         }
     }catch(Exception){
         console.log("User not registered")
