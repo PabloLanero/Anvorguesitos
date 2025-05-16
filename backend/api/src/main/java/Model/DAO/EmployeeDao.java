@@ -46,6 +46,9 @@ public class EmployeeDao implements Dao{
         //creo arraylist
         ArrayList<Employee> listEmployee = new ArrayList<>();
 
+        //Para la conexion
+        boolean bCloseDbConnection = false;
+
         //sentencia sql
         String sqlSimple = SQL_FINDALL;
 
@@ -64,7 +67,11 @@ public class EmployeeDao implements Dao{
 
         try{
             //nos conectamos
-            motorSql.connect();
+            if (motorSql == null) {
+                motorSql = new MotorSql();
+                motorSql.connect();
+                bCloseDbConnection = true;
+            }
 
             //si tiene filtro, lo aplicamos
             if(id_employee > 0){
@@ -128,7 +135,9 @@ public class EmployeeDao implements Dao{
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
-            motorSql.disconnect();
+            if (bCloseDbConnection) {
+                motorSql.disconnect();
+            }
         }
 
 

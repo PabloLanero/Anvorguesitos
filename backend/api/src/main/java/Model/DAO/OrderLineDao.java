@@ -1,5 +1,6 @@
 package Model.DAO;
 
+import Model.OrderHeader;
 import Model.OrderLine;
 import Model.Product;
 import Motorsql.IMotorSql;
@@ -14,6 +15,10 @@ public class OrderLineDao implements Dao{
 
     private final String SQL_FINDALL = "SELECT ORL.id_orderLine, ORL.orderQuantity, PRO.id_product, PRO.productTitle, PRO.imagePath\n" +
             " FROM Hambearguesitos.ORDERS_LINE ORL INNER JOIN PRODUCTS PRO ON ORL.id_product = PRO.id_product WHERE 1 = 1 ";
+
+    private final String SQL_INSERT = "INSERT INTO ORDERS_LINE  (`orderQuantity`, `id_product`, `id_orderHeader`) VALUES (?, ?, ?);";
+
+
     private IMotorSql motorSql;
 
     public OrderLineDao(){
@@ -22,9 +27,41 @@ public class OrderLineDao implements Dao{
 
     @Override
     public int add(Object obj) {
+        //flag exito
+        int filasAfectadas = 0;
 
-        return 0;
+        try {
+            //nos conectamos a la bbdd
+            motorSql.connect();
+
+            //casteamos el bean
+            OrderLine orderLine = (OrderLine) obj;
+
+            //preparamos sentencia sql
+            PreparedStatement sentenciaPreparada = motorSql.getConnection().prepareStatement(SQL_INSERT);
+
+            //asignamos valores
+            sentenciaPreparada.setInt(1,orderLine.getCuantity());
+            sentenciaPreparada.setInt(2,orderLine.getProduct().getIdProduct());
+            sentenciaPreparada.setInt(3,orderLine.getOrderHeader().getIdOrderHeader());
+
+            //ejecutar consulta
+            filasAfectadas = sentenciaPreparada.executeUpdate();
+
+
+
+        } catch (SQLException sqlEx) {
+            System.out.println(sqlEx.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            motorSql.disconnect();
+        }
+
+        return filasAfectadas ;
     }
+
+
 
     @Override
     public int delete(Object bean) {
