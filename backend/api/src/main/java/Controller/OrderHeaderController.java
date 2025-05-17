@@ -38,8 +38,15 @@ public class OrderHeaderController extends HttpServlet {
         OrderHeaderDao oHDao = new OrderHeaderDao();
         OrderHeader orderHeader = new OrderHeader();
         String id_orderHeader = req.getParameter("idOrder");
+        String id_user = req.getParameter("idUser");
         if( id_orderHeader !=null && !id_orderHeader.isEmpty() ){
             orderHeader.setIdOrderHeader(Integer.parseInt(id_orderHeader));
+        }
+
+        if(id_user !=null && !id_user.isEmpty()) {
+            Customer customer = new Customer();
+            customer.setIdCustomer(Integer.parseInt(id_user));
+            orderHeader.setCustomer(customer);
         }
 
         listOrderHeader = oHDao.findAll(orderHeader, null);
@@ -73,7 +80,7 @@ public class OrderHeaderController extends HttpServlet {
 
         OrderHeaderDao orderHeaderDao = new OrderHeaderDao();
 
-        int idPedido = orderHeaderDao.add(newOrderheader);
+        int idPedido = orderHeaderDao.add(newOrderheader, null);
         PrintWriter out = resp.getWriter();
         out.println(idPedido);
 

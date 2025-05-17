@@ -68,8 +68,7 @@ public class ProductController extends HttpServlet {
         resp.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         resp.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
         resp.setHeader("Access-Control-Max-Age", "3600");
-        String nombre = req.getParameter("user");
-        String nombreUser = req.getParameter("name");
+
 
 
     }

@@ -107,7 +107,11 @@ async function callAPI(URL) {
 
 }
 
-callAPI("http://localhost:8080/api/OrderHeader")
+if(objUser.admin){
+    callAPI("http://localhost:8080/api/OrderHeader")
+}else{
+    callAPI(`http://localhost:8080/api/OrderHeader?idUser=${objUser.id}`)
+}
 
 
 
@@ -142,6 +146,9 @@ async function showOption(optionContent) {
                 </div>
                 <div class="phone-number">
                     <p><b>Phone Number:</b> ${objUser.mobilePhone}</p>
+                </div>
+                <div class="change-account">
+                    <a href="./login.html">Change account?</a>
                 </div>
             </div>
             `
@@ -242,12 +249,8 @@ async function showOption(optionContent) {
 }
 //To load the project and have some information
 
-(async() => {
 
-await showOption("seeData")
-})
-
-
+showOption("seeData")
 
 
 
