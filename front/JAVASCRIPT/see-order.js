@@ -51,8 +51,8 @@ function cardCreator(basket){
             </div>
         </div>
         <div class="product-button">
-        <button onClick="increment(${product.idProduct})">+</button>
-            <button onClick="decrement(${product.idProduct})">-</button>
+        <button onClick="increment(${product.idProduct})"><p>+</p></button>
+            <button onClick="decrement(${product.idProduct})"><p>-</p></button>
         </div>
     </div>
     <hr>

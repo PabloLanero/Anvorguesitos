@@ -3,29 +3,35 @@ body{
 }
 
 /*Here starts the CSS for the products*/
-.general-container{
-    
-    width: 99vw;
-    margin-top:3vh;
+.general-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    padding: 0 2vw;
+    margin-top: 3vh;
 }
+
 
 /*CSS to control how they are shown*/
 .products{
-    display:flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    display: flex;
+    gap: 2vh;
+    flex-direction: column;
+    
 }
 /*CSS for the image*/
 .product-image img{
-    width: 20vh;
-    margin-right: 20vw;
+    width: 25vh;
+    height: auto;
     border-radius: 8px;
+    object-fit: cover;
 }
 /*for the name*/
 .product-name{
-    color:white;
-    font-size: 3vh;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
 }
 /*CSS for every div inside the details*/
 .product-details *{
@@ -35,10 +41,16 @@ body{
 
 
 .product-details{
-    background-color: rgba(0,0,0, 0.3);
+    background-color: rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    padding: 1rem;
     border-radius: 8px;
-    box-shadow: 4px 4px 12px rgba(255, 255, 255, 0.2);
-    padding:2%;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    gap: 5px;
+    color: white;
+    width:40vw;
+    text-align: center;
     
 }
 
@@ -58,69 +70,108 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap:5px;
 }
 
 
 /*CSS to control the button to decrease*/
-.product-button button{
-    width:20px;
-    height: 20px;
-    margin: 30px;
-    background-color: #f6dc9e;
-    border-radius: 10px;
+
+.product-button button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 50px;
+    padding: 20px;
+    margin:10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
+    
+    width: 6vh;
+    height: 6vh;
+    max-width: 60px;
+    border-radius: 50%; 
+    background-color: rgb(255, 128, 0);
+    
+    border: 1px solid rgb(189, 63, 17);
 }
+
+
+.product-button button p{
+display: flex;
+
+align-self: center;
+font-size: 6vh;
+    text-align: center;
+    color: aliceblue; 
+    font-weight: bold;
+}
+
+.product-button button:hover {
+    transform: scale(1.1);
+    background-color: #BF3131;
+    cursor: pointer;
+}
+
+
+
 
 /*CSS to control how it is controlled*/
 .product{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.15);
     align-items: center;
-    margin: 4vh;
+    gap: 16px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    max-width: 800px;
+    width: 100%;
 }
 
 /*CSS to controll the final row*/
 .final{
-    margin-top: 3vh;
+    margin-top: 8vh;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content:space-evenly;
     margin-bottom: 3vh;
 }
 
 
 /*CSS for the button*/
-.button-confirm-cart button{
-    background-color: #BF3131;
-    color:white;
-    padding: 1vw;
-    border-radius: 20px;
-    transition: 1s;
-    min-width: 150px;
+.final-button-confirm-cart button{
+    display: flex;
+   padding:10px;
+   border-radius:12px;
+    background-color: rgb(255, 128, 0);
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    color: aliceblue;
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid rgb(189, 63, 17);
+    font-size: 3vh;
+  
 }
 
-.button-confirm-cart button:hover{
+.final-button-confirm-cart button:hover{
     scale: 1.1;
     transition: 1s;
+    background-color:#7D0A0A;
 }
 
 
-/*CSS to adjust the button to buy the product*/
-.button-confirm-cart{
-    width: 33vw;
-    display: flex;
-    justify-content: center;
-}
 
 
 
 
 /*CSS for the total price*/
 .total-price{
-    width: 33vw;
-    font-size: 20px;
+    font-size: 3vh;
     display: flex;
     justify-content: center;
+    align-items: center;
     text-decoration-line: underline;
     color:#7D0A0A;
 }
@@ -128,27 +179,63 @@ body{
 
 
 
-hr{
-    justify-content: center;
-    width: 90%;
+@media (max-width: 768px) {
+    .product {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 80vw;
+        gap: 12px;
+        padding: 12px;
+    }
+
+
+
+    .products{
+        gap:3vh;
+    }
+
+
+
+.product-button{
+    display: flex;
+    justify-content: space-around;
 }
 
-@media (max-width:720px){
-    .product-name{
-        font-size: 4vw;
+    .product-image img {
+        width: 50vw;
+        max-width: 200px;
+        height: auto;
     }
 
-    .product-image img{
-        scale:1.2;
+    .product-details {
+        width: 100%;
+        padding: 12px;
     }
 
-    
-
-    .product-details{
-        scale:0.7;
+    .product-name {
+        font-size: 18px;
     }
 
-    hr{
-        width: 80%;
+
+    .product-cuantity
+     {
+        font-size: 16px;
     }
+
+
+    .product-price {
+        font-size: 16px;
+    }
+
+
+
+    .product-button {
+        display: flex;
+        justify-content: center;
+
+    }
+
+ 
+
 }
