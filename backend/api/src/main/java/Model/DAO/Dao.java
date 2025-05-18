@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public interface Dao <E,I>{
 
 
-    public int add(E obj);
+    public int add(E obj, IMotorSql motorSql);
     public int delete (I obj);
     public int update(E obj);
     public ArrayList<E> findAll(E obj, IMotorSql motorSql);

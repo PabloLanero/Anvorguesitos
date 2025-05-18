@@ -20,7 +20,7 @@ public class IngredientDao implements Dao{
     }
 
     @Override
-    public int add(Object bean) {
+    public int add(Object bean, IMotorSql motorSql) {
         return 0;
     }
 

@@ -9,6 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * This class is designed to control the access to the data in the database and control how it works
+ */
 public class CustomerDao implements Dao{
 
     private final String SQL_FINDALL = "SELECT * FROM CUSTOMERS CU WHERE 1=1";
@@ -29,13 +32,18 @@ public class CustomerDao implements Dao{
 
 
     @Override
-    public int add(Object obj) {
+    public int add(Object obj, IMotorSql motorSql) {
         //flag exito
         int filasAfectadas = 0;
+        boolean bCloseDbConnection = false;
         try
         {
             //0. conectamos a la bbdd
-            motorSql.connect();
+            if (motorSql == null) {
+                motorSql = new MotorSql();
+                motorSql.connect();
+                bCloseDbConnection = true;
+            }
 
             //1. casteamos obj a customer
             Customer customer = (Customer)obj;
@@ -58,8 +66,10 @@ public class CustomerDao implements Dao{
             System.out.println(sqlEx.getMessage());
         }catch(Exception ex){
             System.out.println(ex.getMessage());
-        }finally{
-            motorSql.disconnect();
+        }finally {
+            if (bCloseDbConnection) {
+                motorSql.disconnect();
+            }
         }
 
         return filasAfectadas;

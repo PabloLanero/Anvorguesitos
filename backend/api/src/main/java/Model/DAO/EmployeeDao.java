@@ -27,7 +27,7 @@ public class EmployeeDao implements Dao{
     ////////////////////////////      METODOS CRUD     ////////////////////////////////////////////
 
     @Override
-    public int add(Object bean) {
+    public int add(Object bean, IMotorSql motorSql) {
         return 0;
     }
 

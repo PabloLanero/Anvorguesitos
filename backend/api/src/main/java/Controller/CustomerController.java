@@ -77,7 +77,7 @@ public class CustomerController extends HttpServlet {
         Customer newCustomer  = gson.fromJson(parser.parse(getBody(request)), Customer.class);
 
         CustomerDao customerDao = new CustomerDao();
-        customerDao.add(newCustomer);
+        customerDao.add(newCustomer, null);
         //lo transformamos a json para ver por consola que se ha creado
         System.out.println(gson.toJson(newCustomer));
 

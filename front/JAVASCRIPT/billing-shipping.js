@@ -16,7 +16,7 @@ autoFill()
 
 async function makeOrder(){
         
-    let street = `${document.getElementById("street")} ${document.getElementById("street-number")}, ${document.getElementById("floor")}`
+    let street = `${document.getElementById("street").value} ${document.getElementById("street-number").value}, ${document.getElementById("floor").value}`
     /*
     document.getElementById("CustomerFirstName").value
     document.getElementById("CustomerLastName").value

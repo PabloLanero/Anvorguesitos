@@ -26,7 +26,7 @@ public class OrderLineDao implements Dao{
     }
 
     @Override
-    public int add(Object obj) {
+    public int add(Object obj, IMotorSql motorSql) {
         //flag exito
         int filasAfectadas = 0;
 

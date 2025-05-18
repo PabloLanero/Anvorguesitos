@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class OrderHeaderDao implements Dao {
 
-    private final String SQL_FINDALL = "SELECT * FROM ORDERS_HEADER WHERE 1=1";
+    private final String SQL_FINDALL = "SELECT * FROM ORDERS_HEADER WHERE 1=1 ";
     private final String SQL_INSERT = "INSERT INTO ORDERS_HEADER (orderDate, shippingAddress, isTransactionAcepted, orderStatus, id_paymentMethod, id_customer, id_employee)VALUES (sysdate(), ?, ?, ?, ?, ?, ?);";
 
     private IMotorSql motorSql;
@@ -22,13 +22,18 @@ public class OrderHeaderDao implements Dao {
     }
 
     @Override
-    public int add(Object obj) {
+    public int add(Object obj, IMotorSql motorSql) {
         //flag exito
         int iRet = 0;
-
+        boolean bCloseDbConnection = false;
         try {
             //nos conectamos a la bbdd
-            motorSql.connect();
+            //Nos conectamos
+            if (motorSql == null) {
+                motorSql = new MotorSql();
+                motorSql.connect();
+                bCloseDbConnection = true;
+            }
 
             //casteamos el bean
             OrderHeader orderHeader = (OrderHeader) obj;
@@ -60,7 +65,7 @@ public class OrderHeaderDao implements Dao {
             for(OrderLine orderLine : orderHeader.getListOrderLine()){
 
                 orderLine.setOrderHeader(orderHeader);
-                orderLineDao.add(orderLine);
+                orderLineDao.add(orderLine, motorSql);
             }
 
 
@@ -70,7 +75,9 @@ public class OrderHeaderDao implements Dao {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         } finally {
-            motorSql.disconnect();
+            if (bCloseDbConnection) {
+                motorSql.disconnect();
+            }
         }
 
         return iRet ;
@@ -139,6 +146,10 @@ public class OrderHeaderDao implements Dao {
 
                 if (objOrderHeader.getOrderDate() != "" && objOrderHeader.getOrderDate() != null) {
                     sql += " AND OH.orderDate = " + objOrderHeader.getOrderDate() + " ";
+                }
+
+                if (objOrderHeader.getCustomer() != null && objOrderHeader.getCustomer().getIdCustomer() >0 ) {
+                    sql += " AND CU.id_customer = " + objOrderHeader.getCustomer().getIdCustomer() + " ";
                 }
             }
             sql += ";";

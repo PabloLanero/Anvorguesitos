@@ -10,7 +10,7 @@ public class StoreDao implements Dao{
     private IMotorSql motorSql;
 
     @Override
-    public int add(Object bean) {
+    public int add(Object bean, IMotorSql motorSql) {
         return 0;
     }
 
