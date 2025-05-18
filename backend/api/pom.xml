@@ -1,17 +1,26 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.example</groupId>
+  <groupId>gd.work.anvorguesitos</groupId>
   <artifactId>api</artifactId>
+   <packaging>war</packaging> <!--importante -->
+  <version>1.0</version>
+  <name>Hambeargueseria maven weapp</name>
+  <url>http://anvorguesitos.work.gd</url>
 
-  <properties>
-    <maven.compilar.source>1.8</maven.compilar.source>
 
-    <maven.compilar.target>1.8</maven.compilar.target>
-  </properties>
-  <version>1.0-SNAPSHOT</version>
-  <name>api Maven Webapp</name>
-  <url>http://maven.apache.org</url>
+
+<!--del pom anterior-->
+ <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+</properties>
+
+
+
+
+
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -47,8 +56,21 @@
         </exclusion>
       </exclusions>
     </dependency>
-
   </dependencies>
+
+
+
+  
+  <build>
+    <finalName>Hambeargueseria</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+      </plugin>
+    </plugins>
+  </build>
 
 
 </project>
