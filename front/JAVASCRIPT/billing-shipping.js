@@ -64,7 +64,7 @@ async function makeOrder(){
         localStorage.removeItem("data")
     }
   }else{
-    alert("Su usuario no se encunetra registrado. Por favor, regístrese para poder realizar la compra.")
+    alert("Your user is not registered. Please register to complete the purchase.")
 
     window.location.href = "sign-in.html";
 

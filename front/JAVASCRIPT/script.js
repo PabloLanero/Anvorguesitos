@@ -120,8 +120,7 @@ function setUpProductClick(){
             //find the product that has this id
             const selectedProduct =products.find(prod => prod.idProduct === id);
 
-            //we keep this productin localstorage
-            localStorage.setItem("clickedProduct", JSON.stringify(selectedProduct));
+            
 
             //redirect to detail-page with the searchArgument
             window.location.href =`burger-detail.html?id_product=${id}`;
