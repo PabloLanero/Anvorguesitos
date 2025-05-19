@@ -15,13 +15,12 @@ function autoFill(){
 autoFill()
 
 async function makeOrder(){
+
+  let userSession = sessionStorage.getItem("user")
+  if(userSession!=null && userSession !=undefined){
         
     let street = `${document.getElementById("street").value} ${document.getElementById("street-number").value}, ${document.getElementById("floor").value}`
-    /*
-    document.getElementById("CustomerFirstName").value
-    document.getElementById("CustomerLastName").value
-    document.getElementById("CustomerEmail").value 
-    document.getElementById("CustomerMobilePhone").value */
+    
 
     let carrito = JSON.parse(localStorage.getItem("data"))
 
@@ -54,48 +53,21 @@ async function makeOrder(){
     }  
 
     let resultado = await fetch("http://54.161.240.158:8080/OrderHeader",{
-                                    method: "post",
+                                    method: "POST",
                                     body: JSON.stringify(orderHeader)})
     let idOrder= await resultado.text()
+
     console.log(resultado)
+
     if(idOrder>0) {
         window.location.href = "see-order-details.html?idOrder="+idOrder
         localStorage.removeItem("data")
     }
+  }else{
+    alert("Su usuario no se encunetra registrado. Por favor, regístrese para poder realizar la compra.")
+
+    window.location.href = "sign-in.html";
+
+  }
 }
 
-/**
- * 
-{
-  "orderDate": "01-01-2025",
-  "shippingAddress": "Ejemplo ",
-  "orderStatus": "Pending",
-  "paymentMethod": "CASH",
-  "customer": {
-    "firstName": "AAA",
-    "lastName": "registered.lastName",
-    "emailCustomer": "registered.email",
-    "phoneCustomer": "registered.mobilePhone",
-    "registered": false,
-    "idCustomer": 1
-  },
-  "employee": {
-    "idEmployee": 1,
-    "employeeFirstName": "Kevin"
-  },
-  "listOrderLine": [
-    {
-      "cuantity": 3,
-      "product": {
-        "idProduct": 2
-      }
-    },
-    {
-      "cuantity": 2,
-      "product": {
-        "idProduct": 5
-      }
-    }
-  ]
-}
- */

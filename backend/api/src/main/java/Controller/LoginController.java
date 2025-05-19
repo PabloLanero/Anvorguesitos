@@ -49,11 +49,15 @@ public class LoginController extends HttpServlet {
             session = null;
         }else{
 
-            if(session.getName().contains("@anvorgesitos.com")){
+            if(session.getName().contains("@anvorguesitos.com")){
                 System.out.println("entro a employees");
                 //AQUI, LA VARIABLE name ES EL CORREO
                 Employee emp = new Employee(session.getName(),session.getPassword());
+
+                
+
                 EmployeeDao empDao = new EmployeeDao();
+
                 ArrayList<Employee> employeeArrayList = empDao.findAll(emp, null);
                 if(!employeeArrayList.isEmpty()){
                     session = new Sesion(employeeArrayList.get(0));
@@ -65,6 +69,9 @@ public class LoginController extends HttpServlet {
             }else{
                 System.out.println("entro a clientes");
                 Customer customer = new Customer(session.getName(),session.getPassword());
+
+                System.out.println("customer:" + customer);
+
                 CustomerDao customerDao = new CustomerDao();
                 ArrayList<Customer> customerArrayList = customerDao.findAll(customer, null);
                 if(!customerArrayList.isEmpty()){

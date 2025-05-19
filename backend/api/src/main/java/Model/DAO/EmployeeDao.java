@@ -78,12 +78,12 @@ public class EmployeeDao implements Dao{
                 sqlSimple+=" AND EMPLOYEES.id_employee = ?";
             }
 
-            if(!correo.isEmpty() && correo !=null){
+            if(correo !=null && !correo.isEmpty() ){
                 sqlSimple += " AND EMPLOYEES.emailEmployee = ? ";
             }
 
 
-            if(!password.isEmpty() && password !=null){
+            if(password !=null && !password.isEmpty()){
                 sqlSimple += " AND EMPLOYEES.passwordEmployee = ? ";
             }
 
