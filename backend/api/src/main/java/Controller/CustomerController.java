@@ -77,17 +77,13 @@ public class CustomerController extends HttpServlet {
         Customer newCustomer  = gson.fromJson(parser.parse(getBody(request)), Customer.class);
 
         CustomerDao customerDao = new CustomerDao();
-        customerDao.add(newCustomer, null);
+        int idUser =customerDao.add(newCustomer, null);
+        newCustomer.setIdCustomer(idUser);
         //lo transformamos a json para ver por consola que se ha creado
-        System.out.println(gson.toJson(newCustomer));
+        response.getWriter().println(gson.toJson(newCustomer));
 
 
-        //enviar el json a la bbdd
-
-
-
-        //enviamos respuesta al usuario
-        response.getWriter().print("hola " + newCustomer.getFirstName() +  " tu usuario se ha agregado correctamente"+ "\r\n");
+        
 
 
     }

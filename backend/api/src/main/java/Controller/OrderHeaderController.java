@@ -62,40 +62,26 @@ public class OrderHeaderController extends HttpServlet {
 
     @Override
     protected void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        
         resp.setContentType("application/json;charset=UTF-8");
         resp.setHeader("Access-Control-Allow-Origin", "*");
         resp.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         resp.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
         resp.setHeader("Access-Control-Max-Age", "3600");
-        String nombre = req.getParameter("user");
-        String nombreUser = req.getParameter("name");
-
+        
+      
 
         //creo un parseador(una clase de la librería de gson)  => analiza y convierte a JSON objetos java y al revés
         JsonParser parser = new JsonParser();
         Gson gson = new Gson();
-
         OrderHeader newOrderheader  = gson.fromJson(parser.parse(getBody(req)), OrderHeader.class);
-
         OrderHeaderDao orderHeaderDao = new OrderHeaderDao();
-
         int idPedido = orderHeaderDao.add(newOrderheader, null);
+        System.out.println(idPedido);
         PrintWriter out = resp.getWriter();
         out.println(idPedido);
 
-        // creo un usuario a raíz de: uso biblioteca gson --> clase parseadora --> parsea el cuerpo de la petición (JSON) a clase java de ese tipo
-
-        /*
-        body_all = parser.parse(getBody(request));
-        body_order_header = body_all['name']
-        OrderHeader newOrderHeader  = gson.fromJson(body_order_header, OrderHeader.class);
-        for (lines body_all['lines'] as line) {
-            line add newOrderHeader.id
-            OrderLine = gson.fromJson(line, OrderLine.class);
-        }
-
-*/
+        
 
     }
 

@@ -46,9 +46,9 @@ public class OrderHeaderDao implements Dao {
             sentenciaPreparada.setString(1, orderHeader.getShippingAddress());
             sentenciaPreparada.setBoolean(2, orderHeader.isAccepted());
             sentenciaPreparada.setString(3, orderHeader.getOrderStatus());
-            sentenciaPreparada.setInt(4, orderHeader.getCustomer().getIdCustomer());
-            sentenciaPreparada.setInt(5, orderHeader.getEmployee().getIdEmployee());
-            sentenciaPreparada.setInt(6, orderHeader.getPaymentMethod());
+            sentenciaPreparada.setInt(4, orderHeader.getPaymentMethod());
+            sentenciaPreparada.setInt(5, orderHeader.getCustomer().getIdCustomer());
+            sentenciaPreparada.setInt(6, orderHeader.getEmployee().getIdEmployee());
 
 
             iRet = sentenciaPreparada.executeUpdate();

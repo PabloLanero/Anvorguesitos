@@ -34,7 +34,7 @@ public class CustomerDao implements Dao{
     @Override
     public int add(Object obj, IMotorSql motorSql) {
         //flag exito
-        int filasAfectadas = 0;
+        int iRet = 0;
         boolean bCloseDbConnection = false;
         try
         {
@@ -60,7 +60,12 @@ public class CustomerDao implements Dao{
             sentenciaPreparada.setBoolean( 6,customer.isRegistered());
 
             //si funciona seteamos variable de exito
-            filasAfectadas = sentenciaPreparada.executeUpdate();
+            iRet = sentenciaPreparada.executeUpdate();
+
+            ResultSet resultSet = motorSql.executeQuery("SELECT LAST_INSERT_ID() FROM CUSTOMERS;");
+            while(resultSet.next()){
+                iRet = resultSet.getInt("LAST_INSERT_ID()");
+            }
 
         }catch (SQLException sqlEx){
             System.out.println(sqlEx.getMessage());
@@ -72,7 +77,7 @@ public class CustomerDao implements Dao{
             }
         }
 
-        return filasAfectadas;
+        return iRet;
     }
 
     @Override
