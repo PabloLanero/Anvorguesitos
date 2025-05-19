@@ -53,7 +53,7 @@ async function makeOrder(){
         "listOrderLine": orderLine
     }  
 
-    let resultado = await fetch("http://localhost:8080/api/OrderHeader",{
+    let resultado = await fetch("http://54.161.240.158:8080/OrderHeader",{
                                     method: "post",
                                     body: JSON.stringify(orderHeader)})
     let idOrder= await resultado.text()

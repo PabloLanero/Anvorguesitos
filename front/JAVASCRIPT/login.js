@@ -5,7 +5,7 @@ async function login(){
         let name = document.getElementById("name")
     let password = document.getElementById("password")
 
-    let user = await fetch("http://localhost:8080/api/Login", {
+    let user = await fetch("http://54.161.240.158:8080/Login", {
         method: "POST",
         body: JSON.stringify({
           "name": name.value,

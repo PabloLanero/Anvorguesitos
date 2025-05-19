@@ -108,9 +108,9 @@ async function callAPI(URL) {
 }
 
 if(objUser.admin){
-    callAPI("http://localhost:8080/api/OrderHeader")
+    callAPI("http://54.161.240.158:8080/OrderHeader")
 }else{
-    callAPI(`http://localhost:8080/api/OrderHeader?idUser=${objUser.id}`)
+    callAPI(`http://54.161.240.158:8080/OrderHeader?idUser=${objUser.id}`)
 }
 
 
@@ -288,7 +288,7 @@ let arrayListEmployees = [];
 //we define function to call api
 async function getEmployeesFromAPI() {
     try {
-        const response = await fetch("http://localhost:8080/api/Employee");
+        const response = await fetch("http://54.161.240.158:8080/Employee");
         let data = await response.json(); // Guardamos los productos en la variable global
         console.log("employees cargados:", data);
         return data

@@ -4,7 +4,7 @@ let products = []; // we set the array that will envolve all products
 //we define function to call api
 async function callAPI() {
     try {
-        const response = await fetch("http://54.161.240.158:8080/api/Product");
+        const response = await fetch("http://54.161.240.158:8080/Product");
         data = await response.json(); // Guardamos los productos en la variable global
         console.log("Productos cargados:", data);
         return data

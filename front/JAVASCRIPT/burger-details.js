@@ -45,7 +45,7 @@ const idProduct = urlParams.get('id_product');
 //GET THE PORDUCT FROM API IN JSON
 async function getOneProductFromAPI() {
     try {
-        const response = await fetch(`http://localhost:8080/api/Product?id_product=${idProduct}`);
+        const response = await fetch(`http://54.161.240.158:8080/Product?id_product=${idProduct}`);
         dataJSON = await response.json();
         console.log("producto seleccionado cargado,", dataJSON);
         return dataJSON;

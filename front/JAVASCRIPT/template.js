@@ -1,7 +1,7 @@
 async function callAPI(){
 
     /*
-const datas =  await fetch("http://localhost:8080/api/OrderHeader");
+const datas =  await fetch("http://54.161.240.158:8080OrderHeader");
 console.log(datas)
 const datasParsed = await datas.text()
 console.log(datasParsed)
@@ -10,7 +10,7 @@ console.log(datos  )
 */
 
 
-        const datas = await fetch("http://localhost:8080/api/Customer", {
+        const datas = await fetch("http://54.161.240.158:8080/Customer", {
             method: "post",
             body: JSON.stringify({
                 "firstName": "Izarbe",

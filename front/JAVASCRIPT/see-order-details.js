@@ -1,5 +1,5 @@
 async function getOrder(id){
-    let result = await fetch("http://localhost:8080/api/OrderHeader?idOrder="+id)
+    let result = await fetch("http://54.161.240.158:8080/OrderHeader?idOrder="+id)
     let order = await result.json()
     console.log(order)
     showOrderInformation(order[0])
