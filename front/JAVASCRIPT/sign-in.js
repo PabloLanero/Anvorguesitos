@@ -16,47 +16,57 @@ async function createUser() {
 
     if (password.value === passwordConfirmation.value) {
 
-        let user = {
-            "firstName": name.value,
-            "lastName": username.value,
-            "emailCustomer": email.value,
-            "phoneCustomer": mobilePhone.value,
-            "passwordCustomer": password.value,
-            "registered": true,
-            "admin": false,
+        if (
+            name.value !== "" && name.value !== null && name.value !== undefined &&
+            username.value !== "" && username.value !== null && username.value !== undefined &&
+            email.value !== "" && email.value !== null && email.value !== undefined &&
+            mobilePhone.value !== "" && mobilePhone.value !== null && mobilePhone.value !== undefined &&
+            password.value !== "" && password.value !== null && password.value !== undefined) {
+            let user = {
+                "firstName": name.value,
+                "lastName": username.value,
+                "emailCustomer": email.value,
+                "phoneCustomer": mobilePhone.value,
+                "passwordCustomer": password.value,
+                "registered": true,
+                "admin": false,
+            }
+
+            console.log(user)
+
+            let response = await fetch("http://54.161.240.158:8080/Customer", {
+                method: "POST",
+                body: JSON.stringify(user)
+            })
+
+            console.log(response);
+
+            let responseJSON = await response.json()
+
+            console.log(responseJSON);
+
+            user = {
+                "name": responseJSON.firstName,
+                "lastName": responseJSON.lastName,
+                "email": responseJSON.emailCustomer,
+                "mobilePhone": responseJSON.phoneCustomer,
+                "admin": responseJSON.admin,
+                "id": responseJSON.idCustomer,
+            }
+
+
+
+            sessionStorage.setItem("user", JSON.stringify(user))
+
+            window.location.href = "user.html"
+        } else {
+            alert("Please complete all required fields. One or more fields are missing.")
+
         }
 
-        console.log(user)
 
-
-
-
-        let response = await fetch("http://54.161.240.158:8080/Customer", {
-            method: "POST",
-            body: JSON.stringify(user)
-        })
-
-        console.log(response);
-
-        let responseJSON = await response.json()
-
-        console.log(responseJSON);
-
-        user = {
-            "name": responseJSON.firstName,
-            "lastName": responseJSON.lastName,
-            "email": responseJSON.emailCustomer,
-            "mobilePhone": responseJSON.phoneCustomer,
-            "admin": responseJSON.admin,
-            "id": responseJSON.idCustomer,
-        }
-
-
-
-        sessionStorage.setItem("user", JSON.stringify(user))
-
-        window.location.href = "user.html"
     }
+
 
 }
 

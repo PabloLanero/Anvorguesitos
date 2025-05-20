@@ -198,8 +198,6 @@ async function callAPI() {
     
      products = await callAPI();
      
-
-
     
 })();
 
