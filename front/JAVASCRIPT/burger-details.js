@@ -128,7 +128,7 @@ function createContent(selectedProduct) {
                 <p>${selectedProduct.description}</p>
             </div>
             <div class="inputs">
-                <button class="button-add-cart button-increase" onclick="increment()"><p>+</p></button>
+                <button class="button-add-cart button-increase" onclick="increment(${selectedProduct.idProduct})"><p>+</p></button>
                 <!--at this moment, we dont use it: <button class="button-add-cart button-decrease" onclick="decrement()">-</button>-->
             </div>
             <div class="allergens" id="listAllergens"></div>
@@ -146,7 +146,7 @@ function createContent(selectedProduct) {
   
     // if there is allergens, insert allergens title
     if (allergensArray.length > 0) {
-        console.log("entro aqui #1")
+       
         const titleAllergen = document.createElement("div");
         titleAllergen.classList.add("titleAllergen");
         titleAllergen.innerHTML = "<h3>ALLERGENS</h3>";
@@ -158,7 +158,6 @@ function createContent(selectedProduct) {
 
     // add allergen
     allergensArray.forEach(allergen => {
-        console.log("entro aqui #2")
         const allergenDiv = document.createElement("div");
         allergenDiv.classList.add("oneAllergen");
         allergenDiv.innerHTML = `<div>${allergen}</div>`;
@@ -175,14 +174,34 @@ function createContent(selectedProduct) {
 
 
 
+let products = []; // we set the array that will envolve all products
+
+
+//we define function to call api
+async function callAPI() {
+    try {
+        const response = await fetch("http://54.161.240.158:8080/Product");
+        data = await response.json(); // Guardamos los productos en la variable global
+        console.log("Productos cargados:", data);
+        return data
+    } catch (error) {
+        console.error("Error al obtener los productos:", error);
+        return []
+    }
+}
 
 
 
 
+// Immediately Invoked Async Function
+(async () => {
+    
+     products = await callAPI();
+     
 
 
-
-
+    
+})();
 
 
 
@@ -192,19 +211,28 @@ function createContent(selectedProduct) {
 
 
 //QUANTITY OF PRODUCTS
+ 
+function increment(id) {
+    let selectedItem = id;   //selecteditem funciona bien
+    console.log("Incrementando producto con ID:", id); // log ok
 
-function increment() {
+    console.log("el basket es + " , basket)
 
-    let search = basket.find((x) => x.id_product === selectedProduct.id_product);
-    //it is searching for the object wich we have selected. i t returns  wether if it exist in the basket yet
+
+    let search = basket.find((x) => x.idProduct === selectedItem);
+    //it is searching for the object wich we have selected. it returns wether if it exist in the basket yet
+    console.log("Resultado de búsqueda en basket:", search);   //undefined
 
     if (search === undefined) {
 
+        //we find the object from api and we save it in a variable
+        const  productData = products.find((product) => product.idProduct === selectedItem);
 
+        console.log("Producto encontrado en API:", productData);
 
         //add to the basket
         basket.push({
-            ...selectedProduct,   //Appends new elements to the end of an array, and returns the new length of the array.
+            ...productData,   //Appends new elements to the end of an array, and returns the new length of the array.
             item: 1,    //amount bought
 
         });
@@ -212,11 +240,14 @@ function increment() {
         search.item++;
     }
 
+
     localStorage.setItem("data", JSON.stringify(basket));
+    //keyvalue: data is the key, basket is the value that we keep
+    //basket is an object. if we want to safe data (not only "object") we have to transform it into a json by json.stringify "into a string"
+    console.log("actualizing basket")
     calculation();
-
+    console.log("product added")
 }
-
 
 
 function decrement(id) {
@@ -242,8 +273,7 @@ function decrement(id) {
     localStorage.setItem("data", JSON.stringify(basket));
     //keyvalue: data is the key, basket is the value that we keep
     //basket is an object. if we want to safe data (not only "object") we have to transform it into a json by json.stringify "into a string"
-    //console.log(basket);
-    // update(selectedItem.id);
+   
     calculation();
 }
 
