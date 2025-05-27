@@ -1,0 +1,139 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+
+/*titulo*/
+.page-title{
+    display: flex;
+    align-self: center;
+    font-size: 2rem;
+    padding: 3vh;
+    color:whitesmoke
+}
+
+.general-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:1vh;
+}
+
+.money{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.totalPrice {
+    color:white;
+    display: flex;
+    align-self: center;
+}
+
+.add-to-cart {
+    color:white;
+    display: flex;
+    align-self: center;
+    background-color: rgb(255, 128, 0);
+   
+    font-weight: bold;
+    border: 1px solid rgb(189, 63, 17);
+    cursor: pointer;
+    border-radius: 12px;
+    padding:10px;
+    
+    
+}
+
+
+
+
+
+/*tarjetas*/
+
+.card {
+    width: 65%;
+    height: 300px;
+    background-color: #f6dc9e;
+    border: 1px solid #ad9a6f;
+    border-radius: 10%;
+    box-shadow: 0 2px 8px rgba(86, 82, 74, 0.1);
+    padding: 10px;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-around 
+}
+
+
+.card:hover {
+    background: linear-gradient(45deg, #FADA7A, rgb(255, 136, 0)); 
+    cursor: pointer;
+}
+.card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+
+.card-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width:100%;
+   
+}
+
+.product-name {
+    color:#0b0b0b;
+    padding:10px;
+}
+
+.inputs {
+    display: flex;
+    color: #121212;
+    justify-content: space-between;
+    align-items: center;
+     padding-top:5px;
+    
+}
+
+
+
+
+
+
+
+
+
+
+/*boton de nuevo combo*/
+.new-combo-button {
+    background-color: rgb(255, 128, 0);
+    color: aliceblue; 
+    font-weight: bold;
+    border: 1px solid rgb(189, 63, 17);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    max-width:60vw;
+    padding:5%;
+    align-self: center;
+    border-radius: 12px;
+    margin:20%;
+   
+}
+
+.new-combo-button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    background-color:  rgb(189, 63, 17);
+}
+
+
